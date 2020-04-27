@@ -1,0 +1,74 @@
+<view class="container">
+	<view class="tui-header-banner">
+		<view class="tui-position">
+			<tui-icon name="position" size="18" color="#666666"></tui-icon>
+			<text>{{positionInfo}}</text>
+		</view>
+		<view class="tui-search">
+			<tui-icon name="search" size="20"></tui-icon>
+			<text>输入搜索美味佳肴</text>
+		</view>
+		<view class="tui-banner-bg">
+			<view class="tui-primary-bg tui-route-left"></view>
+			<view class="tui-primary-bg tui-route-right"></view>
+			<!--banner-->
+			<view class="tui-banner-box">
+				<swiper indicator-dots="true" autoplay="true" interval="5000" duration="150" class="tui-banner-swiper" circular="{{true}}">
+					<swiper-item wx:for="{{banner}}" wx:key="index" catchtap="detail">
+						<image src="/static/images/banner/{{item}}" class="tui-slide-image" mode="scaleToFill" />
+					</swiper-item>
+				</swiper>
+			</view>
+		</view>
+	</view>
+
+	<view class="tui-product-category">
+		<view class="tui-category-item" wx:for="{{category}}" wx:key="index" data-key="{{item.name}}" bindtap="more">
+			<image src="/static/images/cate/{{item.img}}" class="tui-category-img" mode="scaleToFill"></image>
+			<view class="tui-category-name">{{item.name}}</view>
+		</view>
+	</view>
+	<view class="tui-product-box">
+		<view class="tui-group-name">
+			<text>附近推荐</text>
+		</view>
+		<view class="tui-product-list">
+			<view class="tui-product-container">
+				<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index+1)%2!=0}}">
+					<template is="productItem" data="{{item,index:index}}" />
+				</block>
+			</view>
+			<view class="tui-product-container">
+				<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index+1)%2==0}}">
+					<template is="productItem" data="{{item,index:index}}" />
+				</block>
+			</view>
+		</view>
+	</view>
+
+	<!--模板-->
+	<template name="productItem">
+		<!--商品列表-->
+		<view class="tui-pro-item" hover-class="hover" hover-start-time="150" bindtap="detail">
+			<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/{{item.img}}.jpg" class="tui-pro-img" mode="widthFix" />
+			<view class="tui-pro-content">
+				<view class="tui-pro-tit">{{item.name}}</view>
+				<view>
+					<view class="tui-pro-price">
+						<text class="tui-sale-price">￥{{item.sale}}</text>
+						<view class="tui-user">
+								<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/timg.jpg" class="tui-user-avatar"></image>
+							<text class="tui-user-name">{{item.factory}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!--商品列表-->
+	</template>
+
+	<!--加载loadding-->
+	<tui-loadmore visible="{{loadding}}" index="3" type="red"></tui-loadmore>
+	<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
+	<!--加载loadding-->
+</view>

@@ -1,0 +1,10 @@
+{
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle":"dark",
+    "usingComponents": {
+        "tui-tag": "../../components/tag/tag",
+        "tui-loadmore": "../../components/loadmore/loadmore",
+        "tui-nomore": "../../components/nomore/nomore"
+    }
+}

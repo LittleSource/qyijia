@@ -1,0 +1,259 @@
+page {
+  background: #f7f7f7;
+}
+
+.container {
+  color: #333;
+}
+
+.tui-swiper {
+  font-size: 26rpx;
+  height: 60rpx;
+  flex: 1;
+  padding-left: 12rpx;
+}
+
+.tui-swiper-item {
+  display: flex;
+  align-items: center;
+}
+
+.tui-header-banner {
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.tui-position {
+  color: rgb(58, 56, 56);
+  padding: 0 20rpx;
+  padding-top :15rpx;
+  padding-bottom :12rpx;
+}
+.tui-position text{
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+
+.tui-search{
+  height: 60rpx;
+  margin: 0 20rpx;
+  padding: 0 10rpx;
+  background-color: #f5f5f5;
+  border-radius:12rpx;
+  overflow: hidden;
+  outline: none;
+}
+.tui-search tui-icon{
+  line-height: 60rpx;
+}
+.tui-search text{
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #949494;
+  padding-left: 8rpx;
+}
+
+.tui-banner-bg {
+  display: flex;
+  height: 180rpx;
+  position: relative;
+}
+
+.tui-banner-box {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  position: absolute;
+  /* overflow: hidden; */
+  z-index: 99;
+  bottom: -80rpx;
+  left: 0;
+}
+
+.tui-banner-swiper {
+  width: 100%;
+  height: 240rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.tui-slide-image {
+  width: 100%;
+  height: 240rpx;
+  display: block;
+}
+
+.tui-banner-swiper .wx-swiper-dot {
+  width: 8rpx;
+  height: 8rpx;
+  display: inline-flex;
+  background: none;
+  justify-content: space-between;
+}
+
+.tui-banner-swiper .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.tui-banner-swiper .wx-swiper-dot-active::before {
+  background: #fff;
+}
+
+.tui-banner-swiper .wx-swiper-dot.wx-swiper-dot-active {
+  width: 16rpx;
+}
+
+.tui-product-category {
+  background: #fff;
+  padding: 80rpx 20rpx 30rpx 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 24rpx;
+  color: #555;
+  margin-bottom: 20rpx;
+}
+
+.tui-category-item {
+  width: 20%;
+  height: 118rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 30rpx;
+}
+
+.tui-category-img {
+  height: 80rpx;
+  width: 80rpx;
+  display: block;
+}
+
+.tui-category-name {
+  line-height: 24rpx;
+}
+
+.tui-product-box {
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.tui-pb-20 {
+  padding-bottom: 20rpx;
+}
+
+.tui-bg-white {
+  background: #fff;
+}
+
+.tui-group-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 24rpx 0;
+}
+
+.tui-title-box {
+  font-size: 24rpx;
+}
+
+.tui-product-list {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  /* padding-top: 20rpx; */
+}
+
+.tui-product-container {
+  flex: 1;
+  margin-right: 2%;
+}
+
+.tui-product-container:last-child {
+  margin-right: 0;
+}
+
+.tui-pro-item {
+  width: 100%;
+  margin-bottom: 4%;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.tui-pro-img {
+  width: 100%;
+  height: 120px;
+  display: block;
+}
+
+.tui-pro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.tui-pro-tit {
+  color: #2e2e2e;
+  font-size: 30rpx;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.tui-pro-price {
+  padding-top: 18rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 46rpx;
+}
+
+.tui-sale-price {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: #e41f19;
+}
+
+.tui-user{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.tui-user-avatar{
+  background: #c9c9c9 no-repeat center;
+  background-size: cover;
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tui-user-avatar image{
+  width: 100%;
+  height: 100%;
+}
+
+.tui-user-name {
+  font-size: 28rpx;
+  line-height: 46rpx;
+  color: #606060;
+  padding-left: 8rpx;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,10 @@
+{
+  "navigationStyle":"custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "tui-button":"/components/button/button",
+    "tui-badge":"/components/badge/badge",
+    "tui-cell": "/components/list-cell/list-cell",
+    "tui-numberbox":"/components/numberbox/numberbox"
+  }
+}

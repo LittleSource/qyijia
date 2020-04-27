@@ -1,0 +1,106 @@
+<view class="container">
+	<view class="back-button" bindtap="back" style="top:{{capsuleTop}}px;height:{{capsuleHeight}}px;width:{{capsuleHeight}}px;border-radius:{{capsuleHeight/2}}px">
+		<tui-icon name="arrowleft" color="#ffffff"></tui-icon>
+	</view>
+	<view class="tui-header">
+		<view class="tui-avatar" style="background:url('http://img1.imgtn.bdimg.com/it/u=2925891935,3969167358&fm=26&gp=0.jpg')"></view>
+		<view class="tui-shop-info">
+			<view class="shop-title">美食研究所</view>
+			<view class="shop-notice">
+				<tui-icon name="notice" size="16" color="orange"></tui-icon>
+				好食材的获得需要耐心和漫长的等待
+			</view>
+			<view class="shop-position">
+				<tui-icon name="position" size="16" color="#00A5F2"></tui-icon>
+				香河道与汀江西路交口天士力花园内3号楼
+			</view>
+		</view>
+	</view>
+	<scroll-view scroll-y scroll-with-animation class="tab-view" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px">
+		<view wx:for="{{tabbar}}" wx:key="index" class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav">
+			<text>{{item}}</text>
+		</view>
+	</scroll-view>
+	<scroll-view scroll-y scroll-with-animation class="right-box" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px">
+		<view class="classify-name">
+			<text>蛋糕点心</text>
+		</view>
+		<view class="shop-box">
+			<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shop-img" mode="heightFix"></image>
+			<view class="shop-right">
+				<view class="title">宫保鸡丁</view>
+				<view class="shop-label-row">
+					<view class="shop-label">香辣</view>
+					<view class="shop-label">香辣</view>
+					<view class="shop-label">香辣</view>
+				</view>
+				<view class="shop-price">18.8</view>
+			</view>
+			<view class="shop-add-reduce">
+				<view class="iconfont icon-prevent"></view>
+				<view class="shop-number">3</view>
+				<view class="iconfont icon-addto" style="color:orange"> </view>
+			</view>
+		</view>
+	</scroll-view>
+
+	<view class="tui-operation">
+		<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150">
+			<tui-icon name="kefu" size="22" color='#333'></tui-icon>
+			<view class="tui-operation-text">客服</view>
+		</view>
+		<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150" bindtap="showModal">
+			<tui-icon name="cart" size="22" color='#333'></tui-icon>
+			<view class="tui-operation-text">购物车</view>
+			<tui-badge type="danger" size="small" tui-badge-class="tui-badge-class">9</tui-badge>
+		</view>
+		<text class="tui-money">18.8</text>
+		<tui-button type="warning" tui-button-class="ym-btn">立即购买</tui-button>
+	</view>
+	<!-- 购物车Modal start -->
+	<view class="mask-screen" bindtap="hideModal" hidden="{{!showModalStatus}}"></view>
+	<view animation="{{animationData}}" class="region-box" hidden="{{!showModalStatus}}">
+		<view class="top-line">
+			<view class="clear-shopcart">
+				<tui-icon name="delete" size="14"></tui-icon>
+				清空购物车
+			</view>
+			<tui-icon name="close" size="20" bindtap="hideModal"></tui-icon>
+		</view>
+		<view class="shopcart-list">
+			<view class="shopcart-item">
+				<view class="shoppingcart-left">
+					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
+					<view class="tui-cell-name">发现</view>
+				</view>
+				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
+				<view class="shopcart-price">18.8</view>
+			</view>
+			<view class="shopcart-item">
+				<view class="shoppingcart-left">
+					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
+					<view class="tui-cell-name">发现</view>
+				</view>
+				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
+				<view class="shopcart-price">18.8</view>
+			</view>
+			<view class="shopcart-item">
+				<view class="shoppingcart-left">
+					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
+					<view class="tui-cell-name">发现</view>
+				</view>
+				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
+				<view class="shopcart-price">18.8</view>
+			</view>
+			<view class="shopcart-item">
+				<view class="shoppingcart-left">
+					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
+					<view class="tui-cell-name">发现</view>
+				</view>
+				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
+				<view class="shopcart-price">18.8</view>
+			</view>
+		</view>
+	</view>
+</view>
+<!-- 购物车Modal end -->

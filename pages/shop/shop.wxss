@@ -1,0 +1,325 @@
+page {
+  background: #fcfcfc;
+}
+
+.back-button {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .15);
+  z-index: 999;
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.tui-header {
+  height: 400rpx;
+  width: 100%;
+  background: url(https://yuange666.oss-cn-beijing.aliyuncs.com/test/shopbg.jpg) no-repeat;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}
+
+.tui-avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50rpx;
+  /* 元素高度的一半 */
+  margin-left: -75rpx;
+  height: 150rpx;
+  width: 150rpx;
+  background-color: #dddddd;
+  background-size: auto 100% !important;
+  border-radius: 75rpx;
+  box-shadow: 0px 1px 3px #888888;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.tui-shop-info {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* 宽度有点奇葩 */
+  height: 150rpx;
+  border-radius: 30rpx 30rpx 0 0;
+  overflow: hidden;
+  z-index: 199;
+}
+
+.shop-title {
+  margin: 18rpx 0 0 30rpx;
+  color: #000000;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.shop-notice{
+  margin: 5rpx 0 0 30rpx;
+  color: #555555;
+  font-size: 26rpx;
+}
+.shop-position{
+  margin: 5rpx 0 0 30rpx;
+  color: #555555;
+  font-size: 26rpx;
+}
+/* 左侧导航布局 start*/
+
+/* 隐藏scroll-view滚动条*/
+
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.tab-view {
+  width: 200rpx;
+  position: fixed;
+  left: 0;
+  top: 400rpx;
+  z-index: 10;
+}
+
+.tab-bar-item {
+  width: 200rpx;
+  height: 110rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #444;
+  font-weight: 400;
+}
+
+.active {
+  position: relative;
+  color: #000;
+  font-size: 30rpx;
+  font-weight: 600;
+  background: #f6f6f6;
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  border-left: 8rpx solid #E41F19;
+  height: 30rpx;
+  left: 0;
+}
+
+/* 左侧导航布局 end*/
+
+/* 右侧布局 start*/
+.right-box {
+  width: 550rpx;
+  position: fixed;
+  right: 0;
+  top: 400rpx;
+  z-index: 10;
+}
+
+.classify-name {
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 10rpx;
+  font-size: 28rpx;
+}
+
+.shop-box {
+  height: 140rpx;
+  width: 550rpx;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-flow: nowrap;
+}
+
+.shop-box .shop-img {
+  height: 130rpx !important;
+  width: 130rpx !important;
+  background-color: #eeeeee;
+}
+
+.title {
+  font-size: 30rpx;
+  font-weight: 550;
+}
+
+.shop-right {
+  width: 220rpx;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+
+.shop-label-row {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.shop-label {
+  height: 36rpx;
+  background-color: #f4f4f4;
+  color: #888888;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  padding: 0 5rpx;
+  margin: 5rpx 8rpx 5rpx 0;
+}
+
+.shop-price {
+  color: #E41F19;
+  font-weight: 530;
+}
+
+.shop-add-reduce {
+  width: 170rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shop-number {
+  font-size: 35rpx;
+  font-weight: 500;
+  color: #555555;
+}
+
+.iconfont {
+  font-size: 68rpx;
+  color: #888888;
+}
+
+/* 底部布局 start*/
+.tui-operation {
+  width: 100%;
+  height: 100rpx;
+  background-color: #ffffff;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  flex-direction: row;
+}
+
+.tui-operation-item {
+  display: flex;
+  flex-direction: column;
+  width: 150rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.tui-operation-text {
+  font-size: 22rpx;
+}
+
+.tui-opcity {
+  opacity: 0.5;
+}
+
+.tui-badge-class {
+  position: absolute;
+  top: 0rpx;
+}
+
+.tui-money {
+  width: 130rpx;
+  line-height: 100rpx;
+  font-size: 38rpx;
+  text-align: center;
+  color: #E41F19;
+  font-weight: bold;
+  padding: 0 40rpx 0 10rpx;
+}
+
+.ym-btn {
+  border-radius: 0 !important;
+  height: 100rpx !important;
+  line-height: 65rpx !important;
+  font-size: 30rpx !important;
+  width: 320rpx !important;
+}
+
+/* 底部布局 end*/
+
+.mask-screen{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 1000;
+}
+.region-box{
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  z-index: 1001;
+  background: #fff;
+  padding-top: 20rpx;
+  border-radius: 20rpx 20rpx 0 0;
+
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content:flex-start;
+}
+
+.top-line{
+  height: 50rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-shopcart{
+  font-size: 28rpx;
+  line-height: 50rpx;
+  color: grey;
+}
+.shopcart-list{
+  padding: 15rpx 15rpx 0 15rpx;
+}
+.shopcart-item{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  height: 70rpx;
+}
+.shoppingcart-left{
+  display: flex;
+  flex-direction: row;
+}
+.shopcart-img{
+  width: 60rpx !important;
+  height: 60rpx !important;
+}
+.tui-cell-name{
+  line-height: 70rpx;
+  color: #666;
+  margin-left: 5rpx;
+  font-size: 30rpx;
+}
+.shopcart-price{
+  line-height: 70rpx;
+  font-size: 32rpx;
+  color: #E41F19;
+}

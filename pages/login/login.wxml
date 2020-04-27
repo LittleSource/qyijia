@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+    <image src="/static/images/logo.png" class="tui-logo"></image>
+    <view class="logo-text">麒亿家</view>
+    <button wx:if="{{!isGetUserPhoneShow}}" class="tui-button" type="primary" loading="{{isLoading}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权获取信息</button>
+    <button wx:if="{{isGetUserPhoneShow}}" class="tui-button" type="primary"  plain loading="{{isLoading}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
+    <view wx:if="{{isGetUserPhoneShow}}" class="info">请点击登录按钮以继续</view>
+    <tui-footer copyright="Copyright © 2018-2020 源梦科技" size="30"></tui-footer>
+</view>

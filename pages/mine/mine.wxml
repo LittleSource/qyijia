@@ -1,0 +1,114 @@
+<view>
+	<view class="tui-mybg-box">
+		<image src="/static/images/mine/img_bg_3x.png" class="tui-my-bg" mode="widthFix"></image>
+		<view class="tui-header-center" bindtap="login">
+			<image src="{{userInfo ? userInfo.avatarUrl : '/static/images/mine/mine_def_touxiang_3x.png'}}" class="tui-avatar"></image>
+			<view class="tui-info">
+				<view class="tui-nickname">
+					<text>{{userInfo ? userInfo.nickName : '未登录'}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="tui-content-box">
+		<view class="tui-box tui-order-box">
+			<tui-list-cell arrow="{{true}}" padding="0" lineLeft="{{false}}" bind:click="href" data-type="4">
+				<view class="tui-cell-header">
+					<view class="tui-cell-title">我的订单</view>
+					<view class="tui-cell-sub">查看全部订单</view>
+				</view>
+			</tui-list-cell>
+			<view class="tui-order-list">
+				<view class="tui-order-item" bindtap="href" data-type="4">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_daifukuan_3x.png" class="tui-order-icon"></image>
+					</view>
+					<view class="tui-order-text">待付款</view>
+				</view>
+				<view class="tui-order-item" bindtap="href" data-type="4">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_daifahuo_3x.png" class="tui-order-icon"></image>
+					</view>
+					<view class="tui-order-text">待发货</view>
+				</view>
+				<view class="tui-order-item" bindtap="href" data-type="4">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_daishouhuo_3x.png" class="tui-order-icon"></image>
+					</view>
+					<view class="tui-order-text">待收货</view>
+				</view>
+				<view class="tui-order-item" bindtap="href" data-type="4">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_pingjia_3x.png" class="tui-order-icon"></image>
+					</view>
+					<view class="tui-order-text">评价</view>
+				</view>
+				<view class="tui-order-item" bindtap="href" data-type="4">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_tuikuan_3x.png" class="tui-order-icon"></image>
+					</view>
+					<view class="tui-order-text">退款/售后</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="tui-box tui-tool-box" bindtap="href" data-type="7">
+			<tui-list-cell arrow="{{true}}" padding="0" lineLeft="{{false}}">
+				<view class="tui-cell-header">
+					<view class="tui-cell-title">常用工具</view>
+					<view class="tui-cell-sub">查看更多</view>
+				</view>
+			</tui-list-cell>
+			<view class="tui-order-list tui-flex-wrap">
+				<view class="tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_gift_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">免费领好礼</view>
+				</view>
+				<view class="tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_purse_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">钱包</view>
+				</view>
+				<view class=" tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_ticket_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">领券中心</view>
+				</view>
+				<view class=" tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_kefu_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">客服服务</view>
+				</view>
+				<view class="tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_fanxian_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">每日返现</view>
+				</view>
+				<view class="tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_tuan_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">超值拼团</view>
+				</view>
+				<view class="tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_zhihuan_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">闲置换钱</view>
+				</view>
+				<view class="tui-tool-item">
+					<view class="tui-icon-box">
+						<image src="/static/images/mine/icon_kaipiao_3x.png" class="tui-tool-icon"></image>
+					</view>
+					<view class="tui-tool-text">开发票</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
