@@ -5,7 +5,7 @@ verson : 1.0 普通版
 last update date : 2020-03-15
 */
 module.exports = {
-	baseUrl:'https://www.yywdesign.top/',
+	baseUrl:'http://192.168.1.11/',
 	// 版本检查
 	verson : function(){
 		var currentVersion = '1.0';
@@ -51,7 +51,15 @@ module.exports = {
 			method   : "GET",
 			dataType : "json",
 			header   : headers,
-			success  : (res) => {success(res.data);},
+			success  : (res) => {
+				if(res.code == 200){
+					if(res.data.code == 200){
+						success(res.data.data);
+					}
+				}else{
+					this.msg('123')
+				}
+			},
 			fail     : fail,
 			complete : () => {if(this.__after != null){this.__after(); this.__after = null;}}
 		});
@@ -77,7 +85,20 @@ module.exports = {
 			data     : data,
 			method   : "POST",
 			header   : headers,
-			success  : (res) => {success(res.data);},
+			success  : (res) => {
+				if(res.statusCode == 200){
+					if(res.data.code == 200){
+						success(res.data.data);
+					}else if(res.data.code == 401){
+						this.msg('token 失效')
+						//未写跳转
+					}else{
+						this.msg(res.data.msg);
+					}
+				}else{
+					this.msg('网络请求失败！\n' + res.errMsg)
+				}
+			},
 			fail     : fail,
 			complete : () => {if(this.__after != null){this.__after(); this.__after = null;}}
 		});
@@ -165,7 +186,7 @@ module.exports = {
 	
 	// --- 消息弹框 ---
 	msg : function(msg){wx.showToast({title:msg, icon:"none",duration: 2000});},
-	msgSuccess : function(msg){wx.showToast({title:msg, icon:"success",duration: 2000});},
+	msgSuccess : function(msg,success){wx.showToast({title:msg,icon:"success",mask:true,duration:2000,success:success()});},
 	showLoading : function (title) {wx.showLoading({  title:title });},
 	
 	// --- 导航条设置 ---
@@ -187,11 +208,12 @@ module.exports = {
 			wx.hideNavigationBarLoading();
 		}
 	},
-	
 	// --- 元素选择 ---
 	// 单个元素选择
-	select : function (selector, callBack) {
-		wx.createSelectorQuery().select(selector).boundingClientRect().exec((res)=>{callBack(res[0]);});
+	select : function (selector) {
+		return new Promise((resolve, reject)=>{
+			wx.createSelectorQuery().select(selector).boundingClientRect().exec((res)=>{resolve(res[0]);});
+		})
 	},
 	// 多个元素获取
 	selectAll : function (selector, callBack) {
@@ -367,6 +389,9 @@ module.exports = {
 	removeByKey : function (obj, key) {delete obj[key];},
 	each : function(obj, func){
 		for(let k in obj){func(k, obj[k]);}
+	},
+	copyDeep:function(obj){
+		return JSON.parse(JSON.stringify(obj))
 	},
 	isEmptyObj : function(obj){return JSON.stringify(obj) === '{}';}
 }

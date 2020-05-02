@@ -3,43 +3,43 @@
 		<tui-icon name="arrowleft" color="#ffffff"></tui-icon>
 	</view>
 	<view class="tui-header">
-		<view class="tui-avatar" style="background:url('http://img1.imgtn.bdimg.com/it/u=2925891935,3969167358&fm=26&gp=0.jpg')"></view>
+		<view class="tui-avatar" style="background:url('{{shopInfo.head_img}}')"></view>
 		<view class="tui-shop-info">
-			<view class="shop-title">美食研究所</view>
+			<view class="shop-title">{{shopInfo.title}}</view>
 			<view class="shop-notice">
 				<tui-icon name="notice" size="16" color="orange"></tui-icon>
-				好食材的获得需要耐心和漫长的等待
+				{{shopInfo.notice}}
 			</view>
 			<view class="shop-position">
 				<tui-icon name="position" size="16" color="#00A5F2"></tui-icon>
-				香河道与汀江西路交口天士力花园内3号楼
+				{{shopInfo.address}}
 			</view>
 		</view>
 	</view>
-	<scroll-view scroll-y scroll-with-animation class="tab-view" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px">
-		<view wx:for="{{tabbar}}" wx:key="index" class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav">
-			<text>{{item}}</text>
+	<scroll-view scroll-y scroll-with-animation class="tab-view" style="height:{{scrollHeight}}px">
+		<view wx:for="{{classify}}" wx:key="ord" class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav">
+			<text>{{item.title}}</text>
 		</view>
 	</scroll-view>
 	<scroll-view scroll-y scroll-with-animation class="right-box" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}}px">
-		<view class="classify-name">
-			<text>蛋糕点心</text>
-		</view>
-		<view class="shop-box">
-			<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shop-img" mode="heightFix"></image>
-			<view class="shop-right">
-				<view class="title">宫保鸡丁</view>
-				<view class="shop-label-row">
-					<view class="shop-label">香辣</view>
-					<view class="shop-label">香辣</view>
-					<view class="shop-label">香辣</view>
-				</view>
-				<view class="shop-price">18.8</view>
+		<view wx:for="{{classify}}" wx:key="ord" wx:for-item="classItem" wx:for-index="classIndex" id="class-{{classItem.id}}">
+			<view class="classify-name">
+				<text>{{classItem.title}}</text>
 			</view>
-			<view class="shop-add-reduce">
-				<view class="iconfont icon-prevent"></view>
-				<view class="shop-number">3</view>
-				<view class="iconfont icon-addto" style="color:orange"> </view>
+			<view class="shop-box" wx:for="{{product['classify'+classItem.id]}}" wx:key="id" wx:for-item="productItem" wx:for-index="productIndex">
+				<image src="{{productItem.img}}" class="shop-img" mode="heightFix"></image>
+				<view class="shop-right">
+					<view class="title">{{productItem.title}}</view>
+					<view class="shop-label-row">
+						<view class="shop-label" wx:for="{{productItem.labels}}" wx:key="index" wx:for-item="labelItem">{{labelItem}}</view>
+					</view>
+					<view class="shop-price">{{productItem.price}}</view>
+				</view>
+				<view class="shop-add-reduce">
+					<view class="iconfont icon-prevent {{productItem.count>0?'':'ym-hidden'}}" catchtap="reduce" data-classindex="{{classIndex}}" data-proindex="{{productIndex}}"></view>
+					<view class="shop-number {{productItem.count>0?'':'ym-hidden'}}">{{productItem.count}}</view>
+					<view class="iconfont icon-addto" style="color:orange" catchtap="add" data-classindex="{{classIndex}}" data-proindex="{{productIndex}}"> </view>
+				</view>
 			</view>
 		</view>
 	</scroll-view>
@@ -52,53 +52,29 @@
 		<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150" bindtap="showModal">
 			<tui-icon name="cart" size="22" color='#333'></tui-icon>
 			<view class="tui-operation-text">购物车</view>
-			<tui-badge type="danger" size="small" tui-badge-class="tui-badge-class">9</tui-badge>
+			<tui-badge wx:if="{{countSum > 0}}" type="danger" size="small" tui-badge-class="tui-badge-class">{{countSum}}</tui-badge>
 		</view>
-		<text class="tui-money">18.8</text>
+		<text class="tui-money">{{priceSum}}</text>
 		<tui-button type="warning" tui-button-class="ym-btn">立即购买</tui-button>
 	</view>
 	<!-- 购物车Modal start -->
 	<view class="mask-screen" bindtap="hideModal" hidden="{{!showModalStatus}}"></view>
 	<view animation="{{animationData}}" class="region-box" hidden="{{!showModalStatus}}">
 		<view class="top-line">
-			<view class="clear-shopcart">
+			<view class="clear-shopcart" bindtap="clearShoppingCart">
 				<tui-icon name="delete" size="14"></tui-icon>
 				清空购物车
 			</view>
 			<tui-icon name="close" size="20" bindtap="hideModal"></tui-icon>
 		</view>
 		<view class="shopcart-list">
-			<view class="shopcart-item">
+			<view class="shopcart-item" wx:for="{{shoppingCart}}" wx:key="index">
 				<view class="shoppingcart-left">
-					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
-					<view class="tui-cell-name">发现</view>
+					<image src="{{item.img}}" class="shopcart-img" mode="heightFix"></image>
+					<view class="tui-cell-name">{{item.title}}</view>
 				</view>
-				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
-				<view class="shopcart-price">18.8</view>
-			</view>
-			<view class="shopcart-item">
-				<view class="shoppingcart-left">
-					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
-					<view class="tui-cell-name">发现</view>
-				</view>
-				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
-				<view class="shopcart-price">18.8</view>
-			</view>
-			<view class="shopcart-item">
-				<view class="shoppingcart-left">
-					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
-					<view class="tui-cell-name">发现</view>
-				</view>
-				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
-				<view class="shopcart-price">18.8</view>
-			</view>
-			<view class="shopcart-item">
-				<view class="shoppingcart-left">
-					<image src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2379446082,1314147042&fm=26&gp=0.jpg" class="shopcart-img" mode="heightFix"></image>
-					<view class="tui-cell-name">发现</view>
-				</view>
-				<tui-numberbox value="1" height="28" width="56" min="1" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
-				<view class="shopcart-price">18.8</view>
+				<tui-numberbox value="{{item.count}}" height="28" width="56" min="0" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
+				<view class="shopcart-price">￥{{item.count * item.price}}</view>
 			</view>
 		</view>
 	</view>

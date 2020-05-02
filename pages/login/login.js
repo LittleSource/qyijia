@@ -3,7 +3,6 @@ const graceJS = require('../../utils/grace.js');
 const app = getApp()
 var _self = null
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -11,7 +10,10 @@ Page({
         isGetUserPhoneShow: false,
         isLoading: false,
         openid: '',
-        backPath: '/pages/index/index' //登录成功跳转页面  默认首页
+        backPath: {
+            path: '/pages/index/index', //登录成功跳转页面  默认首页
+            type: 1 //是否是tab页面  1是 0不是
+        }
     },
 
     /**
@@ -20,7 +22,10 @@ Page({
     onLoad: function (options) {
         _self = this
         this.setData({
-            backPath: options.path
+            backPath: {
+                path: options.path,
+                type: parseInt(options.type)
+            }
         })
     },
     getUserInfo: function (res) {
@@ -33,25 +38,24 @@ Page({
                         })
                         graceJS.setAfter(() => {
                             _self.setData({
-                                isGetUserPhoneShow: true,
                                 isLoading: false
                             })
                         });
-                        console.log(res.detail)
                         graceJS.post(
                             'common/login/login', {
                                 code: loginRes.code,
                                 encryptedData: res.detail.encryptedData,
                                 iv: res.detail.iv,
-                                signature:res.detail.signature,
-                                rawData:res.detail.rawData
+                                signature: res.detail.signature,
+                                rawData: res.detail.rawData
                             }, {}, {},
                             function (res) {
-                                console.log(res)
                                 _self.setData({
-                                    openid: res.data.openid
+                                    openid: res.openid,
+                                    isGetUserPhoneShow: true,
                                 })
-                                graceJS.msgSuccess("获取成功!")
+                                console.log(_self.data.openid)
+                                graceJS.msg("获取成功!")
                             }
                         )
                     } else {
@@ -66,32 +70,40 @@ Page({
     getPhoneNumber: function (res) {
         if (res.detail.errMsg == "getPhoneNumber:ok") {
             graceJS.showLoading('loading...')
-            //console.log(postData)
             graceJS.setAfter(() => {
                 wx.hideLoading()
             });
-            //发起网络请求
-            graceJS.post(
+            graceJS.post(//发起网络请求
                 'common/login/getPhone', {
                     encryptedData: res.detail.encryptedData,
                     iv: res.detail.iv,
                     openid: _self.data.openid
                 }, {}, {},
                 function (res) {
-                    console.log(res)
-                    _self.setData({
-
+                    res.userInfo.token = res.token
+                    app.globalData.userInfo = res.userInfo
+                    wx.setStorage({
+                        key: "userInfo",
+                        data: app.globalData.userInfo
                     })
-                    // app.globalData.userInfo = _self.data.loginData.userInfo
-                    // wx.setStorage({
-                    //     key: "userInfo",
-                    //     data: app.globalData.userInfo
-                    // })
-                    console.log(app.globalData.userInfo)
+                    graceJS.msgSuccess("登录成功!", () => {
+                        _self.backPage()
+                    })
                 }
             )
         } else {
             this.errorModel(res.detail.errMsg)
+        }
+    },
+    backPage:function () {
+        if(this.data.backPath.type){
+            wx.switchTab({
+              url: this.data.backPath.path,
+            })
+        }else{
+            wx.redirectTo({
+              url: this.data.backPath.path,
+            })
         }
     },
     errorModel: function (errorMsg) {

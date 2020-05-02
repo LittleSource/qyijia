@@ -16,7 +16,7 @@ Page({
         if (this.data.userInfo === null) {
             let thisPagePath = '/pages/mine/mine'
             wx.navigateTo({
-                url: '/pages/login/login?path=' + thisPagePath,
+                url: '/pages/login/login?path=' + thisPagePath+'&type=1',
             })
         }else{
             //进入个人设置页面
