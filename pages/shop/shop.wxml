@@ -27,7 +27,7 @@
 				<text>{{classItem.title}}</text>
 			</view>
 			<view class="shop-box" wx:for="{{product['classify'+classItem.id]}}" wx:key="id" wx:for-item="productItem" wx:for-index="productIndex">
-				<image src="{{productItem.img}}" class="shop-img" mode="heightFix"></image>
+				<image src="{{productItem.img}}" class="shop-img" mode="heightFix" bindtap="showImg" data-img="{{productItem.img}}"></image>
 				<view class="shop-right">
 					<view class="title">{{productItem.title}}</view>
 					<view class="shop-label-row">
@@ -43,10 +43,9 @@
 			</view>
 		</view>
 	</scroll-view>
-
 	<view class="tui-operation">
-		<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150">
-			<tui-icon name="kefu" size="22" color='#333'></tui-icon>
+		<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150" bindtap="getShopPhone">
+			<tui-icon name="voipphone" size="22" color='#333'></tui-icon>
 			<view class="tui-operation-text">客服</view>
 		</view>
 		<view class="tui-operation-item" hover-class="tui-opcity" hover-stay-time="150" bindtap="showModal">
@@ -55,28 +54,30 @@
 			<tui-badge wx:if="{{countSum > 0}}" type="danger" size="small" tui-badge-class="tui-badge-class">{{countSum}}</tui-badge>
 		</view>
 		<text class="tui-money">{{priceSum}}</text>
-		<tui-button type="warning" tui-button-class="ym-btn">立即购买</tui-button>
+		<tui-button wx:if="{{minimum>0 && priceSum<minimum}}" type="gray" disabled tui-button-class="ym-btn">{{minimum}}元起送</tui-button>
+		<tui-button wx:else type="warning" tui-button-class="ym-btn" bindtap="submitOrder">立即购买</tui-button>
 	</view>
 	<!-- 购物车Modal start -->
-	<view class="mask-screen" bindtap="hideModal" hidden="{{!showModalStatus}}"></view>
-	<view animation="{{animationData}}" class="region-box" hidden="{{!showModalStatus}}">
-		<view class="top-line">
-			<view class="clear-shopcart" bindtap="clearShoppingCart">
-				<tui-icon name="delete" size="14"></tui-icon>
-				清空购物车
-			</view>
-			<tui-icon name="close" size="20" bindtap="hideModal"></tui-icon>
-		</view>
-		<view class="shopcart-list">
-			<view class="shopcart-item" wx:for="{{shoppingCart}}" wx:key="index">
-				<view class="shoppingcart-left">
-					<image src="{{item.img}}" class="shopcart-img" mode="heightFix"></image>
-					<view class="tui-cell-name">{{item.title}}</view>
+	<view class="cu-modal bottom-modal {{showModalStatus?'show':''}}">
+		<view class="cu-dialog">
+			<view class="cu-bar">
+				<view class="action text-grey" bindtap="clearShoppingCart">
+					<tui-icon name="delete" size="14"></tui-icon>
+					<text class="text-grey">清空购物车</text>
 				</view>
-				<tui-numberbox value="{{item.count}}" height="28" width="56" min="0" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
-				<view class="shopcart-price">￥{{item.count * item.price}}</view>
+				<tui-icon class="action" name="close" size="20" bindtap="hideModal"></tui-icon>
+			</view>
+			<view class="shopcart-list">
+				<view class="shopcart-item" wx:for="{{shoppingCart}}" wx:key="index">
+					<view class="shoppingcart-left">
+						<image src="{{item.img}}" class="shopcart-img" mode="heightFix"></image>
+						<view class="tui-cell-name">{{item.title}}</view>
+					</view>
+					<tui-numberbox value="{{item.count}}" height="28" width="56" min="0" iconsize="22" iconcolor="#666" index="{{index}}" bind:change="changeNum"></tui-numberbox>
+					<view class="shopcart-price">￥{{item.count * item.price}}</view>
+				</view>
 			</view>
 		</view>
 	</view>
+	<!-- 购物车Modal end -->
 </view>
-<!-- 购物车Modal end -->

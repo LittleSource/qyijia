@@ -30,7 +30,7 @@ page {
   margin-left: -75rpx;
   height: 150rpx;
   width: 150rpx;
-  background-color: #dddddd;
+  background-color: #fcfcfc;
   background-repeat: no-repeat;
   background-size: cover !important;
   border-radius: 75rpx;
@@ -257,51 +257,13 @@ page {
 }
 
 /* 底部布局 end*/
-
-.mask-screen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #000;
-  opacity: 0.5;
-  overflow: hidden;
-  z-index: 1000;
-}
-
-.region-box {
-  width: 100%;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0rpx;
-  left: 0;
-  z-index: 1001;
-  background: #fff;
-  padding: 15rpx;
-  border-radius: 20rpx 20rpx 0 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-}
-
-.top-line {
-  height: 50rpx;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.clear-shopcart {
-  font-size: 28rpx;
-  line-height: 50rpx;
+.text-grey {
   color: grey;
+  margin-left: 3rpx;
 }
 
 .shopcart-list {
-  padding: 15rpx 15rpx 0 15rpx;
+  padding: 15rpx 22rpx 0 20rpx;
 }
 
 .shopcart-item {
@@ -328,6 +290,7 @@ page {
   font-size: 30rpx;
   width: 210rpx;
   flex-wrap: nowrap;
+  text-align: left;
   text-overflow: ellipsis !important;
 }
 

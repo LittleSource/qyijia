@@ -3,18 +3,19 @@ const graceJS = require('../../utils/grace.js');
 var _self = null
 Page({
     data: {
+        shopId: 1,
         classify: [], //商品分类
-        product: [],
+        product: [],//商品列表
         shopInfo: null,
         shoppingCart: [],
         priceSum: "0.00",
         countSum: 0,
+        minimum:0,//起送价
         scrollHeight: 100, //滚动视图高度
         capsuleTop: 100, //胶囊距离屏幕顶部的距离
         capsuleHeight: 15, //胶囊的高度
         currentTab: 0, //预设当前项的值
         scrollTop: 0, //tab标题的滚动条位置
-        animationData: '',
         showModalStatus: false
     },
     onLoad: function (options) {
@@ -38,13 +39,14 @@ Page({
         })
         graceJS.post(
             'shop/shop/getAllInfo', {
-                id: 1
+                id: _self.data.shopId
             }, {}, {},
             (res) => {
                 _self.setData({
                     classify: res.classify,
                     product: res.product,
-                    shopInfo: res.shopInfo
+                    shopInfo: res.shopInfo,
+                    minimum:parseFloat(res.shopInfo.minimum)
                 })
                 _self.initProduct()
             }
@@ -128,6 +130,9 @@ Page({
         shoppingCart_[findIndex].count--
         if (shoppingCart_[findIndex].count == 0) {
             shoppingCart_.splice(findIndex, 1)
+            if(shoppingCart_.length == 0 && this.data.showModalStatus){
+                this.setData({showModalStatus:false})
+            }
         }
         this.addReduceOver(countSum_, proList_, shoppingCart_)
     },
@@ -158,15 +163,20 @@ Page({
         }
         return result;
     },
-    changeNum(e){
+    changeNum(e) {
         e.currentTarget.dataset.classindex = this.data.shoppingCart[e.detail.index].class_index
         e.currentTarget.dataset.proindex = this.data.shoppingCart[e.detail.index].pro_index
-        if(e.detail.type == 'reduce'){
+        if (e.detail.type == 'reduce') {
             this.reduce(e)
         }
-        if(e.detail.type == 'plus'){
+        if (e.detail.type == 'plus') {
             this.add(e)
         }
+    },
+    showImg(e) {
+        wx.previewImage({
+            urls: [e.currentTarget.dataset.img]
+        })
     },
     back() {
         let page = getCurrentPages()
@@ -194,43 +204,47 @@ Page({
                     _self.setData({
                         shoppingCart: [],
                         countSum: 0,
-                        priceSum: 0.00,
+                        priceSum: "0.00",
                         showModalStatus: false,
-                        product:product_
+                        product: product_
                     })
-                    wx.showToast({
-                        title: '购物车已清空'
-                    })
+                    graceJS.msgSuccess('购物车已清空')
                 }
             }
         })
     },
     showModal: function () {
         if (this.data.shoppingCart.length == 0) {
+            graceJS.msg('购物车内空空如也~')
             return false
         }
-        // 显示遮罩层
-        var animation = wx.createAnimation({ // 创建动画实例 
-            duration: 200,
-            timingFunction: "linear",
-            delay: 0
-        })
-        animation.translateY(500).step() //执行第一组动画：Y轴偏移500px后(盒子高度是500px) ，停
-        //导出动画对象赋给数据对象储存
         this.setData({
-            animationData: animation.export(),
             showModalStatus: true
         })
-        setTimeout(function () {
-            animation.translateY(0).step()
-            this.setData({
-                animationData: animation.export()
-            })
-        }.bind(this), 200)
     },
     hideModal: function () {
         this.setData({
             showModalStatus: false
         })
+    },
+    getShopPhone() {
+        graceJS.showLoading('Loading...')
+        graceJS.setAfter(() => {
+            wx.hideLoading()
+        })
+        graceJS.post(
+            'shop/shop/getShopPhone', {
+                id: _self.data.shopId
+            }, {}, {},
+            (res) => {
+                wx.makePhoneCall({
+                    phoneNumber: res.phone
+                })
+            }
+        )
+    },
+    submitOrder(){
+        app.globalData.shoppingCart = this.data.shoppingCart
+        graceJS.navigate('/pages/cashier/cashier?price='+this.data.priceSum)
     }
 })
