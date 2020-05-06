@@ -5,14 +5,8 @@ verson : 1.0 普通版
 last update date : 2020-03-15
 */
 module.exports = {
-	baseUrl:'http://192.168.1.11/',
-	// 版本检查
-	verson : function(){
-		var currentVersion = '1.0';
-		console.log(currentVersion);
-	},
+	baseUrl:'http://117.50.1.28/',
 	// --- 页面跳转相关 ---
-	// 页面跳转
 	navigate:function (url, type, success, fail, complete) {
 		if(!type){type = 'navigateTo';}
 		if(!success){success = function(){};}
@@ -66,7 +60,7 @@ module.exports = {
 	},
 	// post
 	post : function(url, data, contentType, headers, success, fail){
-		if(!fail){fail = () => {this.msg("网络请求失败");}}
+		if(!fail){fail = (e) => {this.msg("网络请求失败");}}
 		if(!headers){headers={};}
 		if(!contentType){contentType = 'form';}
 		if(this.__before != null){this.__before(); this.__before = null;}
@@ -92,11 +86,12 @@ module.exports = {
 					}else if(res.data.code == 401){
 						this.msg('token 失效')
 						//未写跳转
+						this.removeStorage('userInfo')
 					}else{
 						this.msg(res.data.msg);
 					}
 				}else{
-					this.msg('网络请求失败！\n' + res.errMsg)
+					this.msg('服务器开小差啦~' + res.statusCode)
 				}
 			},
 			fail     : fail,
@@ -160,15 +155,10 @@ module.exports = {
 			complete: (e) => { if(complete){complete(e);}}
 		});
 	},
-	previewImage : function (items, currentImg) {
-		wx.previewImage({ urls: items, current:currentImg});
-	},
-	
 	// --- 系统信息 ---
 	system : function () {
 		try {
 		    var res = wx.getSystemInfoSync();
-			var iPhoneXBottom = 0;
 			res.model = res.model.replace(' ', '');
 			res.model = res.model.toLowerCase();
 			if(res.model.indexOf('iphonex') != -1 || res.model.indexOf('iphone11') != -1){
@@ -187,7 +177,7 @@ module.exports = {
 	// --- 消息弹框 ---
 	msg : function(msg){wx.showToast({title:msg, icon:"none",duration: 2000});},
 	msgSuccess : function(msg,success){wx.showToast({title:msg,icon:"success",mask:true,duration:2000,success:success()});},
-	showLoading : function (title) {wx.showLoading({  title:title });},
+	showLoading : function (title) {wx.showLoading({title:title, mask:true});},
 	
 	// --- 导航条设置 ---
 	setNavBar : function(sets){
@@ -390,7 +380,7 @@ module.exports = {
 	each : function(obj, func){
 		for(let k in obj){func(k, obj[k]);}
 	},
-	copyDeep:function(obj){
+	copyDeep:function(obj){//深拷贝
 		return JSON.parse(JSON.stringify(obj))
 	},
 	isEmptyObj : function(obj){return JSON.stringify(obj) === '{}';}

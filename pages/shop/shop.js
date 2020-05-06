@@ -5,12 +5,12 @@ Page({
     data: {
         shopId: 1,
         classify: [], //商品分类
-        product: [],//商品列表
+        product: [], //商品列表
         shopInfo: null,
         shoppingCart: [],
         priceSum: "0.00",
         countSum: 0,
-        minimum:0,//起送价
+        minimum: 0, //起送价
         scrollHeight: 100, //滚动视图高度
         capsuleTop: 100, //胶囊距离屏幕顶部的距离
         capsuleHeight: 15, //胶囊的高度
@@ -46,7 +46,7 @@ Page({
                     classify: res.classify,
                     product: res.product,
                     shopInfo: res.shopInfo,
-                    minimum:parseFloat(res.shopInfo.minimum)
+                    minimum: parseFloat(res.shopInfo.minimum)
                 })
                 _self.initProduct()
             }
@@ -130,8 +130,10 @@ Page({
         shoppingCart_[findIndex].count--
         if (shoppingCart_[findIndex].count == 0) {
             shoppingCart_.splice(findIndex, 1)
-            if(shoppingCart_.length == 0 && this.data.showModalStatus){
-                this.setData({showModalStatus:false})
+            if (shoppingCart_.length == 0 && this.data.showModalStatus) {
+                this.setData({
+                    showModalStatus: false
+                })
             }
         }
         this.addReduceOver(countSum_, proList_, shoppingCart_)
@@ -243,8 +245,8 @@ Page({
             }
         )
     },
-    submitOrder(){
+    submitOrder() {
         app.globalData.shoppingCart = this.data.shoppingCart
-        graceJS.navigate('/pages/cashier/cashier?price='+this.data.priceSum)
+        graceJS.navigate('/pages/cashier/cashier?price=' + this.data.priceSum)
     }
 })

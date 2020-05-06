@@ -1,6 +1,6 @@
 <view class="container">
 	<view class="tui-header-banner">
-		<view class="tui-position">
+		<view class="tui-position" bindtap="chooseLocation">
 			<tui-icon name="position" size="18" color="#666666"></tui-icon>
 			<text>{{positionInfo}}</text>
 		</view>

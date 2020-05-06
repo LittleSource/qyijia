@@ -1,0 +1,26 @@
+<view class="tui-safe-area">
+	<view class="tui-address">
+		<swipe-action actions="{{actions}}" toggle="{{toggle}}" unclosable="{{true}}" bindchange="handlerCloseButton" wx:for="{{addressList}}" wx:key="index" params="{{item}}">
+			<view slot="content">
+				<tui-list-cell padding="0">
+					<view class="tui-address-flex">
+						<view class="tui-address-left">
+							<view class="tui-address-main">
+								<view class="tui-address-name tui-ellipsis">{{item.name}}</view>
+								<view class="tui-address-tel">138****7708</view>
+							</view>
+							<view class="tui-address-detail">
+								<view class="tui-address-label" wx:if="{{item.isDefault == 1}}">默认</view>
+								<text>广东省深圳市南山区高新科技园中区一路</text>
+							</view>
+						</view>
+					</view>
+				</tui-list-cell>
+			</view>
+		</swipe-action>
+	</view>
+	<!-- 新增地址 -->
+	<view class="tui-address-new">
+		<tui-button type="danger" height="88rpx" bindtap="editAddr">+ 新增收货地址</tui-button>
+	</view>
+</view>

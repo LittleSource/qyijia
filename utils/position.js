@@ -1,9 +1,10 @@
 const QQMapWX = require('../lib/qqmap-wx-jssdk.min');
 class Postition {
   qqmapsdk = null;
+  key = 'TALBZ-ZN2KD-AYV45-PH7J3-Q2MPQ-DHFOG';
   constructor() {
     this.qqmapsdk = new QQMapWX({
-      key: 'TALBZ-ZN2KD-AYV45-PH7J3-Q2MPQ-DHFOG'
+      key: this.key
     });
   }
   getPostition(success_, fail_) {
@@ -26,6 +27,11 @@ class Postition {
         })
       }
     })
+  }
+  chooseLocation(){
+    wx.navigateTo({
+      url: 'plugin://chooseLocation/index?key=' + this.key + '&referer=麒亿家'
+    });
   }
 }
 module.exports = Postition

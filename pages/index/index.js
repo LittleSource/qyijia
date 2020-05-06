@@ -1,8 +1,11 @@
 const Position = require('../../utils/position')
+const chooseLocation = requirePlugin('chooseLocation');
 var _self = null
+var position = new Position()
 Page({
     data: {
         positionInfo: '定位中...',
+        isGochooseLocationPage:false,//是否去过选择地址页面
         current: 0,
         tabbar: [{
             icon: "home",
@@ -119,9 +122,18 @@ Page({
         loadding: false,
         pullUpOn: true
     },
+    onShow:function(){
+        const location = chooseLocation.getLocation();
+        if(this.data.isGochooseLocationPage && location instanceof Object){
+            this.setData({
+                positionInfo:location.name,
+                isGochooseLocationPage:false
+            })
+            wx.startPullDownRefresh()
+        }
+    },
     onLoad: function (options) {
         _self = this
-        var position = new Position()
         position.getPostition(
             function success(res) {
                 _self.setData({
@@ -174,27 +186,13 @@ Page({
             }
         })
     },
+    chooseLocation(){
+        this.setData({isGochooseLocationPage:true})
+        position.chooseLocation()
+    },
     detail: function () {
         wx.navigateTo({
             url: '/pages/shop/shop'
         })
-    },
-    coupon: function () {
-        wx.navigateTo({
-            url: '../mall-extend/coupon/coupon'
-        })
-    },
-    classify: function () {
-        wx.navigateTo({
-            url: '/pages/navbar-2/navbar-2'
-        })
-
-    },
-    more: function (e) {
-        let key = e.currentTarget.dataset.key || "";
-        wx.navigateTo({
-            url: '../productList/productList?searchKey=' + key
-        })
-
     }
 })
