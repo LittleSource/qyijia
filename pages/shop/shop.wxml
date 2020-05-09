@@ -27,7 +27,7 @@
 				<text>{{classItem.title}}</text>
 			</view>
 			<view class="shop-box" wx:for="{{product['classify'+classItem.id]}}" wx:key="id" wx:for-item="productItem" wx:for-index="productIndex">
-				<image src="{{productItem.img}}" class="shop-img" mode="heightFix" bindtap="showImg" data-img="{{productItem.img}}"></image>
+				<image src="{{productItem.img}}" class="shop-img" mode="heightFix" bindtap="showGoodModal" data-good="{{productItem}}"></image>
 				<view class="shop-right">
 					<view class="title">{{productItem.title}}</view>
 					<view class="shop-label-row">
@@ -80,4 +80,17 @@
 		</view>
 	</view>
 	<!-- 购物车Modal end -->
+	<!-- shop Modal start -->
+	<tui-modal show="{{showGoodModal}}" width="500rpx" radius="0" padding="0" custom="{{true}}" bind:cancel="hideGoodModal">
+		<image src="{{good.img}}" class="good-img" mode="widthFix" bindtap="showImg"></image>
+		<view class="good-box">
+			<view class="good-row">
+				<view class="good-title">{{good.title}}</view>
+				<view class="good-title">￥{{good.price}}</view>
+			</view>
+			<tui-divider height="80" size="28" bgcolor="#fff" gradual="{{true}}" color="#000000">商品介绍</tui-divider>
+			<view class="good-introduce">{{good.introduce}}</view>
+		</view>
+	</tui-modal>
+	<!-- shop Modal end -->
 </view>

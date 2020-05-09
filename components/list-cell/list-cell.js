@@ -42,8 +42,5 @@ Component({
 
   },
   methods: {
-    handleClick() {
-      this.triggerEvent('click', {});
-    }
   }
 })

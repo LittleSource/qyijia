@@ -1,17 +1,19 @@
 <view class="tui-safe-area">
-	<view class="tui-address">
-		<swipe-action actions="{{actions}}" toggle="{{toggle}}" unclosable="{{true}}" bindchange="handlerCloseButton" wx:for="{{addressList}}" wx:key="index" params="{{item}}">
+	<tui-tips wx:if="{{addressList.length == 0}}" imgUrl="/static/images/other/nodata.png">还没有地址呢~</tui-tips>
+	<view class="tui-address" wx:else>
+		<swipe-action actions="{{actions}}" wx:for="{{addressList}}" wx:key="index" params="{{item}}" toggle="{{toggle}}" unclosable="{{true}}" bindchange="handlerCloseButton">
 			<view slot="content">
-				<tui-list-cell padding="0">
+				<tui-list-cell padding="0" bindtap="selectAddress" data-index="{{index}}">
 					<view class="tui-address-flex">
 						<view class="tui-address-left">
 							<view class="tui-address-main">
 								<view class="tui-address-name tui-ellipsis">{{item.name}}</view>
-								<view class="tui-address-tel">138****7708</view>
+								<view class="tui-address-tel">{{item.phone}}</view>
 							</view>
 							<view class="tui-address-detail">
-								<view class="tui-address-label" wx:if="{{item.isDefault == 1}}">默认</view>
-								<text>广东省深圳市南山区高新科技园中区一路</text>
+								<view class="tui-address-label" wx:if="{{item.is_default == 1}}">默认</view>
+								<view wx:if="{{item.tag != 0}}" class="tui-address-label">{{item.tag == 1?'家':item.tag == 2?'公司':'学校'}}</view>
+								<text>{{item.address+item.house_num}}</text>
 							</view>
 						</view>
 					</view>
@@ -21,6 +23,6 @@
 	</view>
 	<!-- 新增地址 -->
 	<view class="tui-address-new">
-		<tui-button type="danger" height="88rpx" bindtap="editAddr">+ 新增收货地址</tui-button>
+		<tui-button type="danger" height="88rpx" bindtap="addAddress">+ 新增收货地址</tui-button>
 	</view>
 </view>

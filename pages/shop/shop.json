@@ -5,6 +5,8 @@
     "tui-button":"/components/button/button",
     "tui-badge":"/components/badge/badge",
     "tui-cell": "/components/list-cell/list-cell",
-    "tui-numberbox":"/components/numberbox/numberbox"
+    "tui-numberbox":"/components/numberbox/numberbox",
+    "tui-modal":"/components/modal/modal",
+    "tui-divider": "/components/divider/divider"
   }
 }

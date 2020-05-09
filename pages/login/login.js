@@ -12,7 +12,7 @@ Page({
         openid: '',
         backPath: {
             path: '/pages/index/index', //登录成功跳转页面  默认首页
-            type: 1 //是否是tab页面  1是 0不是
+            type: 0 //默认不是tab  1是 0不是  
         }
     },
 
@@ -24,7 +24,7 @@ Page({
         this.setData({
             backPath: {
                 path: options.path,
-                type: parseInt(options.type)
+                type: options.type ? 1 : 0
             }
         })
     },
@@ -54,7 +54,6 @@ Page({
                                     openid: res.openid,
                                     isGetUserPhoneShow: true,
                                 })
-                                console.log(_self.data.openid)
                                 graceJS.msg("获取成功!")
                             }
                         )
@@ -73,7 +72,7 @@ Page({
             graceJS.setAfter(() => {
                 wx.hideLoading()
             });
-            graceJS.post(//发起网络请求
+            graceJS.post( //发起网络请求
                 'common/login/getPhone', {
                     encryptedData: res.detail.encryptedData,
                     iv: res.detail.iv,
@@ -89,20 +88,21 @@ Page({
                     graceJS.msgSuccess("登录成功!", () => {
                         _self.backPage()
                     })
+                    console.log(app.globalData.userInfo)
                 }
             )
         } else {
             this.errorModel(res.detail.errMsg)
         }
     },
-    backPage:function () {
-        if(this.data.backPath.type){
+    backPage: function () {
+        if (this.data.backPath.type) {
             wx.switchTab({
-              url: this.data.backPath.path,
+                url: this.data.backPath.path,
             })
-        }else{
+        } else {
             wx.redirectTo({
-              url: this.data.backPath.path,
+                url: this.data.backPath.path,
             })
         }
     },

@@ -5,13 +5,13 @@ App({
     _self = this
     wx.getStorage({
       key: 'userInfo',
-      success (res) {
+      success(res) {
         _self.globalData.userInfo = res.data
       }
     })
   },
   globalData: {
     userInfo: null,
-    shoppingCart:[]
+    goodsInfo: {},
   }
 })

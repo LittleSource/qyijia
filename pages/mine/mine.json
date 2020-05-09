@@ -4,8 +4,8 @@
     "navigationBarTextStyle": "white",
     "navigationStyle": "custom",
     "usingComponents": {
-        "tui-button": "../../components/extend/button/button",
-        "tui-list-cell": "../../components/list-cell/list-cell",
-        "tui-divider": "../../components/divider/divider"
+        "tui-button": "/components/extend/button/button",
+        "tui-list-cell": "/components/list-cell/list-cell",
+        "tui-divider": "/components/divider/divider"
     }
 }

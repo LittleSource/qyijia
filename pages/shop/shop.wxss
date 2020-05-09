@@ -304,3 +304,33 @@ page {
 .ym-hidden {
   visibility: hidden;
 }
+
+/**model 500rpx*/
+.good-img{
+  height: 500rpx;
+  width: 500rpx;
+}
+.good-box{
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 20rpx;
+}
+.good-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30rpx;
+}
+.good-row :last-child{
+  color:#E41F19
+}
+.good-title{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000;
+  line-height: 30rpx;
+}
+.good-introduce{
+  font-size: 28rpx;
+  color: #666666;
+}

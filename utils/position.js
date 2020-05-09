@@ -28,7 +28,30 @@ class Postition {
       }
     })
   }
-  chooseLocation(){
+  resolutionAddress(latitude, longitude, success_) {
+    this.qqmapsdk.reverseGeocoder({
+      location: {
+        latitude: latitude,
+        longitude: longitude
+      },
+      success: function (res) { //成功后的回调
+        if (res.status === 0) {
+          console.log(res)
+          success_({
+            province: res.result.address_component.province,
+            city: res.result.address_component.city,
+            area: res.result.address_component.district,
+            address: res.result.address
+          })
+        } else {
+          wx.showToast({
+            title: '地址解析失败!' + res.message
+          })
+        }
+      },
+    })
+  }
+  chooseLocation() {
     wx.navigateTo({
       url: 'plugin://chooseLocation/index?key=' + this.key + '&referer=麒亿家'
     });

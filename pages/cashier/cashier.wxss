@@ -15,20 +15,28 @@
 }
 
 .tui-userinfo {
-    font-size: 30rpx;
-    font-weight: 500;
-    line-height: 30rpx;
-    padding-bottom: 12rpx;
+    font-size: 28rpx;
+    line-height: 28rpx;
 }
 
-.tui-name {
-    padding-right: 40rpx;
+.ym-ml-60 {
+    margin-left: 60rpx;
+}
+
+.ym-ml-20 {
+    margin-left: 20rpx;
+}
+
+.ym-address {
+    font-weight: 500;
+    margin-left: 8rpx;
 }
 
 .tui-addr {
-    font-size: 24rpx;
+    font-size: 32rpx;
     word-break: break-all;
     padding-right: 25rpx;
+    padding-bottom: 15rpx;
 }
 
 .tui-addr-tag {
@@ -39,8 +47,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 25rpx;
-    line-height: 25rpx;
+    font-size: 28rpx;
+    line-height: 28rpx;
     transform: scale(0.8);
     transform-origin: 0 center;
     border-radius: 6rpx;
@@ -55,8 +63,20 @@
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL0AAAAECAMAAADszM6/AAAAOVBMVEUAAAAVqfH/fp//vWH/vWEVqfH/fp8VqfH/fp//vWEVqfH/fp8VqfH/fp//vWH/vWEVqfH/fp//vWHpE7b6AAAAEHRSTlMA6urqqlVVFRUVq6upqVZUDT4vVAAAAEZJREFUKM/t0CcOACAQRFF6r3v/w6IQJGwyDsPT882IQzQE0E3chToByjG5LwMgLZN3TQATmdypCciBya0cgOT3/h//9PgF49kd+6lTSIIAAAAASUVORK5CYII=") repeat;
 }
 
-.tui-top {
-    margin-top: 20rpx;
+.distribution {
+    font-size: 28rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.distribution-time {
+    color: cornflowerblue;
+}
+
+.tui-goods-info {
     overflow: hidden;
 }
 
@@ -132,13 +152,13 @@
     justify-content: space-between;
     font-size: 26rpx;
 }
-.tui-total-flex{
+
+.tui-total-flex {
     justify-content: flex-end;
 }
 
-.tui-color-red,
-.tui-invoice-text {
-    color: #E41F19;
+.tui-color-red {
+    /* color: #E41F19; */
     padding-right: 30rpx;
 }
 
@@ -240,13 +260,13 @@
 }
 
 .tui-addr-img {
-    width: 36rpx;
-    height: 46rpx;
+    width: 40rpx;
+    height: 50rpx;
     display: block;
-    margin-right: 15rpx;
+    margin-right: 10rpx;
 }
 
-.tui-pr-25{
+.tui-pr-25 {
     padding-right: 25rpx;
 }
 

@@ -11,12 +11,14 @@ Page({
         priceSum: "0.00",
         countSum: 0,
         minimum: 0, //起送价
+        good:{},//modal展示的商品对象
         scrollHeight: 100, //滚动视图高度
         capsuleTop: 100, //胶囊距离屏幕顶部的距离
         capsuleHeight: 15, //胶囊的高度
         currentTab: 0, //预设当前项的值
         scrollTop: 0, //tab标题的滚动条位置
-        showModalStatus: false
+        showModalStatus: false,//展示购物车modal
+        showGoodModal:false//展示商品modal
     },
     onLoad: function (options) {
         _self = this
@@ -175,9 +177,20 @@ Page({
             this.add(e)
         }
     },
-    showImg(e) {
+    showGoodModal(e) {
+        this.setData({
+            good:e.currentTarget.dataset.good,
+            showGoodModal:true
+        })
+    },
+    hideGoodModal(){
+        this.setData({
+            showGoodModal:false
+        })
+    },
+    showImg(){
         wx.previewImage({
-            urls: [e.currentTarget.dataset.img]
+          urls: [this.data.good.img],
         })
     },
     back() {
@@ -246,7 +259,12 @@ Page({
         )
     },
     submitOrder() {
-        app.globalData.shoppingCart = this.data.shoppingCart
-        graceJS.navigate('/pages/cashier/cashier?price=' + this.data.priceSum)
+        app.globalData.goodsInfo.shoppingCart = this.data.shoppingCart
+        app.globalData.goodsInfo.priceSum = this.data.priceSum
+        if(app.globalData.userInfo === null){
+            graceJS.navigate('/pages/login/login?path=/pages/cashier/cashier')
+        }else{
+            graceJS.navigate('/pages/cashier/cashier')
+        }
     }
 })

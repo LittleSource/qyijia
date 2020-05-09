@@ -2,28 +2,32 @@
 	<view class="tui-box">
 		<tui-list-cell arrow="{{true}}" last="{{true}}" radius="{{true}}" bindtap="chooseAddr">
 			<view class="tui-address">
-				<view wx:if="{{true}}">
-					<view class="tui-userinfo">
-						<text class="tui-name">王大大</text> 139****7708
-					</view>
+				<view wx:if="{{address}}">
 					<view class="tui-addr">
-						<view class="tui-addr-tag">默认</view>
-						<text>广东省深圳市南山区高新科技园中区一路</text>
+						<view wx:if="{{address.is_default == 1}}" class="tui-addr-tag">默认</view>
+						<view wx:if="{{address.tag != 0}}" class="tui-addr-tag">{{address.tag == 1?'家':address.tag == 2?'公司':'学校'}}</view>
+						<text class="ym-address">{{address.address+address.house_num}}</text>
+					</view>
+					<view class="tui-userinfo">
+						<text>{{address.name}}</text>
+						<text class="ym-ml-20">{{address.gender == 0?'女士':'先生'}}</text>
+						<text class="ym-ml-60">{{address.phone}}</text>
 					</view>
 				</view>
 				<view class="tui-none-addr" wx:else>
-					<image src="/static/images/index/map.png" class="tui-addr-img" mode="widthFix"></image>
+					<image src="/static/images/icon/position.png" class="tui-addr-img" mode="widthFix"></image>
 					<text>选择收货地址</text>
 				</view>
 			</view>
 			<view class="tui-bg-img"></view>
 		</tui-list-cell>
-		<view class="tui-top tui-goods-info">
-			<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-				<view class="tui-goods-title">
-					商品信息
-				</view>
-			</tui-list-cell>
+		<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+			<view class="distribution">
+				<view>立即送出</view>
+				<view class="distribution-time">大约18:28送达</view>
+			</view>
+		</tui-list-cell>
+		<view class="tui-goods-info">
 			<block wx:for="{{shoppingCart}}" wx:key="index">
 				<tui-list-cell hover="{{false}}" padding="0">
 					<view class="tui-goods-item">
@@ -45,22 +49,22 @@
 					<view>￥{{priceSum}}</view>
 				</view>
 			</tui-list-cell>
-			<tui-list-cell arrow="{{hasCoupon}}" hover="{{hasCoupon}}">
+			<tui-list-cell hover="{{false}}">
+				<view class="tui-padding tui-flex">
+					<view>配送费</view>
+					<view>￥{{deliveryPrice}}</view>
+				</view>
+			</tui-list-cell>
+			<tui-list-cell hover="{{true}}" arrow="{{true}}">
 				<view class="tui-padding tui-flex">
 					<view>优惠券</view>
-					<view class="{{hasCoupon?'tui-color-red':''}}">{{hasCoupon?"满5减1":'没有可用优惠券'}}</view>
+					<view class="tui-color-red">没有可用优惠券</view>
 				</view>
 			</tui-list-cell>
 			<tui-list-cell hover="{{true}}" arrow="{{true}}">
 				<view class="tui-padding tui-flex">
 					<view>发票</view>
-					<view class="tui-invoice-text">不开发票</view>
-				</view>
-			</tui-list-cell>
-			<tui-list-cell hover="{{false}}">
-				<view class="tui-padding tui-flex">
-					<view>配送费</view>
-					<view>￥0.00</view>
+					<view class="tui-color-red">不开发票</view>
 				</view>
 			</tui-list-cell>
 			<tui-list-cell hover="{{false}}" lineLeft="{{false}}" padding="0">
@@ -76,7 +80,7 @@
 		<view class="tui-flex-end tui-color-red tui-pr-20">
 			<view class="tui-black">实付金额: </view>
 			<view class="tui-size-26">￥</view>
-			<view class="tui-price-large">1192.00</view>
+			<view class="tui-price-large">{{realSum}}</view>
 		</view>
 		<view class="tui-pr-25">
 			<tui-button type="warning" height="70rpx" width="200rpx" shape="circle">确认支付</tui-button>
