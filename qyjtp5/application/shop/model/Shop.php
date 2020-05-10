@@ -1,0 +1,16 @@
+<?php
+/**
+ * Shop.php
+ * 作者:LittleSource
+ * 网址:ymkj8.com
+ * 创建时间:2020/5/1 19:25
+ */
+
+namespace app\shop\model;
+
+use think\Model;
+
+class Shop extends Model
+{
+
+}

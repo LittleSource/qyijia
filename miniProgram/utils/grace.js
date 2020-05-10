@@ -152,6 +152,7 @@ module.exports = {
 					}
 				} else {
 					this.msg('服务器开小差啦~' + res.statusCode)
+					console.log(res.data)
 				}
 			},
 			fail: fail,

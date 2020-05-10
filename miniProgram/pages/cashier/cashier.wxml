@@ -86,7 +86,7 @@
 			<view class="tui-price-large">{{realSum}}</view>
 		</view>
 		<view class="tui-pr-25">
-			<tui-button type="warning" disabled="{{distanceOut}}" height="70rpx" width="200rpx" shape="circle">确认支付</tui-button>
+			<tui-button type="warning" disabled="{{distanceOut}}" bindtap="submitOrder" height="70rpx" width="200rpx" shape="circle">确认支付</tui-button>
 		</view>
 	</view>
 </view>

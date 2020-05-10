@@ -84,5 +84,23 @@ Page({
                 })
             }
         })
+    },
+    submitOrder: function () {
+        console.log(this.data.address)
+        graceJS.showLoading('Loading...')
+        graceJS.setAfter(() => {
+            wx.hideLoading()
+        })
+        graceJS.post(
+            '/wepay/pay/createorder', {
+                shop_id:_self.data.shopId,
+                shopping_cart:JSON.stringify(_self.data.shoppingCart),
+                address_id:_self.data.address.id
+            }, {}, {
+                token: app.globalData.userInfo.token
+            }, (res) => {
+                console.log(res)
+            }
+        )
     }
 })
