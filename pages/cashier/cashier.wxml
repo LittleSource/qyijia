@@ -21,10 +21,13 @@
 			</view>
 			<view class="tui-bg-img"></view>
 		</tui-list-cell>
-		<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-			<view class="distribution">
+		<tui-list-cell wx:if="{{address}}" hover="{{false}}" lineLeft="{{false}}">
+			<view class="distribution" wx:if="{{distanceOut}}">
+				<view style="color:red">超出配送范围，请重新选择地址</view>
+			</view>
+			<view class="distribution" wx:else>
 				<view>立即送出</view>
-				<view class="distribution-time">大约18:28送达</view>
+				<view class="distribution-time">大约{{time}}送达</view>
 			</view>
 		</tui-list-cell>
 		<view class="tui-goods-info">
@@ -58,13 +61,13 @@
 			<tui-list-cell hover="{{true}}" arrow="{{true}}">
 				<view class="tui-padding tui-flex">
 					<view>优惠券</view>
-					<view class="tui-color-red">没有可用优惠券</view>
+					<view class="tui-pr-30">没有可用优惠券</view>
 				</view>
 			</tui-list-cell>
 			<tui-list-cell hover="{{true}}" arrow="{{true}}">
 				<view class="tui-padding tui-flex">
 					<view>发票</view>
-					<view class="tui-color-red">不开发票</view>
+					<view class="tui-pr-30">不开发票</view>
 				</view>
 			</tui-list-cell>
 			<tui-list-cell hover="{{false}}" lineLeft="{{false}}" padding="0">
@@ -77,13 +80,13 @@
 	</view>
 	<view class="tui-safe-area"></view>
 	<view class="tui-tabbar">
-		<view class="tui-flex-end tui-color-red tui-pr-20">
+		<view class="tui-flex-end tui-pr-20">
 			<view class="tui-black">实付金额: </view>
 			<view class="tui-size-26">￥</view>
 			<view class="tui-price-large">{{realSum}}</view>
 		</view>
 		<view class="tui-pr-25">
-			<tui-button type="warning" height="70rpx" width="200rpx" shape="circle">确认支付</tui-button>
+			<tui-button type="warning" disabled="{{distanceOut}}" height="70rpx" width="200rpx" shape="circle">确认支付</tui-button>
 		</view>
 	</view>
 </view>

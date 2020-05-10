@@ -1,8 +1,8 @@
 //公共js，主要做表单验证，以及基本方法封装
 const utils = {
-  isNullOrEmpty: function (value) {
+  isEmpty: function (value) {
     //是否为空
-    return (value === null || value === '' || value === undefined) ? true : false;
+    return value === null || value === '' || value === undefined;
   },
   trim: function (value) {
     //去空格
@@ -19,34 +19,13 @@ const utils = {
   isNum: function (value) {
     //是否全为数字
     return /^[0-9]+$/.test(value);
-  },
-  formatNum: function (num) {
-    //格式化手机号码
-    if (utils.isMobile(num)) {
-      num = num.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2')
-    }
-    return num;
-  },
-  preventMultiple: function (fn, gapTime) {
-    if (gapTime == null || gapTime == undefined) {
-      gapTime = 200;
-    }
-    let lastTime = null;
-    return function () {
-      let now = +new Date();
-      if (!lastTime || now - lastTime > gapTime) {
-        fn.apply(this, arguments);
-        lastTime = now;
-      }
-    }
   }
 }
 
 module.exports = {
-  isNullOrEmpty: utils.isNullOrEmpty,
+  isEmpty: utils.isEmpty,
   trim: utils.trim,
   isMobile: utils.isMobile,
   isFloat: utils.isFloat,
-  isNum: utils.isNum,
-  formatNum: utils.formatNum
+  isNum: utils.isNum
 }

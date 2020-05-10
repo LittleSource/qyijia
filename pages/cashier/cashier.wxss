@@ -8,6 +8,7 @@
 }
 
 .tui-address {
+    width: 100%;
     min-height: 80rpx;
     padding: 10rpx 0;
     box-sizing: border-box;
@@ -33,10 +34,14 @@
 }
 
 .tui-addr {
+    width: 100%;
     font-size: 32rpx;
     word-break: break-all;
     padding-right: 25rpx;
     padding-bottom: 15rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tui-addr-tag {
@@ -157,11 +162,6 @@
     justify-content: flex-end;
 }
 
-.tui-color-red {
-    /* color: #E41F19; */
-    padding-right: 30rpx;
-}
-
 .tui-balance {
     font-size: 28rpx;
     font-weight: 500;
@@ -190,12 +190,14 @@
 .tui-size-26 {
     font-size: 26rpx;
     line-height: 26rpx;
+    color: #EB0909;
 }
 
 .tui-price-large {
     font-size: 34rpx;
     line-height: 32rpx;
     font-weight: 600;
+    color: #EB0909;
 }
 
 .tui-flex-end {

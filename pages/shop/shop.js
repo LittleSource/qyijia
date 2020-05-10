@@ -259,6 +259,14 @@ Page({
         )
     },
     submitOrder() {
+        if(this.data.shoppingCart.length == 0){
+            return
+        }
+        app.globalData.goodsInfo.shopId = this.data.shopId
+        app.globalData.goodsInfo.shopPosition = {
+            latitude:this.data.shopInfo.latitude,
+            longitude:this.data.shopInfo.longitude
+        }
         app.globalData.goodsInfo.shoppingCart = this.data.shoppingCart
         app.globalData.goodsInfo.priceSum = this.data.priceSum
         if(app.globalData.userInfo === null){

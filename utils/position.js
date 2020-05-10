@@ -28,27 +28,23 @@ class Postition {
       }
     })
   }
-  resolutionAddress(latitude, longitude, success_) {
-    this.qqmapsdk.reverseGeocoder({
-      location: {
-        latitude: latitude,
-        longitude: longitude
-      },
+  calculateDistance(from, to, success_) {
+    this.qqmapsdk.calculateDistance({
+      mode: 'driving', //可选值：'driving'（驾车）、'walking'（步行），不填默认：'walking',可不填
+      from: from, //起点坐标，若为空默认当前地址
+      to: to, //终点坐标
       success: function (res) { //成功后的回调
-        if (res.status === 0) {
-          console.log(res)
-          success_({
-            province: res.result.address_component.province,
-            city: res.result.address_component.city,
-            area: res.result.address_component.district,
-            address: res.result.address
-          })
+        if (res.status == 0) {
+          success_(res.result.elements[0])
         } else {
           wx.showToast({
-            title: '地址解析失败!' + res.message
+            title: '计算距离失败!' + res.message,
           })
         }
       },
+      fail: function (error) {
+        console.error(error);
+      }
     })
   }
   chooseLocation() {

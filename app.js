@@ -10,6 +10,19 @@ App({
       }
     })
   },
+  checkLogin() {
+    if (!this.globalData.userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/login?type=1&path=/pages/mine/mine',
+        success:function (e) {
+          wx.showToast({
+            title: '请先登录!',
+            icon:'none'
+          })
+        }
+      })
+    }
+  },
   globalData: {
     userInfo: null,
     goodsInfo: {},

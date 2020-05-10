@@ -107,8 +107,11 @@ module.exports = {
 	// post
 	post: function (url, data, contentType, headers, success, fail) {
 		if (!fail) {
-			fail = (e) => {
+			fail = () => {
 				this.msg("网络请求失败");
+				setTimeout(() => {
+					wx.navigateBack()
+				}, 1800)
 			}
 		}
 		if (!headers) {
@@ -141,9 +144,9 @@ module.exports = {
 					if (res.data.code == 200) {
 						success(res.data.data);
 					} else if (res.data.code == 401) {
-						this.msg('token 失效')
-						//未写跳转
+						this.msg('登录信息失效,请重新登录!')
 						this.removeStorage('userInfo')
+						this.navigateTo('/pages/login/login?type=1&path=/pages/mine/mine')
 					} else {
 						this.msg(res.data.msg);
 					}
@@ -168,7 +171,9 @@ module.exports = {
 	// 请求后置函数
 	__after: null,
 	setAfter: function (func) {
-		this.__after = func;
+		this.__after = () => {
+			setTimeout(func, 500)
+		}
 	},
 
 	// --- 数据缓存 ---
@@ -429,11 +434,11 @@ module.exports = {
 	},
 
 	// --- 日期时间 ---
-	now: function (type, addTime) {
+	now: function (type, addTime) { //此处addTime以s为单位
 		var dateObj = new Date();
 		var cTime = dateObj.getTime();
 		if (addTime) {
-			cTime += addTime;
+			cTime += addTime * 1000;
 		}
 		if (!type) {
 			type = 'number';
@@ -441,7 +446,7 @@ module.exports = {
 		if (type == 'number') {
 			return cTime;
 		}
-		return this.toDate(cTime / 1000, 'str');
+		return this.toDate(cTime);
 	},
 	// 时间戳转 YY-mm-dd HH:ii:ss
 	toDate: function (timeStamp, returnType) {
@@ -544,8 +549,12 @@ module.exports = {
 			}
 		}
 		var result = "" + parseInt(theTime) + "秒";
-		if (middle > 0) {result = "" + parseInt(middle) + "分" + result;}
-		if (hour > 0) {result = "" + parseInt(hour) + "小时" + result;}
+		if (middle > 0) {
+			result = "" + parseInt(middle) + "分" + result;
+		}
+		if (hour > 0) {
+			result = "" + parseInt(hour) + "小时" + result;
+		}
 		return result;
 	},
 	// 延迟操作

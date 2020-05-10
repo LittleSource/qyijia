@@ -3,7 +3,7 @@
 		<tui-list-cell hover="{{false}}" padding="0">
 			<view class="tui-line-cell">
 				<view class="tui-title">联系人:</view>
-				<input placeholder-class="tui-phcolor" class="tui-input" name="name" value="{{name}}" placeholder="请输入联系人姓名" maxlength="20" type="text" />
+				<input placeholder-class="tui-phcolor" class="tui-input" name="name" bindinput="inputName" value="{{name}}" placeholder="请输入联系人姓名" focus maxlength="20" confirm-type="next" type="text" />
 				<radio-group bindchange="changeGender">
 					<radio class="radio1" checked="{{gender == 1}}" color="#E41F19" value="1">先生</radio>
 					<radio class="radio2" checked="{{gender == 0}}" color="#E41F19" value="0">女士</radio>
@@ -13,7 +13,7 @@
 		<tui-list-cell hover="{{false}}" padding="0">
 			<view class="tui-line-cell">
 				<view class="tui-title">手机号:</view>
-				<input placeholder-class="tui-phcolor" class="tui-input" name="phone" value="{{phone}}" placeholder="请输入手机号码" maxlength="11" type="number" />
+				<input placeholder-class="tui-phcolor" class="tui-input" name="phone" bindinput="inputPhone" value="{{phone}}" placeholder="请输入手机号码" maxlength="11" type="number" />
 			</view>
 		</tui-list-cell>
 		<tui-list-cell arrow="{{true}}" padding="0">
@@ -31,7 +31,7 @@
 		<tui-list-cell hover="{{false}}" padding="0">
 			<view class="tui-line-cell">
 				<view class="tui-title">门牌号:</view>
-				<input placeholder-class="tui-phcolor" class="tui-input" name="house_num" value="{{houseNum}}" placeholder="请输入详细的收货地址" maxlength="50" type="text" />
+				<input placeholder-class="tui-phcolor" class="tui-input" name="house_num" bindinput="inputHouse" value="{{houseNum}}" placeholder="详细地址,例8层101室" maxlength="30" type="text" />
 			</view>
 		</tui-list-cell>
 		<tui-list-cell hover="{{false}}" padding="0">
@@ -47,12 +47,12 @@
 		<tui-list-cell hover="{{false}}" padding="0">
 			<view class="tui-swipe-cell">
 				<view>设为默认地址</view>
-				<switch checked="{{isDefault}}" disabled="{{isFirstOronlyOne || isDefault}}" color="#E41F19" class="tui-switch-small" />
+				<switch class="tui-switch-small" checked="{{isDefault}}" disabled="{{isFirstOronlyOne || isDefault}}" bindchange="changeDefault" color="#E41F19" />
 			</view>
 		</tui-list-cell>
 		<!-- 保存地址 -->
 		<view class="tui-addr-save">
-			<tui-button type="danger" height="88rpx">保存地址</tui-button>
+			<tui-button type="danger" height="88rpx" bindtap="saveAddress">保存地址</tui-button>
 		</view>
 		<view class="tui-del" wx:if="{{!isAdd && !isFirstOronlyOne && !isDefault}}">
 			<tui-button type="gray" height="88rpx" bindtap="deleteAddress">删除地址</tui-button>
