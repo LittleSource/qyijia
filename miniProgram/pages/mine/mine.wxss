@@ -1,3 +1,6 @@
+page{
+    background-color: #fafafa;
+}
 .tui-header-box {
 	width: 100%;
 	position: fixed;
@@ -180,7 +183,7 @@
 	padding: 0;
 	background-color: transparent;
 	height: 55rpx;
-	width: 100%;
+	width: 100% !important;
 	border: 0rpx;
 	display: inline-flex;
 	align-items: center;

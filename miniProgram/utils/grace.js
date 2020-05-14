@@ -1,9 +1,3 @@
-/*
-link   : http://grace.hcoder.net
-author : 刘海君 5213606@qq.com 
-verson : 1.0 普通版
-last update date : 2020-03-15
-*/
 module.exports = {
 	baseUrl: 'http://192.168.1.11/',
 	// --- 页面跳转相关 ---
@@ -55,16 +49,6 @@ module.exports = {
 				break;
 		}
 	},
-	// 返回
-	back: function (delta) {
-		if (!delta) {
-			delta = 1;
-		}
-		wx.navigateBack({
-			delta: delta
-		});
-	},
-
 	// --- 网络请求 ---
 	// get
 	get: function (url, data, headers, success, fail) {
@@ -108,10 +92,14 @@ module.exports = {
 	post: function (url, data, contentType, headers, success, fail) {
 		if (!fail) {
 			fail = () => {
-				this.msg("网络请求失败");
-				setTimeout(() => {
-					wx.navigateBack()
-				}, 1800)
+				wx.navigateBack({
+					complete: function () {
+						wx.showToast({
+							title: "请检查设备联网状态或稍后再试~",
+							icon: 'none'
+						})
+					}
+				})
 			}
 		}
 		if (!headers) {
@@ -146,7 +134,9 @@ module.exports = {
 					} else if (res.data.code == 401) {
 						this.msg('登录信息失效,请重新登录!')
 						this.removeStorage('userInfo')
-						this.navigateTo('/pages/login/login?type=1&path=/pages/mine/mine')
+						wx.switchTab({
+							url: '/pages/login/login?type=1&path=/pages/mine/mine',
+						})
 					} else {
 						this.msg(res.data.msg);
 					}
@@ -281,11 +271,12 @@ module.exports = {
 	},
 
 	// --- 消息弹框 ---
-	msg: function (msg) {
+	msg: function (msg, success) {
 		wx.showToast({
 			title: msg,
 			icon: "none",
-			duration: 2000
+			duration: 2000,
+			success: success ? success : () => {}
 		});
 	},
 	msgSuccess: function (msg, success) {
@@ -294,7 +285,7 @@ module.exports = {
 			icon: "success",
 			mask: true,
 			duration: 2000,
-			success: success()
+			success: success ? success : () => {}
 		});
 	},
 	showLoading: function (title) {

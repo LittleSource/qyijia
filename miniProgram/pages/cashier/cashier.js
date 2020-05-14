@@ -1,6 +1,6 @@
 // pages/cashier/cashier.js
 const app = getApp()
-const graceJS = require('../../utils/grace.js');
+const graceJS = require('../../utils/grace.js')
 const Position = require('../../utils/position')
 var position = new Position()
 var _self = null
@@ -13,7 +13,8 @@ Page({
         realSum: 0.00, //加上配送费的总价
         address: null,
         distanceOut: false,
-        time: '00:00'
+        time: '00:00',
+        remark: ''
     },
     onShow: function () {
         app.checkLogin()
@@ -51,6 +52,11 @@ Page({
             }
         )
     },
+    remarkInput: function (e) {
+        this.setData({
+            remark: e.detail.value
+        })
+    },
     chooseAddr: function () {
         wx.navigateTo({
             url: '/pages/address/address?type=cashier',
@@ -86,20 +92,37 @@ Page({
         })
     },
     submitOrder: function () {
-        console.log(this.data.address)
+        console.log(this.data.remark)
         graceJS.showLoading('Loading...')
         graceJS.setAfter(() => {
             wx.hideLoading()
         })
         graceJS.post(
             '/wepay/pay/createorder', {
-                shop_id:_self.data.shopId,
-                shopping_cart:JSON.stringify(_self.data.shoppingCart),
-                address_id:_self.data.address.id
+                shop_id: _self.data.shopId,
+                shopping_cart: JSON.stringify(_self.data.shoppingCart),
+                address_id: _self.data.address.id,
+                remark: _self.data.remark
             }, {}, {
                 token: app.globalData.userInfo.token
             }, (res) => {
-                console.log(res)
+                wx.requestPayment({
+                    timeStamp: res.timeStamp,
+                    nonceStr: res.nonceStr,
+                    package: res.package,
+                    signType: res.signType,
+                    paySign: res.paySign,
+                    success(res) {
+                        wx.redirectTo({
+                          url: '/pages/success/success',
+                        })
+                    },
+                    fail(res) {
+                        graceJS.navigate('/pages/order/order?index=1','reLaunch',()=>{
+                            graceJS.msg("您已取消付款!")
+                        })
+                    }
+                })
             }
         )
     }

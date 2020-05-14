@@ -73,7 +73,7 @@
 			<tui-list-cell hover="{{false}}" lineLeft="{{false}}" padding="0">
 				<view class="tui-remark-box tui-padding tui-flex">
 					<view>订单备注</view>
-					<input type="text" class="tui-remark" placeholder="选填: 订单的备注信息" placeholder-class="tui-phcolor"></input>
+					<input class="tui-remark" name="remark" placeholder="选填: 订单的备注信息" type="text" bindinput="remarkInput" placeholder-class="tui-phcolor" maxlength="100"></input>
 				</view>
 			</tui-list-cell>
 		</view>
@@ -86,7 +86,7 @@
 			<view class="tui-price-large">{{realSum}}</view>
 		</view>
 		<view class="tui-pr-25">
-			<tui-button type="warning" disabled="{{distanceOut}}" bindtap="submitOrder" height="70rpx" width="200rpx" shape="circle">确认支付</tui-button>
+			<tui-button type="warning" disabled="{{distanceOut}}" bindtap="submitOrder" height="{{70}}" width="200rpx" shape="circle">去结算</tui-button>
 		</view>
 	</view>
 </view>

@@ -23,6 +23,6 @@
 	</view>
 	<!-- 新增地址 -->
 	<view class="tui-address-new">
-		<tui-button type="danger" height="88rpx" bindtap="addAddress">+ 新增收货地址</tui-button>
+		<tui-button type="danger" height="{{80}}" bindtap="addAddress">+ 新增收货地址</tui-button>
 	</view>
 </view>

@@ -1,11 +1,8 @@
 {
-    "navigationBarTitleText": "我的",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "white",
     "navigationStyle": "custom",
+    "navigationBarTextStyle": "white",
     "usingComponents": {
         "tui-button": "/components/extend/button/button",
-        "tui-list-cell": "/components/list-cell/list-cell",
-        "tui-divider": "/components/divider/divider"
+        "tui-list-cell": "/components/list-cell/list-cell"
     }
 }

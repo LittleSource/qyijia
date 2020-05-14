@@ -17,12 +17,15 @@ class Order extends Model
      * 计算总价and创建订单记录
      * @param $userId
      * @param $shopId
+     * @param $shopTitle
      * @param $addressId
      * @param $shoppingCart
+     * @param $remark
      * @return $this|bool
      */
-    public function addOrder($userId,$shopId,$addressId,$shoppingCart){
+    public function addOrder($userId,$shopId,$shopTitle,$addressId,$shoppingCart,$remark){
         $shoppingCartList = json_decode($shoppingCart,true);
+        $this->remark = $remark;
         $this->price_sum = 0.00;
         $this->delivery_price = config('delivery_price');
         for ($i = 0; $i < count($shoppingCartList); $i++){//计算总价
@@ -34,9 +37,10 @@ class Order extends Model
         $this->user_id = $userId;
         $this->shop_id = $shopId;
         $this->address_id = $addressId;
+        $this->shop_title = $shopTitle;
         $this->shopping_cart = $shoppingCart;
         $this->create_time = date('Y-m-d H:i:s');
-        $this->status = 0;
+        $this->status = 1;
         if($this->save()){
             return $this;
         }else{

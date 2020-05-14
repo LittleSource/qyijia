@@ -1,0 +1,7 @@
+<!--pages/test/test.wxml-->
+<video class="video" style="height:{{windowHeight}}px" object-fit="cover" muted controls="{{false}}" show-play-btn="{{false}}" show-fullscreen-btn="{{false}}" autoplay loop src="https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200fb10000blpn1ekd1dre8sds2r6g&ratio=720p&line=0">
+	<cover-view class="logo-box">
+		<cover-image src="/static/test.png" mode="widthFix"></cover-image>
+	</cover-view>
+	<cover-view class="ym-btn">一键登录</cover-view>
+</video>

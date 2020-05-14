@@ -17,8 +17,8 @@ Component({
     },
     //高度 rpx
     height: {
-      type: String,
-      value: '94rpx'
+      type: Number,
+      value: 80
     },
     //字体大小 rpx
     size: {

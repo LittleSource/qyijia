@@ -6,7 +6,12 @@
         "pages/login/login",
         "pages/mine/mine",
         "pages/cashier/cashier",
-        "pages/address/address"
+        "pages/address/address",
+        "pages/order/order",
+        "pages/success/success",
+        "pages/about/about",
+        "pages/test/test",
+        "pages/orderDetail/orderDetail"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -41,8 +46,8 @@
     },
     "plugins": {
         "chooseLocation": {
-        "version": "1.0.0",
-        "provider": "wx76a9a06e5b4e693e"
+            "version": "1.0.3",
+            "provider": "wx76a9a06e5b4e693e"
         }
     },
     "sitemapLocation": "sitemap.json",

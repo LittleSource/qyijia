@@ -12,38 +12,38 @@
 	</view>
 	<view class="tui-content-box">
 		<view class="tui-box tui-order-box">
-			<tui-list-cell arrow="{{true}}" padding="0" lineLeft="{{false}}" bind:click="href" data-type="4">
+			<tui-list-cell arrow="{{true}}" padding="0" lineLeft="{{false}}" bindtap="href" data-index="0">
 				<view class="tui-cell-header">
 					<view class="tui-cell-title">我的订单</view>
 					<view class="tui-cell-sub">查看全部订单</view>
 				</view>
 			</tui-list-cell>
 			<view class="tui-order-list">
-				<view class="tui-order-item" bindtap="href" data-type="4">
+				<view class="tui-order-item" bindtap="href" data-index="1">
 					<view class="tui-icon-box">
 						<image src="/static/images/mine/icon_daifukuan_3x.png" class="tui-order-icon"></image>
 					</view>
 					<view class="tui-order-text">待付款</view>
 				</view>
-				<view class="tui-order-item" bindtap="href" data-type="4">
+				<view class="tui-order-item" bindtap="href" data-index="2">
 					<view class="tui-icon-box">
 						<image src="/static/images/mine/icon_daifahuo_3x.png" class="tui-order-icon"></image>
 					</view>
-					<view class="tui-order-text">待发货</view>
+					<view class="tui-order-text">待接单</view>
 				</view>
-				<view class="tui-order-item" bindtap="href" data-type="4">
+				<view class="tui-order-item" bindtap="href" data-index="3">
 					<view class="tui-icon-box">
 						<image src="/static/images/mine/icon_daishouhuo_3x.png" class="tui-order-icon"></image>
 					</view>
-					<view class="tui-order-text">待收货</view>
+					<view class="tui-order-text">待送达</view>
 				</view>
-				<view class="tui-order-item" bindtap="href" data-type="4">
+				<view class="tui-order-item" bindtap="href" data-index="5">
 					<view class="tui-icon-box">
 						<image src="/static/images/mine/icon_pingjia_3x.png" class="tui-order-icon"></image>
 					</view>
 					<view class="tui-order-text">评价</view>
 				</view>
-				<view class="tui-order-item" bindtap="href" data-type="4">
+				<view class="tui-order-item" bindtap="href" data-index="4">
 					<view class="tui-icon-box">
 						<image src="/static/images/mine/icon_tuikuan_3x.png" class="tui-order-icon"></image>
 					</view>
@@ -63,16 +63,18 @@
 					<view class="tui-cell-name">意见反馈</view>
 				</button>
 			</tui-list-cell>
-			<tui-list-cell bind:click="detail" arrow="{{true}}" tui-cell-class="tui-list">
-				<tui-icon name="kefu" size="24" color="#E41F19"></tui-icon>
-				<view class="tui-cell-name">客服中心</view>
+			<tui-list-cell arrow="{{true}}" tui-cell-class="tui-list">
+				<button class="button-none" hover-class="none" open-type="contact">
+					<tui-icon name="kefu" size="24" color="#E41F19"></tui-icon>
+					<view class="tui-cell-name">客服中心</view>
+				</button>
 			</tui-list-cell>
 			<tui-list-cell bind:click="detail" arrow="{{true}}" tui-cell-class="tui-list">
 				<tui-icon name="shop-fill" size="23" color="#ff7900"></tui-icon>
 				<view class="tui-cell-name">我的店铺</view>
 				<view class="tui-right">进入店铺</view>
 			</tui-list-cell>
-			<tui-list-cell bind:click="detail" arrow="{{true}}" last="{{true}}" tui-cell-class="tui-list">
+			<tui-list-cell bindtap="detail" arrow="{{true}}" last="{{true}}" tui-cell-class="tui-list" data-url="/pages/about/about">
 				<image src="/static/images/logo.png" class="logo" mode="widthFix"></image>
 				<text class="tui-cell-name">关于</text>
 				<view class="tui-right">麒亿家</view>

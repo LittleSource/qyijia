@@ -52,10 +52,10 @@
 		</tui-list-cell>
 		<!-- 保存地址 -->
 		<view class="tui-addr-save">
-			<tui-button type="danger" height="88rpx" bindtap="saveAddress">保存地址</tui-button>
+			<tui-button type="danger" height="{{88}}" bindtap="saveAddress">保存地址</tui-button>
 		</view>
 		<view class="tui-del" wx:if="{{!isAdd && !isFirstOronlyOne && !isDefault}}">
-			<tui-button type="gray" height="88rpx" bindtap="deleteAddress">删除地址</tui-button>
+			<tui-button type="gray" height="{{88}}" bindtap="deleteAddress">删除地址</tui-button>
 		</view>
 	</form>
 </view>

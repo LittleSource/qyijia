@@ -37,30 +37,14 @@ Page({
         }
     },
     href(e) {
-        let page = Number(e.currentTarget.dataset.type)
-        let url = "";
-        switch (page) {
-            case 1:
-                break;
-            case 2:
-                url = "../set/set"
-                break;
-            case 3:
-                url = "../userInfo/userInfo"
-                break;
-            case 4:
-                url = "../myOrder/myOrder"
-                break;
-            default:
-                break;
-        }
-        if (url) {
+        let index = Number(e.currentTarget.dataset.index)
+        if (index !== 5) { 
             wx.navigateTo({
-                url: url
+                url: "/pages/order/order?index=" + index
             })
         } else {
             wx.showToast({
-                title: "功能尚未完善~",
+                title: "此功能内测中，即将上线~",
                 icon: "none"
             })
         }
