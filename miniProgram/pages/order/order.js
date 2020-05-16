@@ -26,6 +26,12 @@ Page({
     },
     onShow: function () {
         if (this.data.isAcceptData) {
+            this.setData({
+                isAcceptData: false,
+                dataList: [],
+                pageIndex: 1,
+                pullUpOn: true
+            })
             wx.startPullDownRefresh()
         }
     },
@@ -36,8 +42,8 @@ Page({
             this.setData({
                 currentTab: Number(options.index)
             })
-            wx.startPullDownRefresh()
         }
+        wx.startPullDownRefresh()
     },
     onPullDownRefresh() {
         if (this.data.isRefresh) {
@@ -111,9 +117,8 @@ Page({
             url: '/pages/orderDetail/orderDetail?id=' + id,
             events: {
                 //获取被打开页面传送到当前页面的数据
-                acceptDataFromDetail: function (data) {
-                    console.log(data)
-                    if (data) {
+                acceptDataFromDetail: function (res) {
+                    if (res.data === true) {
                         _self.setData({
                             isAcceptData: true
                         })
