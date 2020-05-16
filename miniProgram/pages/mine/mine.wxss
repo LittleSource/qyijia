@@ -1,6 +1,7 @@
-page{
-    background-color: #fafafa;
+page {
+	background-color: #fafafa;
 }
+
 .tui-header-box {
 	width: 100%;
 	position: fixed;
@@ -84,6 +85,12 @@ page{
 	z-index: 10;
 }
 
+.tui-img {
+	margin-top: 10rpx;
+	width: 100%;
+	height: 110rpx;
+}
+
 .tui-box {
 	width: 100%;
 	background: #fff;
@@ -149,9 +156,7 @@ page{
 	height: 56rpx;
 	display: block;
 }
-.tui-tool-box {
-	margin-top: 35rpx;
-}
+
 .logo {
 	height: 56rpx;
 	width: 56rpx;
@@ -179,7 +184,8 @@ page{
 	line-height: 1;
 	color: #999;
 }
-.button-none{
+
+.button-none {
 	padding: 0;
 	background-color: transparent;
 	height: 55rpx;
@@ -192,7 +198,8 @@ page{
 	font-size: 30rpx;
 	font-weight: normal;
 	margin-left: 0rpx !important;
-  }
-  .button-none::after {
+}
+
+.button-none::after {
 	display: none;
-  }
+}

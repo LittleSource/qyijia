@@ -1,6 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "tui-button":"/components/extend/button/button"
-  }
-}

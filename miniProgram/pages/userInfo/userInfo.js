@@ -1,26 +1,18 @@
-// pages/test/test.js
-var _self = null
+// pages/userInfo/userInfo.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        windowHeight: 1000
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        _self = this
-        wx.getSystemInfo({
-            success(res) {
-                _self.setData({
-                    windowHeight: res.windowHeight
-                })
-            }
-        })
+
     },
 
     /**

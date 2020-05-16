@@ -10,7 +10,7 @@
 				<tui-icon name="notice" size="16" color="orange"></tui-icon>
 				{{shopInfo.notice}}
 			</view>
-			<view class="shop-position">
+			<view class="shop-position" bindtap="routePlan">
 				<tui-icon name="position" size="16" color="#00A5F2"></tui-icon>
 				{{shopInfo.address}}
 			</view>

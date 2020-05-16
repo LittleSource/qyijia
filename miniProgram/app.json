@@ -11,7 +11,8 @@
         "pages/success/success",
         "pages/about/about",
         "pages/test/test",
-        "pages/orderDetail/orderDetail"
+        "pages/orderDetail/orderDetail",
+        "pages/userInfo/userInfo"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -20,7 +21,8 @@
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
-        "selectedColor": "#000000",
+        "color": "#949494",
+        "selectedColor": "#FF581B",
         "list": [
             {
                 "pagePath": "pages/index/index",
@@ -48,6 +50,10 @@
         "chooseLocation": {
             "version": "1.0.3",
             "provider": "wx76a9a06e5b4e693e"
+        },
+        "routePlan": {
+            "version": "1.0.5",
+            "provider": "wx50b5593e81dd937a"
         }
     },
     "sitemapLocation": "sitemap.json",

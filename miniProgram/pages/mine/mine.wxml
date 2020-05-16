@@ -51,8 +51,8 @@
 				</view>
 			</view>
 		</view>
-
-		<view class="tui-box tui-tool-box">
+		<image src="/static/images/mine/invite.png" class="tui-img" mode="widthFix"></image>
+		<view class="tui-box">
 			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
 				<tui-icon name="position" size="24" color="#2BAF3D"></tui-icon>
 				<text class="tui-cell-name">我的地址</text>

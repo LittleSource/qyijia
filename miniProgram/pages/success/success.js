@@ -3,9 +3,6 @@ Page({
   data: {
     appName: config.name
   },
-  onLoad: function (options) {
-
-  },
   go(e) {
     let page = e.currentTarget.dataset.page
     if (page == 1) {

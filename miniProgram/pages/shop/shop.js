@@ -1,6 +1,8 @@
+const Position = require('../../utils/position')
 const app = getApp()
 const graceJS = require('../../utils/grace.js');
 var _self = null
+var position = new Position()
 Page({
     data: {
         shopId: 1,
@@ -78,6 +80,9 @@ Page({
         this.setData({
             product: product_
         })
+    },
+    routePlan: function () {
+        position.navigateRoutePlan(this.data.shopInfo.title, this.data.shopInfo.latitude, this.data.shopInfo.longitude)
     },
     // 点击标题切换当前页时改变样式
     swichNav: function (e) {

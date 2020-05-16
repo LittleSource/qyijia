@@ -10,18 +10,16 @@ Page({
             })
         }
     },
-    onLoad: function (options) {
-
-    },
     login() {
         //判断是否为登录状态
         if (this.data.userInfo === null) {
-            let thisPagePath = '/pages/mine/mine'
             wx.navigateTo({
-                url: '/pages/login/login?path=' + thisPagePath + '&type=1',
+                url: '/pages/login/login?path=/pages/mine/mine&type=1',
             })
         } else {
-            //进入个人设置页面
+            wx.navigateTo({
+                url: '/pages/userInfo/userInfo',
+            })
         }
     },
     detail(e) {
@@ -38,7 +36,7 @@ Page({
     },
     href(e) {
         let index = Number(e.currentTarget.dataset.index)
-        if (index !== 5) { 
+        if (index !== 5) {
             wx.navigateTo({
                 url: "/pages/order/order?index=" + index
             })

@@ -52,5 +52,15 @@ class Postition {
       url: 'plugin://chooseLocation/index?key=' + this.key + '&referer=麒亿家'
     });
   }
+  navigateRoutePlan(name, latitude, longitude) {
+    let endPoint = JSON.stringify({ //终点
+      'name': name,
+      'latitude': latitude,
+      'longitude': longitude
+    })
+    wx.navigateTo({
+      url: 'plugin://routePlan/index?key=' + this.key + '&referer=麒亿家' + '&endPoint=' + endPoint
+    })
+  }
 }
 module.exports = Postition
