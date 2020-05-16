@@ -1,147 +1,151 @@
 <view class="container">
-  <view class="tui-order-header">
-    <image src="{{webURL+'img_detail_bg.png'}}" mode="widthFix" class="tui-img-bg"></image>
-    <view class="tui-header-content">
-      <view>
-        <view class="tui-status-text">{{parse.getStatusText(status)}}</view>
-        <view class="tui-reason">
-          <text class="tui-reason-text">{{parse.getReason(status)}}</text>
-          <tui-countdown time="{{1800}}" color="rgba(254,254,254,0.75)" colonColor="rgba(254,254,254,0.75)" bcolor="transparent" bgcolor="transparent" wx:if="{{status===1}}"></tui-countdown>
-        </view>
-      </view>
-      <image src="{{parse.getImg(webURL,status)}}" class="tui-status-img" mode="widthFix"></image>
-    </view>
-  </view>
-  <tui-list-cell arrow="{{true}}" bgcolor="#fefefe">
-    <view class="tui-flex-box">
-      <image src="{{webURL+'img_order_logistics3x.png'}}" class="tui-icon-img"></image>
-      <view class="tui-logistics">
-        <view class="tui-logistics-text">快递已到收货点，请注意查收哦! 投递员: XXX 联系电话: 17788849992</view>
-        <view class="tui-logistics-time">2019-06-03 12:02</view>
-      </view>
-    </view>
-  </tui-list-cell>
-  <tui-list-cell last="{{true}}" hover="{{false}}">
-    <view class="tui-flex-box">
-      <image src="{{webURL+'img_order_address3x.png'}}" class="tui-icon-img"></image>
-      <view class="tui-addr">
-        <view class="tui-addr-userinfo">张一
-          <text class="tui-addr-tel">17788849992</text>
-        </view>
-        <view class="tui-addr-text">广东省广州市海珠区阅江西路222号鲜卑路16巷吉安花园 2栋106</view>
-      </view>
-    </view>
-  </tui-list-cell>
+	<view class="tui-order-header">
+		<image src="/static/images/order/img_detail_bg.png" mode="widthFix" class="tui-img-bg"></image>
+		<view class="tui-header-content">
+			<view>
+				<view class="tui-status-text">{{parse.getStatusText(orderData.status)}}</view>
+				<view class="tui-reason">
+					<text class="tui-reason-text">{{parse.getReason(orderData.status)}}</text>
+					<tui-countdown wx:if="{{orderData.status===1}}" time="{{dTime}}" color="rgba(254,254,254,0.75)" colonColor="rgba(254,254,254,0.75)" bcolor="transparent" bgcolor="transparent"></tui-countdown>
+				</view>
+			</view>
+			<image src="{{parse.getImg(webURL,orderData.status)}}" class="tui-status-img" mode="widthFix"></image>
+		</view>
+	</view>
+	<!-- <tui-list-cell arrow="{{true}}" bgcolor="#fefefe">
+		<view class="tui-flex-box">
+			<image src="{{webURL+'img_order_logistics3x.png'}}" class="tui-icon-img"></image>
+			<view class="tui-logistics">
+				<view class="tui-logistics-text">快递已到收货点，请注意查收哦! 投递员: XXX 联系电话: 17788849992</view>
+				<view class="tui-logistics-time">2019-06-03 12:02</view>
+			</view>
+		</view>
+	</tui-list-cell> -->
+	<tui-list-cell hover="{{false}}">
+		<view class="tui-flex-box">
+			<image src="/static/images/icon/position.png" class="tui-icon-img"></image>
+			<view class="tui-addr">
+				<view class="tui-addr-userinfo">{{orderData.name}}
+					<text class="tui-addr-tel">{{orderData.phone}}</text>
+				</view>
+				<view class="tui-addr-text">{{orderData.address+' '+orderData.house_num}}</view>
+			</view>
+		</view>
+	</tui-list-cell>
 
-  <view class="tui-order-item">
-    <tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-      <view class="tui-goods-title">
-        商品信息
-      </view>
-    </tui-list-cell>
-    <block wx:for="{{2}}" wx:key="{{index}}">
-      <tui-list-cell padding="0">
-        <view class="tui-goods-item">
-          <image src="{{'/static/images/mall/product/'+(index+3)+'.jpg'}}" class="tui-goods-img"></image>
-          <view class="tui-goods-center">
-            <view class="tui-goods-name">欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜 30ml（欧莱雅彩妆 BB霜 粉BB 遮瑕疵 隔离）</view>
-            <view class="tui-goods-attr">黑色，50ml</view>
-          </view>
-          <view class="tui-price-right">
-            <view>￥298.00</view>
-            <view>x2</view>
-          </view>
-        </view>
-      </tui-list-cell>
-    </block>
-    <view class="tui-goods-info">
-      <view class="tui-price-flex tui-size24">
-        <view>商品总额</view>
-        <view>￥1192.00</view>
-      </view>
-      <view class="tui-price-flex  tui-size24">
-        <view>优惠券</view>
-        <view>￥0.00</view>
-      </view>
-      <view class="tui-price-flex  tui-size24">
-        <view>配送费</view>
-        <view>￥0.00</view>
-      </view>
-      <view class="tui-price-flex tui-size32 tui-pbtm20">
-        <view class="tui-flex-shrink">合计</view>
-        <view class="tui-goods-price">
-          <view class="tui-size-24">￥</view>
-          <view class="tui-price-large">1192</view>
-          <view class="tui-size-24">.00</view>
-        </view>
-      </view>
-      <view class="tui-price-flex tui-size32">
-        <view class="tui-flex-shrink">实付款</view>
-        <view class="tui-goods-price tui-primary-color">
-          <view class="tui-size-24">￥</view>
-          <view class="tui-price-large">1192</view>
-          <view class="tui-size-24">.00</view>
-        </view>
-      </view>
-    </view>
-  </view>
+	<view class="tui-order-item">
+		<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+			<view class="tui-order-title">{{orderData.shop_title}}</view>
+		</tui-list-cell>
+		<block wx:for="{{orderData.shopping_cart}}" wx:key="index">
+			<tui-list-cell padding="0">
+				<view class="tui-goods-item">
+					<image src="{{item.img}}" class="tui-goods-img"></image>
+					<view class="tui-goods-center">
+						<view class="tui-goods-name">{{item.title}}</view>
+						<view class="tui-goods-attr">{{item.labels}}</view>
+					</view>
+					<view class="tui-price-right">
+						<view>￥{{item.price}}</view>
+						<view>x{{item.count}}</view>
+					</view>
+				</view>
+			</tui-list-cell>
+		</block>
+		<view class="tui-goods-info">
+			<view class="tui-price-flex tui-size24">
+				<view>商品总额</view>
+				<view>￥{{orderData.price_sum}}</view>
+			</view>
+			<view class="tui-price-flex  tui-size24">
+				<view>优惠券</view>
+				<view>￥0.00</view>
+			</view>
+			<view class="tui-price-flex  tui-size24">
+				<view>配送费</view>
+				<view>￥{{orderData.delivery_price}}</view>
+			</view>
+			<view class="tui-price-flex tui-size24 weight tui-pbtm20">
+				<view class="tui-flex-shrink">合计</view>
+				<view class="tui-goods-price">￥{{orderData.real_sum}}</view>
+			</view>
+			<view class="tui-price-flex tui-size24 weight" wx:if="{{orderData.real_pay}}">
+				<view class="tui-flex-shrink">实付款</view>
+				<view class="tui-goods-price tui-primary-color">￥{{orderData.real_pay}}</view>
+			</view>
+		</view>
+	</view>
 
-  <view class="tui-order-info">
-    <tui-list-cell hover="{{false}}">
-      <view class="tui-order-title">
-        订单信息
-      </view>
-    </tui-list-cell>
-    <view class="tui-order-content">
-      <view class="tui-order-flex">
-        <view class="tui-item-title">订单号:</view>
-        <view class="tui-item-content">48690010100035</view>
-      </view>
-      <view class="tui-order-flex">
-        <view class="tui-item-title">创建时间:</view>
-        <view class="tui-item-content">2019-05-26 10:36</view>
-      </view>
-      <view class="tui-order-flex">
-        <view class="tui-item-title">付款时间:</view>
-        <view class="tui-item-content">2019-05-26 10:44</view>
-      </view>
-      <view class="tui-order-flex">
-        <view class="tui-item-title">发货时间:</view>
-        <view class="tui-item-content">2019-05-27 10:20</view>
-      </view>
-      <view class="tui-order-flex">
-        <view class="tui-item-title">配送方式:</view>
-        <view class="tui-item-content">商家配送</view>
-      </view>
-      <view class="tui-order-flex">
-        <view class="tui-item-title">订单备注:</view>
-        <view class="tui-item-content">麻烦尽快发货，打包包裹时请多拿几个泡沫放在纸箱盒内，防止摔碎</view>
-      </view>
-    </view>
-  </view>
-  <view class="tui-safe-area"></view>
-  <view class="tui-tabbar tui-order-btn">
-    <view class="tui-btn-mr">
-      <tui-button type="black" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle">删除订单</tui-button>
-    </view>
-    <view class="tui-btn-mr">
-      <tui-button type="danger" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle">立即支付</tui-button>
-    </view>
-  </view>
+	<view class="tui-order-info">
+		<tui-list-cell hover="{{false}}">
+			<view class="tui-order-title">
+				订单信息
+			</view>
+		</tui-list-cell>
+		<view class="tui-order-content">
+			<view class="tui-order-flex">
+				<view class="tui-item-title">订单号:</view>
+				<view class="tui-item-content">{{orderData.oid}}</view>
+			</view>
+			<view class="tui-order-flex">
+				<view class="tui-item-title">创建时间:</view>
+				<view class="tui-item-content">{{orderData.create_time}}</view>
+			</view>
+			<view class="tui-order-flex">
+				<view class="tui-item-title">付款时间:</view>
+				<view class="tui-item-content">{{pay_time?pay_time:'未付款'}}</view>
+			</view>
+			<view class="tui-order-flex">
+				<view class="tui-item-title">配送方式:</view>
+				<view class="tui-item-content">商家配送</view>
+			</view>
+			<view class="tui-order-flex" wx:if="{{orderData.remark}}">
+				<view class="tui-item-title">订单备注:</view>
+				<view class="tui-item-content">{{orderData.remark}}</view>
+			</view>
+		</view>
+	</view>
+	<view class="tui-safe-area"></view>
+	<view class="tui-tabbar tui-order-btn">
+		<view class="tui-btn-mr">
+			<tui-button type="black" plain="{{true}}" width="148rpx" height="{{56}}" size="{{26}}" shape="circle" bindtap="getShopPhone">联系商家</tui-button>
+		</view>
+		<block wx:if="{{orderData.status == 1}}">
+			<view class="tui-btn-mr">
+				<tui-button type="black" plain="{{true}}" width="148rpx" height="{{56}}" size="{{26}}" shape="circle" bindtap="deleteOrder2">删除订单</tui-button>
+			</view>
+			<view class="tui-btn-mr">
+				<tui-button type="danger" plain="{{true}}" width="148rpx" height="{{56}}" size="{{26}}" shape="circle">立即支付</tui-button>
+			</view>
+		</block>
+		<block wx:if="{{orderData.status == 0 || orderData.status == 2 || orderData.status == 3}}">
+			<view class="tui-btn-mr">
+				<tui-button type="black" plain="{{true}}" width="148rpx" height="{{56}}" size="{{26}}" shape="circle">申请退款</tui-button>
+			</view>
+		</block>
+	</view>
 </view>
 
 <wxs module="parse">
-  module.exports = {
-    getImg: function(webURL, status) {
-      return webURL + ["img_order_payment3x.png", "img_order_send3x.png", "img_order_received3x.png",
-        "img_order_signed3x.png", "img_order_closed3x.png"
-      ][status - 1]
-    },
-    getStatusText: function(status) {
-      return ["等待您付款", "付款成功", "待收货", "订单已完成", "交易关闭"][status - 1]
-    },
-    getReason: function(status) {
-      return ["剩余时间", "等待卖家发货", "还剩X天XX小时自动确认", "", "超时未付款，订单自动取消"][status - 1]
-    }
-  }
+	module.exports = {
+		getImg: function(webURL, status) {
+			if (status == 0) {
+				return '/static/images/order/img_order_signed3x.png'
+			} else {
+				return '/static/images/order/' + ["img_order_payment3x.png", "img_order_send3x.png", "img_order_received3x.png",
+					"img_order_closed3x.png", "img_order_closed3x.png"
+				][status - 1]
+			}
+		},
+		getStatusText: function(status) {
+			if (status == 0) {
+				return "订单已完成"
+			} else {
+				return ["等待您付款", "付款成功", "待送达", "交易关闭", "交易关闭"][status - 1]
+			}
+		},
+		getReason: function(status) {
+			return ["剩余时间", "等待商家接单", "美食就快要到啦", "退款中", "已退款"][status - 1]
+		}
+	}
 </wxs>

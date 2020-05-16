@@ -92,7 +92,6 @@ Page({
         })
     },
     submitOrder: function () {
-        console.log(this.data.remark)
         graceJS.showLoading('Loading...')
         graceJS.setAfter(() => {
             wx.hideLoading()
@@ -114,11 +113,11 @@ Page({
                     paySign: res.paySign,
                     success(res) {
                         wx.redirectTo({
-                          url: '/pages/success/success',
+                            url: '/pages/success/success',
                         })
                     },
-                    fail(res) {
-                        graceJS.navigate('/pages/order/order?index=1','reLaunch',()=>{
+                    fail(e) {
+                        graceJS.navigate('/pages/orderDetail/orderDetail?id=' + res.order_id, 'reLaunch', () => {
                             graceJS.msg("您已取消付款!")
                         })
                     }

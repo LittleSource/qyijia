@@ -265,7 +265,10 @@ Page({
             }, {}, {},
             (res) => {
                 wx.makePhoneCall({
-                    phoneNumber: res.phone
+                    phoneNumber: res.phone,
+                    fail: (e) => {
+                        graceJS.msg('联系取消')
+                    }
                 })
             }
         )

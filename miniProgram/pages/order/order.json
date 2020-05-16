@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "我的订单",
   "navigationBarTextStyle": "black",
-  "backgroundTextStyle":"dark",
+  "backgroundTextStyle": "dark",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "tui-tabs": "/components/tui-tabs/tui-tabs",
@@ -9,6 +9,6 @@
     "tui-loadmore": "/components/loadmore/loadmore",
     "tui-nomore": "/components/nomore/nomore",
     "tui-list-cell": "/components/list-cell/list-cell",
-    "tui-tips":"/components/extend/tips/tips"
+    "tui-tips": "/components/extend/tips/tips"
   }
 }

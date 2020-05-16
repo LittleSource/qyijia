@@ -21,17 +21,23 @@ Page({
         pageSum: 1,
         loadding: false,
         pullUpOn: true,
-        isRefresh: false
+        isRefresh: false,
+        isAcceptData: false
+    },
+    onShow: function () {
+        if (this.data.isAcceptData) {
+            wx.startPullDownRefresh()
+        }
     },
     onLoad: function (options) {
-        app.checkLogin()
         _self = this
+        app.checkLogin()
         if (options.index) {
             this.setData({
                 currentTab: Number(options.index)
             })
+            wx.startPullDownRefresh()
         }
-        wx.startPullDownRefresh()
     },
     onPullDownRefresh() {
         if (this.data.isRefresh) {
@@ -58,7 +64,6 @@ Page({
                 token: app.globalData.userInfo.token
             },
             (res) => {
-                console.log(res)
                 var pageSum_ = Math.ceil(res.total / res.per_page)
                 _self.setData({
                     pullUpOn: pageSum_ != 1,
@@ -103,7 +108,18 @@ Page({
     detail(e) {
         var id = this.data.dataList[e.currentTarget.dataset.index].id
         wx.navigateTo({
-            url: '/pages/orderDetail/orderDetail?id=' + id
+            url: '/pages/orderDetail/orderDetail?id=' + id,
+            events: {
+                //获取被打开页面传送到当前页面的数据
+                acceptDataFromDetail: function (data) {
+                    console.log(data)
+                    if (data) {
+                        _self.setData({
+                            isAcceptData: true
+                        })
+                    }
+                }
+            }
         })
     },
     goShop(e) {

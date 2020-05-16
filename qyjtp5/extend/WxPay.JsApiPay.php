@@ -1,4 +1,11 @@
 <?php
+/**
+*
+* example目录下为简单的支付样例，仅能用于搭建快速体验微信支付使用
+* 样例的作用仅限于指导如何使用sdk，在安全上面仅做了简单处理， 复制使用样例代码时请慎重
+* 请勿直接直接使用样例对外提供服务
+* 
+**/
 require_once "WxPay.Api.php";
 require_once "WxPay.Config.php";
 /**
@@ -14,14 +21,55 @@ require_once "WxPay.Config.php";
  */
 class JsApiPay
 {
+	/**
+	 * 
+	 * 网页授权接口微信服务器返回的数据，返回样例如下
+	 * {
+	 *  "access_token":"ACCESS_TOKEN",
+	 *  "expires_in":7200,
+	 *  "refresh_token":"REFRESH_TOKEN",
+	 *  "openid":"OPENID",
+	 *  "scope":"SCOPE",
+	 *  "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+	 * }
+	 * 其中access_token可用于获取共享收货地址
+	 * openid是微信支付jsapi支付接口必须的参数
+	 * @var array
+	 */
 	public $data = null;
+	
+	/**
+	 * 
+	 * 通过跳转获取用户的openid，跳转流程如下：
+	 * 1、设置自己需要调回的url及其其他参数，跳转到微信服务器https://open.weixin.qq.com/connect/oauth2/authorize
+	 * 2、微信服务处理完成之后会跳转回用户redirect_uri地址，此时会带上一些参数，如：code
+	 * 
+	 * @return 用户的openid
+	 */
+	public function GetOpenid()
+	{
+		//通过code获得openid
+		if (!isset($_GET['code'])){
+			//触发微信返回code码
+			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].$_SERVER['QUERY_STRING']);
+			$url = $this->_CreateOauthUrlForCode($baseUrl);
+			Header("Location: $url");
+			exit();
+		} else {
+			//获取code码，以获取openid
+		    $code = $_GET['code'];
+			$openid = $this->getOpenidFromMp($code);
+			return $openid;
+		}
+	}
+	
 	/**
 	 * 
 	 * 获取jsapi支付的参数
 	 * @param array $UnifiedOrderResult 统一支付接口返回的数据
 	 * @throws WxPayException
-	 *
-	 * @return
+	 * 
+	 * @return json数据，可直接填入js函数作为参数
 	 */
 	public function GetJsApiParameters($UnifiedOrderResult)
 	{
@@ -41,7 +89,8 @@ class JsApiPay
 
 		$config = new WxPayConfig();
 		$jsapi->SetPaySign($jsapi->MakeSign($config));
-		return $jsapi->GetValues();
+		$parameters = json_encode($jsapi->GetValues());
+		return $parameters;
 	}
 	
 	/**

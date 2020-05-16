@@ -432,13 +432,11 @@ module.exports = {
 		if (addTime) {
 			cTime += addTime * 1000;
 		}
-		if (!type) {
-			type = 'number';
-		}
-		if (type == 'number') {
+		if (!type || type !== 'number') {
+			return this.toDate(cTime);
+		} else {
 			return cTime;
 		}
-		return this.toDate(cTime);
 	},
 	// 时间戳转 YY-mm-dd HH:ii:ss
 	toDate: function (timeStamp, returnType) {

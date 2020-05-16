@@ -35,6 +35,7 @@ class Pay extends BasePay
             try{
                 //调用统一支付接口
                 $result = $this->uniCreateOrder($Order->id,$Order->shop_title,$Order->real_sum);
+                $result ['order_id'] = $Order->id;
                 return ymJson(200,'ok',$result);
             }catch (Exception $e){
                 return ymJson(201,$e->getMessage(),[]);

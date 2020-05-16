@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "订单详情",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "tui-icon": "/components/icon/icon",
     "tui-button": "/components/extend/button/button",
