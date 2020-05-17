@@ -1,5 +1,5 @@
 page {
-  background: #f7f7f7;
+  background-color: #f7f7f7;
 }
 
 .container {
@@ -25,28 +25,32 @@ page {
 
 .tui-position {
   color: rgb(58, 56, 56);
-  padding: 0 20rpx;
-  padding-top :15rpx;
-  padding-bottom :12rpx;
-}
-.tui-position text{
-  font-size: 32rpx;
-  line-height: 32rpx;
+  padding: 15rpx 20rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
 }
 
-.tui-search{
+.tui-position text {
+  font-size: 32rpx;
+  margin: 0 15rpx 0 5rpx;
+}
+
+.tui-search {
   height: 60rpx;
   margin: 0 20rpx;
   padding: 0 10rpx;
   background-color: #f5f5f5;
-  border-radius:12rpx;
+  border-radius: 12rpx;
   overflow: hidden;
   outline: none;
 }
-.tui-search tui-icon{
+
+.tui-search tui-icon {
   line-height: 60rpx;
 }
-.tui-search text{
+
+.tui-search text {
   font-size: 30rpx;
   line-height: 60rpx;
   color: #949494;
@@ -231,12 +235,12 @@ page {
   color: #e41f19;
 }
 
-.tui-user{
+.tui-user {
   display: flex;
   flex-wrap: nowrap;
 }
 
-.tui-user-avatar{
+.tui-user-avatar {
   background: #c9c9c9 no-repeat center;
   background-size: cover;
   width: 46rpx;
@@ -245,7 +249,7 @@ page {
   overflow: hidden;
 }
 
-.tui-user-avatar image{
+.tui-user-avatar image {
   width: 100%;
   height: 100%;
 }

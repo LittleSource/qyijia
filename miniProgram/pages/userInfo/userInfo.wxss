@@ -1,1 +1,43 @@
-/* pages/userInfo/userInfo.wxss */
+.tui-userinfo-box {
+    padding-bottom: 100rpx;
+    color: #333;
+}
+
+.tui-list-cell {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx;
+    font-size: 30rpx;
+    box-sizing: border-box;
+    border-bottom: 2rpx dashed #eee;
+}
+
+.tui-pr30 {
+    padding-right: 30rpx;
+}
+
+.tui-avatar {
+    width: 100rpx;
+    height: 100rpx;
+    display: block;
+    border-radius: 50rpx;
+    overflow: hidden;
+}
+
+.tui-content {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.login-out {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    padding: 10rpx 30rpx;
+    box-sizing: border-box;
+    background: #fafafa;
+}

@@ -186,6 +186,11 @@ Page({
             }
         })
     },
+    goSearch(){
+        wx.navigateTo({
+          url: '/pages/search/search',
+        })
+    },
     chooseLocation(){
         this.setData({isGochooseLocationPage:true})
         position.chooseLocation()

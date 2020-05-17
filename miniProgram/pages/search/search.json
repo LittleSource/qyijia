@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "搜索",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "backgroundColorTop": "#fff",
+  "backgroundColorBottom": "#fff",
+  "usingComponents": {
+    "tui-tag": "/components/tag/tag",
+    "tui-actionsheet": "/components/actionsheet/actionsheet"
+  }
+}

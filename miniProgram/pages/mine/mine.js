@@ -3,12 +3,10 @@ Page({
     data: {
         userInfo: null
     },
-    onShow: function (params) {
-        if (!this.data.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo
-            })
-        }
+    onShow: function () {
+        this.setData({
+            userInfo: app.globalData.userInfo
+        })
     },
     login() {
         //判断是否为登录状态

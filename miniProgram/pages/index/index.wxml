@@ -3,8 +3,9 @@
 		<view class="tui-position" bindtap="chooseLocation">
 			<tui-icon name="position" size="18" color="#666666"></tui-icon>
 			<text>{{positionInfo}}</text>
+			<tui-icon name="arrowright" size="18" color="#666666"></tui-icon>
 		</view>
-		<view class="tui-search">
+		<view class="tui-search" bindtap="goSearch">
 			<tui-icon name="search" size="20"></tui-icon>
 			<text>输入搜索美味佳肴</text>
 		</view>
@@ -57,7 +58,7 @@
 					<view class="tui-pro-price">
 						<text class="tui-sale-price">￥{{item.sale}}</text>
 						<view class="tui-user">
-								<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/timg.jpg" class="tui-user-avatar"></image>
+							<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/timg.jpg" class="tui-user-avatar"></image>
 							<text class="tui-user-name">{{item.factory}}</text>
 						</view>
 					</view>
