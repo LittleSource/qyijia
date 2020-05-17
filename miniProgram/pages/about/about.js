@@ -9,5 +9,11 @@ Page({
         wx.setClipboardData({
             data: text
         })
+    },
+    showQrcode(){
+        var qrcode = this.data.config.qrcode
+        wx.previewImage({
+          urls: [qrcode],
+        })
     }
 })

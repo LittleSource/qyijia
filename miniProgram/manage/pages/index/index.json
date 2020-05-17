@@ -1,4 +1,10 @@
 {
+  "navigationBarBackgroundColor": "#FF4C00",
+  "navigationBarTextStyle": "white",
   "navigationBarTitleText": "店铺管理",
-  "usingComponents": {}
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tui-list-cell": "/components/list-cell/list-cell"
+  }
 }

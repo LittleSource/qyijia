@@ -1,2 +1,46 @@
 <!--manage/index/index.wxml-->
-<text>manage/index/index.wxml</text>
+<view class="">
+	<view class="hearder">
+		<view class="today-name">今日收入</view>
+		<view class="today-sum">{{todayPriceSum}}</view>
+		<image src="https://cdn.nlark.com/yuque/0/2020/gif/1445489/1589720157209-assets/web-upload/fc89be85-2e97-44fc-9574-0eed267134cf.gif" mode="scaleToFill" class="gif-wave"></image>
+	</view>
+	<view class="padding flex text-center text-grey bg-white shadow-warp">
+		<view class="flex flex-sub flex-direction solid-right">
+			<view class="text-xxl">{{todayOrderCount}}</view>
+			<view class="margin-top-sm">今日订单</view>
+		</view>
+		<view class="flex flex-sub flex-direction solid-right">
+			<view class="text-xxl">{{yesterdayCount}}</view>
+			<view class="margin-top-sm">昨日订单</view>
+		</view>
+		<view class="flex flex-sub flex-direction">
+			<view class="text-xxl">{{thisMonthCount}}</view>
+			<view class="margin-top-sm">本月订单</view>
+		</view>
+	</view>
+	<view class="tui-list">
+		<view class="tui-box">
+			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
+				<tui-icon name="calendar" size="24" color="orangered"></tui-icon>
+				<text class="tui-cell-name">订单管理</text>
+			</tui-list-cell>
+			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
+				<tui-icon name="member" size="24" color="#fbbd08"></tui-icon>
+				<text class="tui-cell-name">商品管理</text>
+			</tui-list-cell>
+			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
+				<tui-icon name="label" size="24" color="#2BAF3D"></tui-icon>
+				<text class="tui-cell-name">分类管理</text>
+			</tui-list-cell>
+			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
+				<tui-icon name="wealth" size="24" color="#e54d42"></tui-icon>
+				<text class="tui-cell-name">资金记录</text>
+			</tui-list-cell>
+			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
+				<tui-icon name="about" size="24" color="#0081ff"></tui-icon>
+				<text class="tui-cell-name">店铺信息</text>
+			</tui-list-cell>
+		</view>
+	</view>
+</view>

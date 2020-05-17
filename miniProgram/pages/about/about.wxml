@@ -20,7 +20,7 @@
 		<view class="tui-content tui-content-email" bindtap="copy" data-text="{{config.email}}">邮箱：{{config.email}}</view>
 		<view class="tui-content tui-content-email" bindtap="copy" data-text="{{config.phone}}">联系电话：{{config.phone}}</view>
 		<view class="tui-footer">
-			<image src='https://iknow-pic.cdn.bcebos.com/9a504fc2d5628535a675deb89bef76c6a6ef6395?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1' class="tui-applets" mode="widthFix"></image>
+			<image src="{{config.qrcode}}" bindtap="showQrcode" class="tui-applets" mode="widthFix"></image>
 			<view class="tui-footer-text">扫描二维码，您的朋友也可以体验{{config.name}}！</view>
 		</view>
 	</view>

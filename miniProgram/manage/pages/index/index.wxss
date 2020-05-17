@@ -1,1 +1,130 @@
-/* manage/index/index.wxss */
+page {
+    background-color: #fafafa;
+}
+
+.hearder {
+    width: 100%;
+    height: 300rpx;
+    position: relative;
+    background-color: #FF4C00;
+    color: #fff;
+    text-align: center;
+}
+
+.today-name {
+    padding-top: 75rpx;
+    font-size: 30rpx;
+}
+
+.today-sum {
+    font-size: 58rpx;
+    font-weight: bold;
+}
+
+.gif-wave {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    mix-blend-mode: screen;
+    height: 100rpx;
+}
+
+.padding {
+    padding: 24rpx;
+}
+
+.text-xxl {
+    font-size: 38rpx;
+}
+
+.flex {
+    display: flex;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-grey {
+    color: #555;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.shadow-warp {
+    position: relative;
+    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.shadow-warp::before,
+.shadow-warp::after {
+    position: absolute;
+    content: "";
+    top: 20rpx;
+    bottom: 30rpx;
+    left: 20rpx;
+    width: 50%;
+    box-shadow: 0 30rpx 20rpx rgba(0, 0, 0, 0.2);
+    transform: rotate(-3deg);
+    z-index: -1;
+}
+
+.shadow-warp::after {
+    right: 20rpx;
+    left: auto;
+    transform: rotate(3deg);
+}
+
+.solid-right {
+    position: relative;
+}
+
+.solid-right::after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    border-right: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.flex-direction {
+    flex-direction: column;
+}
+
+.flex-sub {
+    flex: 1;
+}
+
+.margin-top-sm {
+    margin-top: 14rpx;
+    font-size: 24rpx;
+}
+
+.tui-list {
+    padding: 0 30rpx;
+}
+
+.tui-box {
+    margin-top: 80rpx;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0rpx 40rpx 100rpx 0rpx #eee;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+.tui-cell-name {
+	padding-left: 20rpx;
+	vertical-align: middle;
+	line-height: 30rpx;
+}
