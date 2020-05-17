@@ -11,19 +11,18 @@
 
 	</view>
 	<view class="tui-content-box">
-		<view class="tui-content">尊敬的用户，欢迎体验{{config.name}}！</view>
-		<view class="tui-content">该项目主要是一些小程序代码片段的分享，以及基础组件的封装。项目免费开源，源码可在
-			<text class="tui-content-email" bindtap="copy" data-text="https://github.com/">GitHub</text>上下载，欢迎Watch & Star ★。
-        </view>
-	<view class="tui-content">
-		您可以通过反馈或者以下方式联系我！
+		<view class="tui-content">尊敬的用户，欢迎使用{{config.name}}小程序！</view>
+		<view class="tui-content">最暖心的话就是回家吃饭，最思念想念的就是家乡的味道！一道菜一个故事…异乡打拼的点点滴滴我们共同见证！
+		</view>
+		<view class="tui-content">
+			您可以通过以下方式联系我们！
+		</view>
+		<view class="tui-content tui-content-email" bindtap="copy" data-text="{{config.email}}">邮箱：{{config.email}}</view>
+		<view class="tui-content tui-content-email" bindtap="copy" data-text="{{config.phone}}">联系电话：{{config.phone}}</view>
+		<view class="tui-footer">
+			<image src='https://iknow-pic.cdn.bcebos.com/9a504fc2d5628535a675deb89bef76c6a6ef6395?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1' class="tui-applets" mode="widthFix"></image>
+			<view class="tui-footer-text">扫描二维码，您的朋友也可以体验{{config.name}}！</view>
+		</view>
 	</view>
-	<view class="tui-content tui-content-email" bindtap="copy" data-text="{{config.email}}">邮箱：{{config.email}}</view>
-	<view class="tui-content tui-content-email" bindtap="copy" data-text="{{config.phone}}">联系电话：{{config.phone}}</view>
-	<view class="tui-footer">
-		<image src='https://iknow-pic.cdn.bcebos.com/9a504fc2d5628535a675deb89bef76c6a6ef6395?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1' class="tui-applets" mode="widthFix"></image>
-		<view class="tui-footer-text">扫描二维码，您的朋友也可以体验{{config.name}}！</view>
-	</view>
-</view>
 </view>
 <tui-footer copyright="Copyright © 2018-2020 源梦科技" size="26"></tui-footer>

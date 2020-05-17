@@ -51,7 +51,7 @@
 				</view>
 			</view>
 		</view>
-		<image src="/static/images/mine/invite.png" class="tui-img" mode="widthFix"></image>
+		<image bindtap="goPoster" src="/static/images/mine/invite.png" class="tui-img" mode="widthFix"></image>
 		<view class="tui-box">
 			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
 				<tui-icon name="position" size="24" color="#2BAF3D"></tui-icon>
@@ -69,14 +69,14 @@
 					<view class="tui-cell-name">客服中心</view>
 				</button>
 			</tui-list-cell>
-			<tui-list-cell bind:click="detail" arrow="{{true}}" tui-cell-class="tui-list">
+			<tui-list-cell arrow="{{true}}" tui-cell-class="tui-list" bindtap="myShop">
 				<tui-icon name="shop-fill" size="23" color="#ff7900"></tui-icon>
 				<view class="tui-cell-name">我的店铺</view>
-				<view class="tui-right">进入店铺</view>
+				<view class="tui-right">{{userInfo.type == 2?'进入管理':'申请入驻'}}</view>
 			</tui-list-cell>
 			<tui-list-cell bindtap="detail" arrow="{{true}}" last="{{true}}" tui-cell-class="tui-list" data-url="/pages/about/about">
 				<image src="/static/images/logo.png" class="logo" mode="widthFix"></image>
-				<text class="tui-cell-name">关于</text>
+				<text class="tui-cell-name">关于我们</text>
 				<view class="tui-right">麒亿家</view>
 			</tui-list-cell>
 		</view>

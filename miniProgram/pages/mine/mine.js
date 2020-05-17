@@ -32,6 +32,20 @@ Page({
             })
         }
     },
+    goPoster() {
+        wx.navigateTo({
+            url: '/pages/poster/poster',
+        })
+    },
+    myShop() {
+        if (this.data.userInfo.type == 1) {
+            this.goPoster()
+        } else {
+            wx.navigateTo({
+                url: '/manage/pages/index/index',
+            })
+        }
+    },
     href(e) {
         let index = Number(e.currentTarget.dataset.index)
         if (index !== 5) {

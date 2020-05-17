@@ -1,0 +1,5 @@
+<!--pages/poster/poster.wxml-->
+<view class="back-button" bindtap="back" style="top:{{capsuleTop}}px;height:{{capsuleHeight}}px;width:{{capsuleHeight}}px;border-radius:{{capsuleHeight/2}}px">
+	<tui-icon name="arrowleft" color="#ffffff"></tui-icon>
+</view>
+<image class="img" src="https://cdn.nlark.com/yuque/0/2020/png/1445489/1589697043837-98a3c45e-5837-4607-bacb-a8768601e1ed.png" mode="widthFix"></image>
