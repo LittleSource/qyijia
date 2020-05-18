@@ -91,15 +91,25 @@ Page({
                 token: app.globalData.userInfo.token
             },
             (res) => {
-                const eventChannel = this.getOpenerEventChannel()
-                eventChannel.emit('acceptDataFromDetail', {
-                    data: true
-                })
-                wx.navigateBack({
-                    complete: (res) => {
-                        graceJS.msg(_self.data.deleteMsg)
-                    }
-                })
+                const pages = getCurrentPages()
+                if (pages.length > 1) {
+                    const eventChannel = this.getOpenerEventChannel()
+                    eventChannel.emit('acceptDataFromDetail', {
+                        data: true
+                    })
+                    wx.navigateBack({
+                        complete: (res) => {
+                            graceJS.msg(_self.data.deleteMsg)
+                        }
+                    })
+                } else {
+                    wx.redirectTo({
+                        url: '/pages/order/order',
+                        complete: (res) => {
+                            graceJS.msg(_self.data.deleteMsg)
+                        }
+                    })
+                }
             }
         )
     },

@@ -1,0 +1,40 @@
+page {
+    background-color: #fafafa;
+}
+
+.drag-list {
+    transform-style: preserve-3d;
+    position: relative;
+    padding: 0 30rpx;
+}
+
+.drag-list-item {
+    height: 100rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: #fff;
+    margin-top: 20rpx;
+    box-shadow: 0 1rpx 6rpx #eee;
+}
+
+.icon-button-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+tui-icon {
+    margin-right: 20rpx;
+}
+
+tui-icon:active {
+    opacity: 0.6;
+}
+
+.drag-list-content {
+    width: 600rpx;
+    font-size: 28rpx;
+    margin-left: 20rpx;
+}

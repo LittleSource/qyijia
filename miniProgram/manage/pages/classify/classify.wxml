@@ -1,0 +1,14 @@
+<tui-tips wx:if="{{lists.length == 0}}" imgUrl="/static/images/other/nodata.png">还没有分类呢~</tui-tips>
+<view wx:else class="drag-list">
+	<view wx:for="{{lists}}" wx:key="index" class="drag-list-item">
+		<view class="drag-list-content">
+			<input type="text" placeholder="请输入分类名称" value="{{item.title}}" maxlength="10" bindinput="inputChange" data-index="{{index}}"></input>
+		</view>
+		<view class="icon-button-box">
+			<tui-icon name="arrowup" size="20" color="{{index==0?'#aaaaaa':'#39b54a'}}" bindtap="sortUp" data-index="{{index}}"></tui-icon>
+			<tui-icon name="arrowdown" size="20" color="{{index==lists.length-1?'#aaaaaa':'#39b54a'}}" bindtap="sortDown" data-index="{{index}}"></tui-icon>
+			<tui-icon name="deletekey" size="20" color="#f37b1d" bindtap="delete" data-index="{{index}}"></tui-icon>
+		</view>
+	</view>
+</view>
+<tui-fab right="{{50}}" bottom="{{100}}" height="{{90}}" width="{{90}}" bgColor="#0081ff" btnList="{{btnList}}" bind:click="onClick"></tui-fab>

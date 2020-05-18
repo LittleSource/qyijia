@@ -61,7 +61,7 @@ Component({
     //点击遮罩 是否可关闭
     maskClosable: {
       type: Boolean,
-      value: false
+      value: true
     }
   },
   data: {

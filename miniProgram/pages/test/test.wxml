@@ -1,0 +1,12 @@
+<view class="drag-list">
+	<view wx:for="{{lists}}" wx:key="index" class="drag-list-item">
+		<view class="drag-list-content">
+			<input type="text" value="{{item.title}}" maxlength="10" bindinput="inputChange" data-index="{{index}}"></input>
+		</view>
+		<view class="icon-button-box">
+			<tui-icon name="arrowup" size="20" color="{{index==0?'#aaaaaa':'#39b54a'}}" bindtap="sortUp" data-index="{{index}}"></tui-icon>
+			<tui-icon name="arrowdown" size="20" color="{{index==lists.length-1?'#aaaaaa':'#39b54a'}}" bindtap="sortDown" data-index="{{index}}"></tui-icon>
+			<tui-icon name="deletekey" size="20" color="#f37b1d" bindtap="delete" data-index="{{index}}"></tui-icon>
+		</view>
+	</view>
+</view>

@@ -3,7 +3,6 @@ const app = getApp()
 const graceJS = require('../../../utils/grace.js');
 var _self = null
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -11,7 +10,33 @@ Page({
         todayPriceSum: 0,
         todayOrderCount: 0,
         yesterdayCount: 0,
-        thisMonthCount: 0
+        thisMonthCount: 0,
+        menuList: [{
+            name: '订单管理',
+            icon: 'calendar',
+            color: 'orangered',
+            url: ''
+        }, {
+            name: '商品管理',
+            icon: 'member',
+            color: '#fbbd08',
+            url: ''
+        }, {
+            name: '分类管理',
+            icon: 'label',
+            color: '#2BAF3D',
+            url: '/manage/pages/classify/classify'
+        }, {
+            name: '资金记录',
+            icon: 'wealth',
+            color: '#e54d42',
+            url: ''
+        }, {
+            name: '店铺信息',
+            icon: 'about',
+            color: '#0081ff',
+            url: ''
+        }]
     },
 
     /**
@@ -24,8 +49,8 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-
+    href: function (e) {
+        graceJS.navigate(this.data.menuList[e.currentTarget.dataset.index].url)
     },
     /**
      * 页面相关事件处理函数--监听用户下拉动作

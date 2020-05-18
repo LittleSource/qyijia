@@ -21,25 +21,9 @@
 	</view>
 	<view class="tui-list">
 		<view class="tui-box">
-			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
-				<tui-icon name="calendar" size="24" color="orangered"></tui-icon>
-				<text class="tui-cell-name">订单管理</text>
-			</tui-list-cell>
-			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
-				<tui-icon name="member" size="24" color="#fbbd08"></tui-icon>
-				<text class="tui-cell-name">商品管理</text>
-			</tui-list-cell>
-			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
-				<tui-icon name="label" size="24" color="#2BAF3D"></tui-icon>
-				<text class="tui-cell-name">分类管理</text>
-			</tui-list-cell>
-			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
-				<tui-icon name="wealth" size="24" color="#e54d42"></tui-icon>
-				<text class="tui-cell-name">资金记录</text>
-			</tui-list-cell>
-			<tui-list-cell bindtap="detail" arrow="{{true}}" tui-cell-class="tui-list" data-url="/pages/address/address">
-				<tui-icon name="about" size="24" color="#0081ff"></tui-icon>
-				<text class="tui-cell-name">店铺信息</text>
+			<tui-list-cell arrow="{{true}}" tui-cell-class="tui-list" wx:for="{{menuList}}" wx:key="index" bindtap="href" data-index="{{index}}">
+				<tui-icon name="{{item.icon}}" size="24" color="{{item.color}}"></tui-icon>
+				<text class="tui-cell-name">{{item.name}}</text>
 			</tui-list-cell>
 		</view>
 	</view>
