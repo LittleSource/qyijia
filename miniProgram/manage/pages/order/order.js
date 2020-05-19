@@ -1,4 +1,4 @@
-var graceJS = require('../../utils/grace');
+var graceJS = require('../../../utils/grace');
 const app = getApp()
 var _self = null
 Page({
@@ -26,8 +26,10 @@ Page({
     },
     change(e) {
         this.setData({
+            dataList: [],
             currentTab: e.detail.index
         })
+        wx.startPullDownRefresh()
     },
     detail(e) {
         var orderData = this.data.dataList[e.currentTarget.dataset.index]
@@ -41,6 +43,27 @@ Page({
         this.setData({
             isShowModal: false
         })
+    },
+    acceptOrder(e) {
+        console.log(e.currentTarget.dataset.index)
+        graceJS.showLoading('Loading...')
+        graceJS.setAfter(() => {
+            wx.hideLoading()
+        })
+        graceJS.post(
+            'manage/order/acceptorder', {
+                id: _self.data.dataList[e.currentTarget.dataset.index].id
+            }, {}, {
+                token: app.globalData.userInfo.token
+            },
+            (res) => {
+                wx.startPullDownRefresh({
+                    complete: (res) => {
+                        graceJS.msg('接单成功,请尽快送出!')
+                    }
+                })
+            }
+        )
     },
     onPullDownRefresh() {
         if (this.data.isRefresh) {
@@ -64,7 +87,7 @@ Page({
             })
         })
         graceJS.post(
-            'shop/order/getlist', {
+            'manage/order/getlist', {
                 status_index: _self.data.currentTab,
                 page: _self.data.pageIndex
             }, {}, {

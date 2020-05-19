@@ -53,8 +53,10 @@
 							</view>
 						</view>
 						<view class="row">
-							<tui-icon name="notice" size="13"></tui-icon>
-							<text>你想要的这力度有哦</text>
+							<view class="row-left">
+								<tui-icon name="notice" size="13"></tui-icon>
+								<text>你想要的这力度有哦</text>
+							</view>
 						</view>
 					</view>
 				</view>

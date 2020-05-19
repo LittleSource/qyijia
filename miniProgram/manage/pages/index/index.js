@@ -15,7 +15,7 @@ Page({
             name: '订单管理',
             icon: 'calendar',
             color: 'orangered',
-            url: ''
+            url: '/manage/pages/order/order'
         }, {
             name: '商品管理',
             icon: 'member',

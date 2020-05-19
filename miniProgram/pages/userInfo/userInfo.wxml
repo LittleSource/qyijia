@@ -1,23 +1,29 @@
 <view class="tui-userinfo-box">
-	<tui-list-cell padding="0" arrow="{{true}}">
+	<tui-list-cell padding="0">
 		<view class="tui-list-cell">
 			<view>头像</view>
 			<image src="{{userInfo.avatar}}" class="tui-avatar"></image>
 		</view>
 	</tui-list-cell>
-	<tui-list-cell padding="0" arrow="{{true}}">
+	<tui-list-cell padding="0">
 		<view class="tui-list-cell tui-pr30">
 			<view>用户名</view>
 			<view class="tui-content">{{userInfo.nickname}}</view>
 		</view>
 	</tui-list-cell>
-	<tui-list-cell padding="0" arrow="{{true}}">
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>亿家号</view>
+			<view class="tui-content">{{userInfo.id}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
 		<view class="tui-list-cell">
 			<view>手机号</view>
 			<view class="tui-content">{{userInfo.phone}}</view>
 		</view>
 	</tui-list-cell>
-	<tui-list-cell padding="0" arrow="{{false}}">
+	<tui-list-cell padding="0">
 		<view class="tui-list-cell">
 			<view>注册时间</view>
 			<view class="tui-content">{{userInfo.addtime}}</view>

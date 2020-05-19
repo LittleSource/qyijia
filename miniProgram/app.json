@@ -21,7 +21,8 @@
             "root": "manage",
             "pages": [
                 "pages/index/index",
-                "pages/classify/classify"
+                "pages/classify/classify",
+                "pages/order/order"
             ]
         }
     ],

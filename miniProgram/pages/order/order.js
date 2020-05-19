@@ -51,6 +51,8 @@ Page({
             return
         }
         this.setData({
+            pageIndex: 1,
+            pullUpOn: true,
             isRefresh: true
         })
         graceJS.setAfter(() => {
@@ -105,8 +107,6 @@ Page({
     change(e) {
         this.setData({
             dataList: [],
-            pageIndex: 1,
-            pullUpOn: true,
             currentTab: e.detail.index
         })
         wx.startPullDownRefresh()

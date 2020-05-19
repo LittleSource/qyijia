@@ -147,7 +147,6 @@ page {
 
 .tui-product-box {
   margin-top: 20rpx;
-  padding: 0 20rpx;
   box-sizing: border-box;
 }
 
@@ -293,25 +292,26 @@ page {
 }
 
 .right {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .tit {
-  font-size: 36rpx;
-  font-weight: bold;
+  font-size: 32rpx;
+  font-weight: 600;
   color: #444;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.justify-content {
+.row {
+  width: 585rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.row {
+  margin-top: 4rpx;
   font-size: 26rpx;
   color: #777;
   white-space: nowrap;

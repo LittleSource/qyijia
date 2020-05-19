@@ -33,7 +33,7 @@
 							<tui-button type="black" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="goShop" data-index="{{index}}">取消订单</tui-button>
 						</view>
 						<view class="tui-btn-ml">
-							<tui-button type="danger" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="goShop" data-index="{{index}}">确认接单</tui-button>
+							<tui-button type="danger" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="acceptOrder" data-index="{{index}}">确认接单</tui-button>
 						</view>
 					</block>
 				</view>
