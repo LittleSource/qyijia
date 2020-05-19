@@ -33,23 +33,54 @@
 		<view class="tui-group-name">
 			<text>附近推荐</text>
 		</view>
-		<view class="tui-product-list">
-			<view class="tui-product-container">
-				<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index+1)%2!=0}}">
-					<template is="productItem" data="{{item,index:index}}" />
-				</block>
-			</view>
-			<view class="tui-product-container">
-				<block wx:for="{{productList}}" wx:key="index" wx:if="{{(index+1)%2==0}}">
-					<template is="productItem" data="{{item,index:index}}" />
-				</block>
+		<view class="store-box">
+			<view class="item-box" wx:for="{{productList}}" bindtap="detail">
+				<view class="container top-box">
+					<view class="left">
+						<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2105224052,4112430336&fm=26&gp=0.jpg" mode="aspectFill"></image>
+					</view>
+					<view class="right">
+						<text class="tit">欢乐大家族（天津）</text>
+						<view class="row justify-content">
+							<view class="row-left">
+								<tui-icon name="about" size="13"></tui-icon>
+								<text class="t1">起送￥20</text>
+								<text class="t2">配送￥3</text>
+							</view>
+							<view class="row-right">
+								<tui-icon name="position" size="13"></tui-icon>
+								<text>距离18公里</text>
+							</view>
+						</view>
+						<view class="row">
+							<tui-icon name="notice" size="13"></tui-icon>
+							<text>你想要的这力度有哦</text>
+						</view>
+					</view>
+				</view>
+				<scroll-view scroll-x class="bottom-box">
+					<view class="bottom-box-container">
+						<view class="goods-box" wx:for="{{8}}">
+							<view class="img-box">
+								<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589865752633&di=352008afaca8161ed794e95a439bb9fa&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171115%2Fb0cc5d1fe86e4473864909be766e214f.jpeg" mode="scaleToFill"></image>
+								<view class="tag">666</view>
+							</view>
+							<view class="goods-title">大盘鸡</view>
+							<view class="price-box">
+								<text class="txt1">￥</text>
+								<text class="txt2">38.8</text>
+								<text class="txt3">￥99</text>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
 			</view>
 		</view>
 	</view>
 
-	<!--模板-->
+	<!--模板
 	<template name="productItem">
-		<!--商品列表-->
+		
 		<view class="tui-pro-item" hover-class="hover" hover-start-time="150" bindtap="detail">
 			<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/{{item.img}}.jpg" class="tui-pro-img" mode="widthFix" />
 			<view class="tui-pro-content">
@@ -65,8 +96,8 @@
 				</view>
 			</view>
 		</view>
-		<!--商品列表-->
 	</template>
+	-->
 
 	<!--加载loadding-->
 	<tui-loadmore visible="{{loadding}}" index="3" type="red"></tui-loadmore>

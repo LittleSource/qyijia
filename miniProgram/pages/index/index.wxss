@@ -163,7 +163,7 @@ page {
   font-size: 32rpx;
   font-weight: bold;
   text-align: center;
-  padding: 24rpx 0;
+  padding: 10rpx 0;
 }
 
 .tui-title-box {
@@ -260,4 +260,154 @@ page {
   color: #606060;
   padding-left: 8rpx;
   text-overflow: ellipsis;
+}
+
+
+/**        底部        **/
+/* .store-box {
+  
+} */
+
+.item-box {
+  padding: 20rpx 0;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+}
+
+.top-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  margin: 0 20rpx;
+}
+
+.left image {
+  width: 125rpx;
+  height: 125rpx;
+  border-radius: 10rpx;
+}
+
+.right {
+  flex: 1;
+}
+
+.tit {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #444;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.justify-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.row {
+  font-size: 26rpx;
+  color: #777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-left,
+.row-right {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20rpx;
+}
+
+.t2 {
+  margin-left: 30rpx;
+}
+
+tui-icon {
+  margin-right: 4rpx;
+}
+
+.bottom-box {
+  height: 240rpx;
+}
+
+.bottom-box-container {
+  margin: 12rpx 0 0;
+  white-space: nowrap;
+}
+
+.bottom-box-container:first-child {
+  margin-left: 20rpx;
+}
+
+.goods-title {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.goods-box {
+  width: 150rpx;
+  margin-right: 20rpx;
+  display: inline-block;
+}
+
+.img-box {
+  position: relative;
+  height: 150rpx;
+  background-color: #f1f1f1;
+}
+
+.img-box image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+
+.tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #FF5722;
+  color: #ffffff;
+  padding: 3rpx 5rpx;
+  box-sizing: border-box;
+  font-size: 20rpx;
+  border-radius: 8rpx;
+}
+
+.price-box {
+  margin-top: -1rpx;
+}
+
+.txt1 {
+  font-size: 30rpx;
+  color: #FF5722;
+}
+
+.txt2 {
+  font-size: 32rpx;
+  color: #FF5722;
+}
+
+.txt3 {
+  margin-left: 6rpx;
+  font-size: 26rpx;
+  color: #bbbbbb;
+  text-decoration: line-through;
+}
+
+.item-box:last-child {
+  border-bottom: 0;
 }
