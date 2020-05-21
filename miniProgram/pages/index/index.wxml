@@ -34,7 +34,7 @@
 			<text>附近推荐</text>
 		</view>
 		<view class="store-box">
-			<view class="item-box" wx:for="{{productList}}" bindtap="detail">
+			<view class="item-box" wx:for="{{productList}}" wx:key="*this" bindtap="detail">
 				<view class="container top-box">
 					<view class="left">
 						<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2105224052,4112430336&fm=26&gp=0.jpg" mode="aspectFill"></image>
@@ -62,7 +62,7 @@
 				</view>
 				<scroll-view scroll-x class="bottom-box">
 					<view class="bottom-box-container">
-						<view class="goods-box" wx:for="{{8}}">
+						<view class="goods-box" wx:for="{{8}}" wx:key="*this">
 							<view class="img-box">
 								<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589865752633&di=352008afaca8161ed794e95a439bb9fa&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171115%2Fb0cc5d1fe86e4473864909be766e214f.jpeg" mode="scaleToFill"></image>
 								<view class="tag">666</view>

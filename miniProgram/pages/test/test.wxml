@@ -1,102 +1,23 @@
-<view class="container">
-	<tui-tabs tabs="{{tabs}}" isFixed="{{!isRefresh}}" currentTab="{{currentTab}}" bind:change="change" bottom="50%" itemWidth="33.3333%" bgColor="{{bgColor}}" color="#fff" selectedColor="#EB0909" sliderWidth="{{146}}" sliderHeight="{{52}}" sliderBgColor="#fff" unlined="{{true}}"></tui-tabs>
-	<tui-tips wx:if="{{dataList.length == 0}}" imgUrl="/static/images/other/nodata.png">还没有订单呢~</tui-tips>
-	<view wx:else class="{{isRefresh?'tui-order-list1':'tui-order-list2'}}">
-		<view class="tui-order-item" wx:for="{{dataList}}" wx:key="index" wx:for-item="orderItem">
-			<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-				<view class="tui-goods-title">
-					<view>{{orderItem.shop_title}}</view>
-					<view class="tui-order-status">{{orderItem.status==2?'待接单':orderItem.status==3?'待送达':'已完成'}}</view>
-				</view>
-			</tui-list-cell>
-			<tui-list-cell padding="0" bindtap="detail" data-index="{{index}}">
-				<view class="tui-goods-item">
-					<image src="{{orderItem.shopping_cart[0].img}}" class="tui-goods-img"></image>
-					<view class="tui-goods-center">
-						<view class="tui-goods-name">{{orderItem.shopping_cart[0].title}}</view>
-						<view class="tui-goods-attr">等{{orderItem.count}}件商品</view>
-					</view>
-					<view class="tui-price-right">
-						<view class="tui-right-name">订单金额</view>
-						<view class="tui-right-sum">￥ {{orderItem.real_sum}}</view>
-					</view>
-				</view>
-			</tui-list-cell>
-			<view class="tui-order-bottom">
-				<view class="tui-order-time">{{orderItem.create_time}}</view>
-				<view class="tui-order-btn">
-					<view class="tui-btn-ml" wx:if="{{orderItem.status!=2}}">
-						<tui-button type="black" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="detail" data-index="{{index}}">查看详情</tui-button>
-					</view>
-					<block wx:if="{{orderItem.status==2}}">
-						<view class="tui-btn-ml">
-							<tui-button type="black" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="goShop" data-index="{{index}}">取消订单</tui-button>
-						</view>
-						<view class="tui-btn-ml">
-							<tui-button type="danger" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="goShop" data-index="{{index}}">确认接单</tui-button>
-						</view>
-					</block>
-				</view>
-			</view>
-		</view>
-	</view>
-	<tui-modal show="{{isShowModal}}" width="650rpx" radius="0" padding="0" custom="{{true}}" bind:cancel="hideModal">
-		<scroll-view scroll-y style="height:1000rpx">
-			<view class="tui-order-item tui-order-item2">
-				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-					<view class="tui-goods-title">
-						<view>订单号</view>
-						<view class="tui-order-status">{{orderData.id}}</view>
-					</view>
-				</tui-list-cell>
-				<tui-list-cell padding="0" wx:for="{{orderData.shopping_cart}}" wx:key="index">
+<view>
+	<block wx:for="{{dataList}}" wx:key="index">
+		<tui-collapse index="{{index}}" current="{{current}}" bind:click="change">
+			<tui-list-cell hover="{{false}}" slot="title">{{item.title}}</tui-list-cell>
+			<view class="tui-order-item" slot="content">
+				<tui-list-cell padding="0" bindtap="detail" wx:for="{{item.product}}" wx:for-item="proItem" wx:index="proIndex" wx:key="id" data-index="{{proIndex}}">
 					<view class="tui-goods-item">
-						<image src="{{item.img}}" class="tui-goods-img"></image>
+						<image src="{{proItem.img}}" class="tui-goods-img"></image>
 						<view class="tui-goods-center">
-							<view class="tui-goods-name">{{item.title}}</view>
-							<view class="tui-goods-attr">单价</view>
+							<view class="tui-goods-name">{{proItem.title}}</view>
+							<view class="tui-goods-attr">￥{{proItem.price}}</view>
 						</view>
-						<view class="tui-price-right">
-							<view class="tui-right-name">X{{item.count}}</view>
-							<view class="tui-right-sum">￥ {{item.price}}</view>
+						<view class="tui-right">
+							<tui-button type="blue"  width="70rpx" height="56rpx" size="{{30}}" bindtap="detail" data-proid="{{proItem.id}}">编辑</tui-button>
+							<tui-button type="warning"  width="70rpx" height="56rpx" size="{{30}}" bindtap="delete" data-proid="{{proItem.id}}">删除</tui-button>
 						</view>
-					</view>
-				</tui-list-cell>
-				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-					<view class="model-cell">
-						<view>用户付款</view>
-						<view>￥{{orderData.real_pay}}</view>
-					</view>
-				</tui-list-cell>
-				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-					<view class="model-cell">
-						<view>配送费</view>
-						<view>￥{{orderData.delivery_price}}</view>
-					</view>
-				</tui-list-cell>
-				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-					<view class="model-cell">
-						<view>创建时间</view>
-						<view>{{orderData.create_time}}</view>
-					</view>
-				</tui-list-cell>
-				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
-					<view class="model-cell">
-						<view>支付时间</view>
-						<view>{{orderData.pay_time}}</view>
-					</view>
-				</tui-list-cell>
-				<tui-list-cell wx:if="{{orderData.remark}}" hover="{{false}}" lineLeft="{{false}}">
-					<view class="model-cell">
-						<view>订单备注</view>
-						<view>{{orderData.remark}}</view>
 					</view>
 				</tui-list-cell>
 			</view>
-		</scroll-view>
-	</tui-modal>
-	<!--加载loadding-->
-	<tui-loadmore visible="{{loadding}}" index="{{3}}" type="red"></tui-loadmore>
-	<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
-	<!--加载loadding-->
+		</tui-collapse>
+	</block>
+	<tui-fab right="{{50}}" bottom="{{100}}" height="{{90}}" width="{{90}}" bgColor="#0081ff" btnList="{{btnList}}" bind:click="onClick"></tui-fab>
 </view>

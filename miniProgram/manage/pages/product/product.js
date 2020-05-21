@@ -1,4 +1,4 @@
-var graceJS = require('../../utils/grace');
+var graceJS = require('../../../utils/grace');
 const app = getApp()
 var _self = null
 Page({

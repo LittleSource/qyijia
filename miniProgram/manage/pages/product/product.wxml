@@ -1,0 +1,21 @@
+<view wx:for="{{dataList}}" wx:key="index">
+	<tui-collapse index="{{index}}" current="{{current}}" bind:click="change">
+		<tui-list-cell hover="{{false}}" slot="title">{{item.title}}</tui-list-cell>
+		<view class="tui-order-item" slot="content">
+			<tui-list-cell padding="0" bindtap="detail" wx:for="{{item.product}}" wx:for-item="proItem" wx:index="proIndex" wx:key="id" data-index="{{proIndex}}">
+				<view class="tui-goods-item">
+					<image src="{{proItem.img}}" class="tui-goods-img"></image>
+					<view class="tui-goods-center">
+						<view class="tui-goods-name">{{proItem.title}}</view>
+						<view class="tui-goods-attr">￥{{proItem.price}}</view>
+					</view>
+					<view class="tui-right">
+						<tui-button type="blue" width="70rpx" height="{{50}}" size="{{24}}" bindtap="detail" data-proid="{{proItem.id}}">编辑</tui-button>
+						<tui-button type="warning" width="70rpx" height="{{50}}" size="{{24}}" bindtap="delete" data-proid="{{proItem.id}}">删除</tui-button>
+					</view>
+				</view>
+			</tui-list-cell>
+		</view>
+	</tui-collapse>
+</view>
+<tui-fab right="{{50}}" bottom="{{100}}" height="{{90}}" width="{{90}}" bgColor="#0081ff" btnList="{{btnList}}" bind:click="onClick"></tui-fab>

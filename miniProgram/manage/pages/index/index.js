@@ -20,7 +20,7 @@ Page({
             name: '商品管理',
             icon: 'member',
             color: '#fbbd08',
-            url: ''
+            url: '/manage/pages/product/product'
         }, {
             name: '分类管理',
             icon: 'label',
