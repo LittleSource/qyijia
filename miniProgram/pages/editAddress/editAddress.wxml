@@ -4,9 +4,9 @@
 			<view class="tui-line-cell">
 				<view class="tui-title">联系人:</view>
 				<input placeholder-class="tui-phcolor" class="tui-input" name="name" bindinput="inputName" value="{{name}}" placeholder="请输入联系人姓名" focus maxlength="20" confirm-type="next" type="text" />
-				<radio-group bindchange="changeGender">
-					<radio class="radio1" checked="{{gender == 1}}" color="#E41F19" value="1">先生</radio>
-					<radio class="radio2" checked="{{gender == 0}}" color="#E41F19" value="0">女士</radio>
+				<radio-group bindchange="changeGender" class="">
+					<radio checked="{{gender == 1}}" color="#E41F19" value="1">先生</radio>
+					<radio class="tui-radio" checked="{{gender == 0}}" color="#E41F19" value="0">女士</radio>
 				</radio-group>
 			</view>
 		</tui-list-cell>

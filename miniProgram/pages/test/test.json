@@ -2,11 +2,9 @@
   "navigationBarTitleText": "分类管理",
   "navigationBarTextStyle": "black",
   "backgroundTextStyle": "dark",
-  "enablePullDownRefresh": true,
   "usingComponents": {
-    "tui-collapse": "/components/tui-collapse/tui-collapse",
     "tui-list-cell": "/components/list-cell/list-cell",
-    "tui-button": "/components/extend/button/button",
-    "tui-fab": "/components/tui-fab/tui-fab"
+    "tui-upload": "/components/tui-upload/tui-upload",
+    "tui-button": "/components/extend/button/button"
   }
 }

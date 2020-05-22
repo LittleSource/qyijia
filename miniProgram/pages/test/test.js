@@ -1,75 +1,44 @@
-var graceJS = require('../../utils/grace');
 const app = getApp()
+const graceJS = require('../../utils/grace.js');
 var _self = null
 Page({
     data: {
-        dataList: [],
-        btnList: [{
-            bgColor: "#16C2C2",
-            text: "增加",
-            fontSize: 26,
-            color: "#fff"
-        }],
-        //手风琴效果
-        current: -1
+        imgUrl: '',
+        classify: [{
+                id: 0,
+                title: '美国'
+            },
+            {
+                id: 1,
+                title: '中国'
+            },
+            {
+                id: 2,
+                title: '巴西'
+            },
+            {
+                id: 3,
+                title: '日本'
+            }
+        ],
+        index: 0 //分类索引
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         _self = this
-        wx.startPullDownRefresh()
     },
-    onPullDownRefresh: function () {
-        graceJS.setAfter(() => {
-            wx.stopPullDownRefresh()
+    chooseImage: function () {
+        graceJS.chooseImgs({}, (res) => {
+            _self.setData({
+                imgUrl: res
+            })
         })
-        graceJS.post(
-            'manage/product/getlist', {}, {}, {
-                token: app.globalData.userInfo.token
-            },
-            (res) => {
-                _self.setData({
-                    dataList: res
-                })
-            }
-        )
     },
-    change(e) {
-        //可关闭自身
-        let index = e.detail.index
+    bindPickerChange: function (e) {
         this.setData({
-            current: this.data.current == index ? -1 : index
+            index: e.detail.value
         })
     },
-    onClick(e) {
-        //此处跳转新增页面
-    },
-    delete(e) {
-        wx.showModal({
-            title: '提示',
-            content: '确定删除此商品吗？',
-            success(res) {
-                if (res.confirm) {
-                    graceJS.showLoading('Loading...')
-                    graceJS.setAfter(() => {
-                        wx.hideLoading()
-                    })
-                    graceJS.post(
-                        'manage/product/delete', {
-                            id: e.currentTarget.dataset.proid
-                        }, {}, {
-                            token: app.globalData.userInfo.token
-                        },
-                        (res) => {
-                            graceJS.msgSuccess('删除成功', () => {
-                                wx.startPullDownRefresh()
-                            })
-                        }
-                    )
-                }
-            }
-        })
+    formSubmit: function (e) {
+
     }
 })

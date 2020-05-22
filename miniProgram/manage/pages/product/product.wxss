@@ -56,3 +56,12 @@ page {
 .tui-right :first-child {
     margin-right: 20rpx;
 }
+
+.no-text{
+    width: 100%;
+    padding: 15rpx 0;
+    background-color: #fff;
+    text-align: center;
+    font-size: 28rpx;
+    color: #333;
+}

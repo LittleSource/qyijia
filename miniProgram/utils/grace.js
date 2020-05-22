@@ -204,32 +204,22 @@ module.exports = {
 	},
 
 	// --- 图片相关 ---
-	chooseImgs: function (sets, success, fail, complete) {
+	chooseImgs: function (sets, success) {
 		if (!sets.count) {
 			sets.count = 1;
 		}
 		if (!sets.sizeType) {
-			sets.sizeType = ['original', 'compressed'];
+			sets.sizeType = ['original'];
 		}
 		if (!sets.sourceType) {
 			sets.sourceType = ['album', 'camera'];
 		}
 		wx.chooseImage({
-			count: sets.count, //默认9
-			sizeType: sets.sizeType, //可以指定是原图还是压缩图，默认二者都有
-			sourceType: sets.sourceType, //从相册选择
+			count: sets.count, //默认1
+			sizeType: sets.sizeType, //可以指定是原图还是压缩图，默认原图
+			sourceType: sets.sourceType, 
 			success: (res) => {
 				success(res.tempFilePaths);
-			},
-			fail: (e) => {
-				if (fail) {
-					fail(e);
-				}
-			},
-			complete: (e) => {
-				if (complete) {
-					complete(e);
-				}
 			}
 		});
 	},

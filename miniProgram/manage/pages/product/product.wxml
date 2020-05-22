@@ -1,7 +1,8 @@
 <view wx:for="{{dataList}}" wx:key="index">
 	<tui-collapse index="{{index}}" current="{{current}}" bind:click="change">
 		<tui-list-cell hover="{{false}}" slot="title">{{item.title}}</tui-list-cell>
-		<view class="tui-order-item" slot="content">
+		<view wx:if="{{item.product.length == 0}}" class="no-text" slot="content">该分类下暂无商品</view>
+		<view wx:else class="tui-order-item" slot="content">
 			<tui-list-cell padding="0" bindtap="detail" wx:for="{{item.product}}" wx:for-item="proItem" wx:index="proIndex" wx:key="id" data-index="{{proIndex}}">
 				<view class="tui-goods-item">
 					<image src="{{proItem.img}}" class="tui-goods-img"></image>

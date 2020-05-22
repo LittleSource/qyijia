@@ -30,9 +30,17 @@ Page({
                 token: app.globalData.userInfo.token
             },
             (res) => {
-                _self.setData({
-                    dataList: res
-                })
+                if (res.length == 0) {
+                    wx.navigateBack({
+                        complete: () => {
+                            graceJS.msg('请先添加分类')
+                        }
+                    })
+                } else {
+                    _self.setData({
+                        dataList: res
+                    })
+                }
             }
         )
     },

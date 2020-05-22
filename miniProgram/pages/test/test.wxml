@@ -1,23 +1,50 @@
-<view>
-	<block wx:for="{{dataList}}" wx:key="index">
-		<tui-collapse index="{{index}}" current="{{current}}" bind:click="change">
-			<tui-list-cell hover="{{false}}" slot="title">{{item.title}}</tui-list-cell>
-			<view class="tui-order-item" slot="content">
-				<tui-list-cell padding="0" bindtap="detail" wx:for="{{item.product}}" wx:for-item="proItem" wx:index="proIndex" wx:key="id" data-index="{{proIndex}}">
-					<view class="tui-goods-item">
-						<image src="{{proItem.img}}" class="tui-goods-img"></image>
-						<view class="tui-goods-center">
-							<view class="tui-goods-name">{{proItem.title}}</view>
-							<view class="tui-goods-attr">￥{{proItem.price}}</view>
-						</view>
-						<view class="tui-right">
-							<tui-button type="blue"  width="70rpx" height="56rpx" size="{{30}}" bindtap="detail" data-proid="{{proItem.id}}">编辑</tui-button>
-							<tui-button type="warning"  width="70rpx" height="56rpx" size="{{30}}" bindtap="delete" data-proid="{{proItem.id}}">删除</tui-button>
-						</view>
-					</view>
-				</tui-list-cell>
+<view class="container">
+	<tui-list-cell hover="{{false}}">
+		<view class="tui-line-cell tui-space-between">
+			<view class="tui-title">商品图片：</view>
+			<view class="tui-box-upload" bindtap="chooseImage">
+				<image wx:if="{{imgUrl}}" src="{{imgUrl}}" mode="widthFix"></image>
+				<view wx:else class="tui-upload-add">
+					<view class="tui-upload-icon tui-icon-plus"></view>
+				</view>
 			</view>
-		</tui-collapse>
-	</block>
-	<tui-fab right="{{50}}" bottom="{{100}}" height="{{90}}" width="{{90}}" bgColor="#0081ff" btnList="{{btnList}}" bind:click="onClick"></tui-fab>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell hover="{{false}}">
+		<view class="tui-line-cell">
+			<view class="tui-title">名称：</view>
+			<input placeholder-class="phcolor" class="tui-input" name="title" placeholder="请输入商品名称" maxlength="20" type="text" />
+		</view>
+	</tui-list-cell>
+	<tui-list-cell hover="{{false}}">
+		<view class="tui-line-cell">
+			<view class="tui-title">分类：</view>
+			<picker bindchange="bindPickerChange" range="{{classify}}" range-key="title" value="{{index}}">
+				{{classify[index].title}}
+			</picker>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell hover="{{false}}">
+		<view class="tui-line-cell">
+			<view class="tui-title">标签：</view>
+			<input placeholder-class="phcolor" class="tui-input" name="label" placeholder="商品标签，多个用$符号隔开" maxlength="30" type="text" />
+		</view>
+	</tui-list-cell>
+	<tui-list-cell hover="{{false}}">
+		<view class="tui-line-cell">
+			<view class="tui-title">价格：</view>
+			<input placeholder-class="phcolor" class="tui-input" name="price" placeholder="请输入商品价格" maxlength="5" type="digit" />
+		</view>
+	</tui-list-cell>
+	<tui-list-cell hover="{{false}}" last="{{true}}">
+		<view class="tui-line-cell">
+			<view class="tui-title">商品简介：</view>
+		</view>
+	</tui-list-cell>
+	<view class="tui-textarea">
+		<textarea bindblur="bindTextAreaBlur" placeholder="这里可以介绍商品的做法与特色..." />
+		</view>
+	<view class="tui-btn-box">
+		<tui-button type="danger" height="{{80}}" bindtap="formSubmit">提交数据</tui-button>
+	</view>
 </view>
