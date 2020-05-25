@@ -3,7 +3,7 @@
 		<view class="tui-line-cell tui-space-between">
 			<view class="tui-title">商品图片：</view>
 			<view class="tui-box-upload" bindtap="chooseImage">
-				<image wx:if="{{imgUrl}}" src="{{imgUrl}}" mode="widthFix"></image>
+				<image wx:if="{{imgUrl}}" src="{{imgUrl}}" mode="scaleToFill"></image>
 				<view wx:else class="tui-upload-add">
 					<view class="tui-upload-icon tui-icon-plus"></view>
 				</view>
