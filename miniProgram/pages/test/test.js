@@ -2,8 +2,8 @@ const app = getApp()
 const graceJS = require('../../utils/grace.js');
 const Upyun = require('../../lib/upyun-wxapp-sdk');
 const upyun = new Upyun({
-    bucket: 'qyj-image',
-    operator: 'qyj001',
+    bucket: 'ym-file',
+    operator: 'ymrw',
     getSignatureUrl: graceJS.baseUrl + 'common/up_yun/getSignature',
 })
 var _self = null
@@ -37,14 +37,14 @@ Page({
             wx.getImageInfo({
                 src: res[0],
                 success(res2) {
-                    var imgName = graceJS.uuid(16) + '.' + res2.type
-                    graceJS.showLoading('上传中..')
+                    var imgName = '/qyj/product/' + graceJS.uuid(16) + '.' + res2.type
+                    graceJS.showLoading('上传中...')
                     upyun.upload({
                         localPath: res[0],
                         remotePath: imgName,
                         success: function (res3) {
                             _self.setData({
-                                imgUrl: 'http://qyj-image.test.upcdn.net/' + imgName + '!product'
+                                imgUrl: app.globalData.cdnUrl + imgName + '!qyj.product'
                             })
                             wx.hideLoading()
                         },

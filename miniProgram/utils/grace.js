@@ -1,5 +1,6 @@
 module.exports = {
 	baseUrl: 'http://192.168.1.11/',
+	cdnUrl: 'http://ym-file.test.upcdn.net', //静态文件cdn加速域名
 	// --- 页面跳转相关 ---
 	navigate: function (url, type, success, fail, complete) {
 		if (!type) {
@@ -134,7 +135,8 @@ module.exports = {
 					} else if (res.data.code == 401) {
 						this.msg('登录信息失效,请重新登录!')
 						this.removeStorage('userInfo')
-						wx.switchTab({
+						//需要获取页面栈
+						wx.redirectTo({
 							url: '/pages/login/login?type=1&path=/pages/mine/mine',
 						})
 					} else {
@@ -217,7 +219,7 @@ module.exports = {
 		wx.chooseImage({
 			count: sets.count, //默认1
 			sizeType: sets.sizeType, //可以指定是原图还是压缩图，默认原图
-			sourceType: sets.sourceType, 
+			sourceType: sets.sourceType,
 			success: (res) => {
 				success(res.tempFilePaths);
 			}

@@ -27,7 +27,7 @@
 
 .tui-btn-box {
     width: 100%;
-    padding: 40rpx;
+    padding: 60rpx 40rpx 0rpx;
     box-sizing: border-box;
 }
 
@@ -76,5 +76,6 @@ picker {
 
 textarea {
     width: 100% !important;
-    height: 280rpx !important;
+    height: 320rpx !important;
+    border: 1rpx dashed #ccc;
 }

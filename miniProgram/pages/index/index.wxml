@@ -62,7 +62,7 @@
 				</view>
 				<scroll-view scroll-x class="bottom-box">
 					<view class="bottom-box-container">
-						<view class="goods-box" wx:for="{{8}}" wx:key="*this">
+						<view class="goods-box" wx:for="{{8}}">
 							<view class="img-box">
 								<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589865752633&di=352008afaca8161ed794e95a439bb9fa&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171115%2Fb0cc5d1fe86e4473864909be766e214f.jpeg" mode="scaleToFill"></image>
 								<view class="tag">666</view>

@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/test/test",
         "pages/index/index",
+        "pages/test/test",
         "pages/shop/shop",
         "pages/login/login",
         "pages/mine/mine",
@@ -23,7 +23,8 @@
                 "pages/index/index",
                 "pages/classify/classify",
                 "pages/order/order",
-                "pages/product/product"
+                "pages/product/product",
+                "pages/editProduct/editProduct"
             ]
         }
     ],
