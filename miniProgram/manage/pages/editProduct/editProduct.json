@@ -4,7 +4,6 @@
   "backgroundTextStyle": "dark",
   "usingComponents": {
     "tui-list-cell": "/components/list-cell/list-cell",
-    "tui-upload": "/components/tui-upload/tui-upload",
     "tui-button": "/components/extend/button/button"
   }
 }

@@ -35,7 +35,7 @@ Page({
             name: '店铺信息',
             icon: 'about',
             color: '#0081ff',
-            url: ''
+            url: '/manage/pages/shopInfo/shopInfo'
         }]
     },
 

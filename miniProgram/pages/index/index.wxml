@@ -2,7 +2,7 @@
 	<view class="tui-header-banner">
 		<view class="tui-position" bindtap="chooseLocation">
 			<tui-icon name="position" size="18" color="#666666"></tui-icon>
-			<text>{{positionInfo}}</text>
+			<text>{{positionInfo.name}}</text>
 			<tui-icon name="arrowright" size="18" color="#666666"></tui-icon>
 		</view>
 		<view class="tui-search" bindtap="goSearch">

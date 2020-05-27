@@ -24,7 +24,8 @@
                 "pages/classify/classify",
                 "pages/order/order",
                 "pages/product/product",
-                "pages/editProduct/editProduct"
+                "pages/editProduct/editProduct",
+                "pages/shopInfo/shopInfo"
             ]
         }
     ],

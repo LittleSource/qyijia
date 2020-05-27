@@ -19,7 +19,12 @@ class Postition {
             longitude: res.longitude
           },
           success: function (res) { //成功后的回调
-            success_(res.result.formatted_addresses.recommend)
+            let postitionInfo = {
+              name: res.result.formatted_addresses.recommend,
+              latitude: res.result.location.lat,
+              longitude: res.result.location.lng
+            }
+            success_(postitionInfo)
           },
           fail: function (error) {
             fail_('定位失败，请点击选择', error)

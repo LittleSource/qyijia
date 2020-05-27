@@ -83,6 +83,9 @@ Page({
         })
     },
     imgLongTap() {
+        if (!this.data.img) {
+            return
+        }
         wx.previewImage({
             urls: [_self.data.img],
         })

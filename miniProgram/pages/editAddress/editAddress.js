@@ -1,7 +1,7 @@
-const graceJS = require('../../utils/grace.js');
-const utils = require('../../utils/util.js');
+const graceJS = require('../../utils/grace.js')
+const utils = require('../../utils/util.js')
 const Position = require('../../utils/position')
-const chooseLocation = requirePlugin('chooseLocation');
+const chooseLocation = requirePlugin('chooseLocation')
 const app = getApp()
 var _self = null
 var position = new Position()

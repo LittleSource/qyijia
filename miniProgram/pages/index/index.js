@@ -2,10 +2,14 @@ const Position = require('../../utils/position')
 const chooseLocation = requirePlugin('chooseLocation');
 var _self = null
 var position = new Position()
+var app = getApp()
 Page({
     data: {
-        positionInfo: '定位中...',
-        isGochooseLocationPage:false,//是否去过选择地址页面
+        positionInfo: {
+            name: '定位中...',
+
+        },
+        isGochooseLocationPage: false, //是否去过选择地址页面
         current: 0,
         tabbar: [{
             icon: "home",
@@ -122,13 +126,17 @@ Page({
         loadding: false,
         pullUpOn: true
     },
-    onShow:function(){
+    onShow: function () {
         const location = chooseLocation.getLocation();
-        if(this.data.isGochooseLocationPage && location instanceof Object){
+        if (this.data.isGochooseLocationPage && location instanceof Object) {
+            this.data.positionInfo.name = location.name
+            this.data.positionInfo.latitude = location.latitude
+            this.data.positionInfo.longitude = location.longitude
             this.setData({
-                positionInfo:location.name,
-                isGochooseLocationPage:false
+                positionInfo: this.data.positionInfo,
+                isGochooseLocationPage: false
             })
+            app.globalData.positionInfo = this.data.positionInfo
             wx.startPullDownRefresh()
         }
     },
@@ -137,12 +145,13 @@ Page({
         position.getPostition(
             function success(res) {
                 _self.setData({
-                    positionInfo:res
+                    positionInfo: res
                 })
+                app.globalData.positionInfo = res
             },
-            function fail(res,e) {
+            function fail(res, e) {
                 _self.setData({
-                    positionInfo:res
+                    positionInfo: res
                 })
             }
         )
@@ -176,23 +185,25 @@ Page({
                 if (this.data.pageIndex == 1) {
                     loadData = loadData.reverse();
                 }
-                setTimeout(function() {
+                setTimeout(function () {
                     _self.setData({
                         productList: _self.data.productList.concat(loadData),
                         pageIndex: _self.data.pageIndex + 1,
                         loadding: false
                     })
-                },2000)
+                }, 2000)
             }
         })
     },
-    goSearch(){
+    goSearch() {
         wx.navigateTo({
-          url: '/pages/search/search',
+            url: '/pages/search/search',
         })
     },
-    chooseLocation(){
-        this.setData({isGochooseLocationPage:true})
+    chooseLocation() {
+        this.setData({
+            isGochooseLocationPage: true
+        })
         position.chooseLocation()
     },
     detail: function () {

@@ -1,9 +1,9 @@
 const app = getApp()
-const graceJS = require('../../utils/grace.js')
-const Position = require('../../utils/position')
+const graceJS = require('../../../utils/grace.js')
+const Position = require('../../../utils/position')
 const chooseLocation = requirePlugin('chooseLocation')
-const utils = require('../../utils/util.js')
-const Upyun = require('../../lib/upyun-wxapp-sdk')
+const utils = require('../../../utils/util.js')
+const Upyun = require('../../../lib/upyun-wxapp-sdk')
 const upyun = new Upyun({
     bucket: 'ym-file',
     operator: 'ymrw',
@@ -36,7 +36,7 @@ Page({
             })
         }
     },
-    onLoad: function (options) {
+    onLoad: function () {
         _self = this
         // graceJS.showLoading('Loading...')
         // graceJS.setAfter(() => {
