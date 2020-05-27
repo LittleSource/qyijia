@@ -2,7 +2,7 @@
 	<tui-list-cell hover="{{false}}">
 		<view class="tui-line-cell tui-space-between">
 			<view class="tui-title">商品图片：</view>
-			<view class="tui-box-upload" bindtap="chooseImage">
+			<view class="tui-box-upload" bindtap="chooseImage" bindlongtap="imgLongTap">
 				<image wx:if="{{img}}" src="{{img}}" mode="scaleToFill"></image>
 				<view wx:else class="tui-upload-add">
 					<view class="tui-upload-icon tui-icon-plus"></view>
@@ -13,7 +13,7 @@
 	<tui-list-cell hover="{{false}}">
 		<view class="tui-line-cell">
 			<view class="tui-title">名称：</view>
-			<input placeholder-class="phcolor" class="tui-input" value="{{title}}" name="title" placeholder="请输入商品名称" maxlength="20" type="text" />
+			<input placeholder-class="phcolor" class="tui-input" bindinput="inputTitle" value="{{title}}" name="title" placeholder="请输入商品名称" maxlength="20" type="text" />
 		</view>
 	</tui-list-cell>
 	<tui-list-cell hover="{{false}}">
@@ -27,13 +27,13 @@
 	<tui-list-cell hover="{{false}}">
 		<view class="tui-line-cell">
 			<view class="tui-title">标签：</view>
-			<input placeholder-class="phcolor" class="tui-input" value="{{labels}}" name="label" placeholder="商品标签，多个用$符号隔开" maxlength="30" type="text" />
+			<input placeholder-class="phcolor" class="tui-input" bindinput="inputLabels" value="{{labels}}" name="label" placeholder="商品标签，多个用$符号隔开" maxlength="30" type="text" />
 		</view>
 	</tui-list-cell>
 	<tui-list-cell hover="{{false}}">
 		<view class="tui-line-cell">
 			<view class="tui-title">价格：</view>
-			<input placeholder-class="phcolor" class="tui-input" value="{{price}}" name="price" placeholder="请输入商品价格" maxlength="5" type="digit" />
+			<input placeholder-class="phcolor" class="tui-input" bindinput="inputPrice" value="{{price}}" name="price" placeholder="请输入商品价格" maxlength="8" type="digit" />
 		</view>
 	</tui-list-cell>
 	<tui-list-cell hover="{{false}}" last="{{true}}">
@@ -42,7 +42,7 @@
 		</view>
 	</tui-list-cell>
 	<view class="tui-textarea">
-		<textarea bindblur="bindTextAreaBlur" value="{{introduce}}" placeholder="这里可以介绍商品的做法与特色..." />
+		<textarea bindinput="inputIntroduce" value="{{introduce}}" placeholder="这里可以介绍商品的做法与特色..." />
 		</view>
 	<view class="tui-btn-box">
 		<tui-button type="danger" height="{{80}}" bindtap="formSubmit">提交数据</tui-button>

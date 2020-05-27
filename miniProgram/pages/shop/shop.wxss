@@ -155,6 +155,9 @@ page {
 .title {
   font-size: 30rpx;
   font-weight: 550;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .shop-right {
@@ -167,6 +170,7 @@ page {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .shop-label {
@@ -306,31 +310,36 @@ page {
 }
 
 /**model 500rpx*/
-.good-img{
+.good-img {
   height: 500rpx;
   width: 500rpx;
 }
-.good-box{
+
+.good-box {
   display: flex;
   flex-direction: column;
   padding: 10rpx 20rpx;
 }
-.good-row{
+
+.good-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 30rpx;
 }
-.good-row :last-child{
-  color:#E41F19
+
+.good-row :last-child {
+  color: #E41F19
 }
-.good-title{
+
+.good-title {
   font-size: 32rpx;
   font-weight: bold;
   color: #000;
   line-height: 30rpx;
 }
-.good-introduce{
+
+.good-introduce {
   font-size: 28rpx;
   color: #666666;
 }

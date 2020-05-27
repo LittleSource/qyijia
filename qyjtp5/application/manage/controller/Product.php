@@ -30,22 +30,19 @@ class Product extends ManageBaseController
         }
     }
 
-    public function uploadImg(){
-        $img = $this->request->file('img');
-        $url = "http://v0.api.upyun.com/qyj-image/path";
-        $headerData = [
-            "Authorization: Basic ".base64_encode(config('up_operator').':'.config('up_password')),
-            "Date: ".gmdate('D, d M Y H:i:s T'),
-        ];
-        $ch = curl_init(); //初始化CURL句柄
-        curl_setopt($ch, CURLOPT_URL, $url); //设置请求的URL
-        curl_setopt ($ch, CURLOPT_HTTPHEADER, $headerData);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); //设为TRUE把curl_exec()结果转化为字串，而不是直接输出
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"PUT"); //设置请求方式
-        curl_setopt($ch, CURLOPT_INFILE, fopen($img,'rb')); //设置资源句柄
-        curl_setopt($ch, CURLOPT_INFILESIZE, $img->getSize());
-        $output = curl_exec($ch);
-        curl_close($ch);
-        return $output;
+    public function addOrEdit(){
+        $data = json_decode($this->request->post('data'),true);
+        $Product = new \app\manage\model\Product();
+        $data['shop_id'] = $this->shopId;
+        if(isset($data['id'])){//存在id则为修改
+            $Product = $Product->where(['id'=>$data['id'],'shop_id'=>$this->shopId])->find();
+        }else{
+            $data['add_time'] = date('Y-m-d H:i:s');
+        }
+        if($Product->save($data)){
+            return ymJson(200,'ok',[]);
+        }else{
+            return ymJson(201,'数据更新失败!',[]);
+        }
     }
 }

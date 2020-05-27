@@ -11,7 +11,8 @@ Page({
             color: "#fff"
         }],
         //手风琴效果
-        current: -1
+        current: -1,
+        isNavigateTo: false //是否去过修改or新增页面
     },
 
     /**
@@ -54,23 +55,45 @@ Page({
     edit: function (e) {
         var pro = this.data.dataList[e.currentTarget.dataset.classindex].product[e.currentTarget.dataset.proindex]
         pro.classIndex = e.currentTarget.dataset.classindex
+        this.setData({
+            isNavigateTo: true
+        })
         wx.navigateTo({
             url: '/manage/pages/editProduct/editProduct?isadd=0',
             events: {
                 // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-                someEvent: function (data) {
-                    console.log(data)
+                isSuccess: function (data) {
+                    if (data && _self.data.isNavigateTo) {
+                        _self.setData({
+                            isNavigateTo: false
+                        })
+                        wx.startPullDownRefresh()
+                    }
                 }
             },
             success: function (res) {
-                // 通过eventChannel向被打开页面传送数据
-                res.eventChannel.emit('proData', pro)
+                res.eventChannel.emit('proData', pro) // 通过eventChannel向被打开页面传送数据
             }
         })
     },
     onClick(e) {
+        this.setData({
+            isNavigateTo: true
+        })
         //跳转新增页面
-        graceJS.navigate('/manage/pages/editProduct/editProduct?isadd=1')
+        wx.navigateTo({
+            url: '/manage/pages/editProduct/editProduct?isadd=1',
+            events: { //获取被打开页面传送到当前页面的数据
+                isSuccess: function (data) {
+                    if (data && _self.data.isNavigateTo) {
+                        _self.setData({
+                            isNavigateTo: false
+                        })
+                        wx.startPullDownRefresh()
+                    }
+                }
+            }
+        })
     },
     delete(e) {
         wx.showModal({
