@@ -5,7 +5,7 @@
 		<view class="tui-order-item" wx:for="{{dataList}}" wx:key="index" wx:for-item="orderItem">
 			<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
 				<view class="tui-goods-title">
-					<view>{{orderItem.shop_title}}</view>
+					<view>订单号：{{orderItem.id}}</view>
 					<view class="tui-order-status">{{orderItem.status==2?'待接单':orderItem.status==3?'待送达':'已完成'}}</view>
 				</view>
 			</tui-list-cell>

@@ -7,7 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        todayPriceSum: 0,
+        todayPriceSum: '0.00',
         todayOrderCount: 0,
         yesterdayCount: 0,
         thisMonthCount: 0,

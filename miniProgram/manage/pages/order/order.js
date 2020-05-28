@@ -37,7 +37,6 @@ Page({
             isShowModal: true,
             orderData: orderData
         })
-        console.log(orderData)
     },
     hideModal() {
         this.setData({

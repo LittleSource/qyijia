@@ -14,11 +14,12 @@ var _self = null
 Page({
     data: {
         isChoosedPosition: false,
-        address: '天净沙撒海红昂家的',
+        address: '',
         latitude: 0,
         longitude: 0,
         city: '',
-        img: '',
+        district: '',
+        shopImg: '',
         title: '',
         minimum: 0,
         notice: '',
@@ -28,36 +29,48 @@ Page({
     onShow: function () {
         const location = chooseLocation.getLocation();
         if (this.data.isChoosedPosition && location) {
+            console.log(location)
             this.setData({
+                city: location.city,
+                district: location.district,
+                address: location.name,
                 latitude: location.latitude,
                 longitude: location.longitude,
-                address: location.name,
                 isChoosedPosition: false
             })
         }
     },
     onLoad: function () {
         _self = this
-        // graceJS.showLoading('Loading...')
-        // graceJS.setAfter(() => {
-        //     wx.hideLoading()
-        // })
-        // graceJS.post(
-        //     'manage/classify/getlist', {}, {}, {
-        //         token: app.globalData.userInfo.token
-        //     }, (res) => {
-        //         _self.setData({
-        //             classify: res
-        //         })
-        //     }
-        // )
+        graceJS.showLoading('Loading...')
+        graceJS.setAfter(() => {
+            wx.hideLoading()
+        })
+        graceJS.post(
+            'manage/shop/getinfo', {}, {}, {
+                token: app.globalData.userInfo.token
+            }, (res) => {
+                _self.setData({
+                    shopImg: res.shop_img,
+                    title: res.title,
+                    address: res.address,
+                    latitude: res.latitude,
+                    longitude: res.longitude,
+                    city: res.city,
+                    district: res.district,
+                    minimum: res.minimum,
+                    notice: res.notice,
+                    openStatus: res.open_status
+                })
+            }
+        )
     },
     chooseImage: function () {
         graceJS.chooseImgs({}, (res) => {
             wx.getImageInfo({
                 src: res[0],
                 success(res2) {
-                    var imgName = '/qyj/product/' + graceJS.uuid(16) + '.' + res2.type
+                    var imgName = '/qyj/shop/' + graceJS.uuid(16) + '.' + res2.type
                     graceJS.showLoading('上传中...')
                     upyun.upload({
                         localPath: res[0],
@@ -65,7 +78,7 @@ Page({
                         success: function (res3) {
                             _self.setData({
                                 isEdit: true,
-                                img: graceJS.cdnUrl + imgName + '!qyj.product'
+                                shopImg: graceJS.cdnUrl + imgName + '!qyj.shop.avatar'
                             })
                             wx.hideLoading()
                         },
@@ -78,22 +91,21 @@ Page({
         })
     },
     imgLongTap() {
-        if (!this.data.img) {
-            return
-        }
         wx.previewImage({
-            urls: [_self.data.img],
+            urls: [_self.data.shopImg],
         })
     },
     chooseLocation() {
         this.setData({
-            isChoosedPosition: true
+            isChoosedPosition: true,
+            isEdit: true
         })
         position.chooseLocation()
     },
     switchChange(e) {
         this.setData({
-            openStatus: e.detail.value ? 1 : 0
+            openStatus: e.detail.value ? 1 : 0,
+            isEdit: true
         })
     },
     inputTitle(e) {
@@ -119,15 +131,39 @@ Page({
         if (!this.data.isEdit) {
             graceJS.msg('数据未发生改变')
             return
-        } else if (utils.isEmpty(this.data.img)) {
-            graceJS.msg('请上传商品图片!')
-            return
         } else if (utils.isEmpty(this.data.title)) {
-            graceJS.msg('请填写商品名称!')
+            graceJS.msg('请填写店铺名称!')
             return
-        } else if (utils.isEmpty(this.data.price)) {
-            graceJS.msg('请输入商品价格!')
-            return
-        } else {}
+        } else {
+            graceJS.showLoading('Loading...')
+            graceJS.setAfter(() => {
+                wx.hideLoading()
+            })
+            var data = {
+                shop_img: this.data.shopImg,
+                title: this.data.title,
+                address: this.data.address,
+                latitude: this.data.latitude,
+                longitude: this.data.longitude,
+                city: this.data.city,
+                district: this.data.district,
+                minimum: isNaN(this.data.minimum) ? 0 : this.data.minimum,
+                notice: this.data.notice,
+                open_status: this.data.openStatus
+            }
+            graceJS.post(
+                'manage/shop/update', {
+                    data: JSON.stringify(data)
+                }, {}, {
+                    token: app.globalData.userInfo.token
+                }, () => {
+                    wx.navigateBack({
+                        complete: () => {
+                            graceJS.msgSuccess('修改成功!')
+                        }
+                    })
+                }
+            )
+        }
     }
 })

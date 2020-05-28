@@ -2,8 +2,8 @@
 	<tui-list-cell hover="{{false}}">
 		<view class="tui-line-cell tui-space-between">
 			<view class="tui-title">店铺头像：</view>
-			<view class="tui-box-upload" bindtap="chooseImage" bindlongtap="imgLongTap">
-				<image wx:if="{{img}}" src="{{img}}" mode="scaleToFill"></image>
+			<view class="tui-box-upload" bindtap="chooseImage" bindlongpress="imgLongTap">
+				<image wx:if="{{shopImg}}" src="{{shopImg}}" mode="scaleToFill"></image>
 				<view wx:else class="tui-upload-add">
 					<view class="tui-upload-icon tui-icon-plus"></view>
 				</view>

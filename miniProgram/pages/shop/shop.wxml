@@ -3,7 +3,7 @@
 		<tui-icon name="arrowleft" color="#ffffff"></tui-icon>
 	</view>
 	<view class="tui-header">
-		<view class="tui-avatar" style="background:url('{{shopInfo.head_img}}')"></view>
+		<view class="tui-avatar" style="background:url('{{shopInfo.shop_img}}')"></view>
 		<view class="tui-shop-info">
 			<view class="shop-title">{{shopInfo.title}}</view>
 			<view class="shop-notice">
@@ -12,7 +12,7 @@
 			</view>
 			<view class="shop-position" bindtap="routePlan">
 				<tui-icon name="position" size="16" color="#00A5F2"></tui-icon>
-				{{shopInfo.address}}
+				{{shopInfo.address.length < 10 ? shopInfo.city+shopInfo.district+shopInfo.address:shopInfo.address}}
 			</view>
 		</view>
 	</view>

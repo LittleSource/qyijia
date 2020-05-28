@@ -65,6 +65,16 @@ Page({
                     minimum: parseFloat(res.shopInfo.minimum)
                 })
                 _self.initProduct()
+                if (res.shopInfo.open_status == 0) {
+                    wx.showModal({
+                        title: '提示',
+                        content: '该商家休息中,请稍后再来~',
+                        showCancel: false,
+                        complete: () => {
+                            wx.navigateBack()
+                        }
+                    })
+                }
             }
         )
     },
@@ -279,7 +289,7 @@ Page({
         )
     },
     submitOrder() {
-        if (this.data.shoppingCart.length == 0) {
+        if (this.data.shoppingCart.length == 0 || this.data.shopInfo.open_status == 0) {
             return
         }
         app.globalData.goodsInfo.shopId = this.data.shopId

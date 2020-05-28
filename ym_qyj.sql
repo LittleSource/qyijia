@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 27/05/2020 23:19:34
+ Date: 28/05/2020 21:52:21
 */
 
 SET NAMES utf8mb4;
@@ -155,8 +155,8 @@ CREATE TABLE `shop`  (
   `user_id` int(11) UNSIGNED NOT NULL COMMENT '关联user表id',
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '店铺名',
   `notice` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT '' COMMENT '公告',
-  `logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '店铺图标',
-  `minimum` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '起送价',
+  `shop_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '店铺图标',
+  `minimum` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '起送价',
   `qrcode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '小程序码url',
   `city` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '城市',
   `district` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '区',
@@ -172,7 +172,7 @@ CREATE TABLE `shop`  (
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
-INSERT INTO `shop` VALUES (1, 6, '欢乐大家族', '美食与我同行，我们一起创建美食新风尚', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588404069120&di=287d5894c99cfd35a45612cfe67d4e71&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fcae36e662c728adcc716330e589f69f703c43fe724122-QYapJj_fw658', 20, NULL, '1', '2', '天津市津南区吾悦广场店', 103.832222, 36.058971, 1, 1, '2020-05-01 19:42:08');
+INSERT INTO `shop` VALUES (1, 6, '阿尔法餐厅2', '美食与我同行，我们一起创建美食新风尚买卖送得快', 'http://ym-file.test.upcdn.net/qyj/shop/oE4qJyqaA3x2Bnxe.jpeg!qyj.shop.avatar', 9, NULL, '兰州市', '城关区', '中国银行监督管理委员会甘肃监管局', 103.834999, 36.061108, 1, 0, '2020-05-01 19:42:08');
 
 -- ----------------------------
 -- Table structure for user

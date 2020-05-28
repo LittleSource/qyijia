@@ -20,6 +20,7 @@ page{
 
 .tui-goods-title {
     width: 100%;
+    color: #888;
     font-size: 28rpx;
     display: flex;
     align-items: center;
@@ -27,7 +28,6 @@ page{
 }
 
 .tui-order-status {
-    color: #888;
     font-size: 26rpx;
 }
 
