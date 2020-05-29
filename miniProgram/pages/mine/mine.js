@@ -7,6 +7,7 @@ Page({
         this.setData({
             userInfo: app.globalData.userInfo
         })
+        console.log(app.globalData.userInfo)
     },
     login() {
         //判断是否为登录状态

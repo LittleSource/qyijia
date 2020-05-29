@@ -30,7 +30,7 @@ Page({
             name: '资金记录',
             icon: 'wealth',
             color: '#e54d42',
-            url: ''
+            url: '/manage/pages/fundDetails/fundDetails'
         }, {
             name: '店铺信息',
             icon: 'about',

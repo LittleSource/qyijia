@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 28/05/2020 21:52:21
+ Date: 29/05/2020 23:52:07
 */
 
 SET NAMES utf8mb4;
@@ -45,6 +45,30 @@ CREATE TABLE `address`  (
 INSERT INTO `address` VALUES (6, 6, '源哥', '17320285191', 1, '中国银行监督管理委员会甘肃监管局', '甘肃省兰州市城关区瞿永刚民航', '8层185', 103.834999, 36.061108, 2, 0, 1, '2020-05-10 15:41:00');
 INSERT INTO `address` VALUES (7, 6, '小源呀', '15609319043', 1, '兰州新区火家湾保障房小区', '甘肃省兰州市皋兰县JK13号路与纬三十路交叉口西北方向140米', '49号楼2001', 103.721069, 36.560783, 1, 0, 0, '2020-05-10 15:53:29');
 INSERT INTO `address` VALUES (8, 6, '源哥', '17320258693', 1, '甘肃税务大厦', '甘肃省兰州市城关区金昌北路244号', '8层181', 103.839478, 36.060490, 2, 1, 0, '2020-05-10 20:42:32');
+
+-- ----------------------------
+-- Table structure for fund
+-- ----------------------------
+DROP TABLE IF EXISTS `fund`;
+CREATE TABLE `fund`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户id',
+  `type` tinyint(2) NOT NULL COMMENT '0支出 ；1收入',
+  `price` decimal(10, 2) NOT NULL COMMENT '账变金额',
+  `content` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '支出或收入说明',
+  `classification` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类',
+  `add_time` datetime(0) NOT NULL COMMENT '时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of fund
+-- ----------------------------
+INSERT INTO `fund` VALUES (1, 6, 1, 16.00, '订单213213', '接单收入', '2020-05-15 23:05:48');
+INSERT INTO `fund` VALUES (2, 6, 0, 2.00, '订单3', '提现', '2020-05-13 23:05:48');
+INSERT INTO `fund` VALUES (3, 6, 1, 4.00, '订单4', '接单收入', '2020-04-13 23:05:48');
+INSERT INTO `fund` VALUES (4, 6, 1, 5.00, '订单4', '接单收入', '2020-04-15 23:05:48');
+INSERT INTO `fund` VALUES (5, 6, 1, 88.00, '订单0', '接单收入', '2020-03-15 23:05:48');
 
 -- ----------------------------
 -- Table structure for order
@@ -185,16 +209,17 @@ CREATE TABLE `user`  (
   `phone` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户电话',
   `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户昵称',
   `type` tinyint(4) UNSIGNED NOT NULL DEFAULT 1 COMMENT '用户类型 :1|买家 2|卖家 ',
+  `balance` decimal(20, 2) NOT NULL DEFAULT 0.00 COMMENT '余额',
   `status` tinyint(4) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1|正常 0|禁用',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   `addtime` datetime(0) NULL DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `user_openid`(`openid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (6, 'omL5t5atV8kyM8ewvQdKJXHjE5cM', 'https://wx.qlogo.cn/mmopen/vi_32/ThDSia5wXgD8GT84qn43U40D0AwWl1mCgddEGfFHDQA7PyWxBjeZhgVPfk37b7IHHXrBnXatCp6icWgYXSeXibNxw/132', '15609319042', '源°🍃', 2, 1, '', '2020-05-01 13:28:11');
+INSERT INTO `user` VALUES (6, 'omL5t5atV8kyM8ewvQdKJXHjE5cM', 'https://wx.qlogo.cn/mmopen/vi_32/ThDSia5wXgD8GT84qn43U40D0AwWl1mCgddEGfFHDQA7PyWxBjeZhgVPfk37b7IHHXrBnXatCp6icWgYXSeXibNxw/132', '15609319042', '源°🍃', 2, 0.00, 1, '', '2020-05-29 22:41:09');
 
 SET FOREIGN_KEY_CHECKS = 1;

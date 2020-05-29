@@ -1,3 +1,7 @@
+page {
+    background-color: #fafafa;
+}
+
 .container {
     padding-bottom: env(safe-area-inset-bottom);
 }
@@ -144,5 +148,13 @@
 }
 
 .add {
-    color: #5677fc !important;
+    color: orangered !important;
+}
+
+.footer {
+    width: 100%;
+    padding: 15rpx 0;
+    text-align: center;
+    font-size: 24rpx;
+    color: #666;
 }

@@ -1,48 +1,282 @@
 <view class="container">
-	<tui-list-cell hover="{{false}}">
-		<view class="tui-line-cell tui-space-between">
-			<view class="tui-title">店铺头像：</view>
-			<view class="tui-box-upload" bindtap="chooseImage" bindlongtap="imgLongTap">
-				<image wx:if="{{img}}" src="{{img}}" mode="scaleToFill"></image>
-				<view wx:else class="tui-upload-add">
-					<view class="tui-upload-icon tui-icon-plus"></view>
+	<view class="tips">
+		<view>账户余额:￥888</view>
+	</view>
+	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+		<view slot="header">
+			<view class="sticky-item ">
+				<view class="date">本月</view>
+				<view class="amount">
+					<view>支出 ￥2030.88</view>
+					<view>收入 ￥230.50</view>
 				</view>
 			</view>
 		</view>
-	</tui-list-cell>
-	<tui-list-cell hover="{{false}}">
-		<view class="tui-line-cell">
-			<view class="tui-title">店铺名称：</view>
-			<input placeholder-class="phcolor" class="tui-input" bindinput="inputTitle" value="{{title}}" name="title" placeholder="请输入店铺名称" maxlength="20" type="text" />
+		<view slot="content">
+			<!--内容 start-->
+			<view class="list-view">
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">朝朝盈-2019.06.03-收益发放</view>
+							<view class="source">理财</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money add">
+						+0.07
+					</view>
+				</view>
+
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">扫收钱码付款-给小短腿(2019-06.04）</view>
+							<view class="source">生活日用</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-20190604.07
+					</view>
+				</view>
+
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-888.00
+					</view>
+				</view>
+
+
+				<view class="list-item item-last" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">工资收入</view>
+							<view class="source">工资</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money add">
+						+66668666.00
+					</view>
+				</view>
+
+
+			</view>
+			<!--内容 end-->
 		</view>
-	</tui-list-cell>
-	<tui-list-cell hover="{{false}}">
-		<view class="tui-line-cell" bindtap="chooseLocation">
-			<view class="tui-title">店铺位置：</view>
-			<view class="tui-input">{{address}}</view>
+	</sticky>
+
+	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+		<view slot="header">
+			<view class="sticky-item ">
+				<view class="date">5月</view>
+				<view class="amount">
+					<view>支出 ￥130.88</view>
+					<view>收入 ￥2430.50</view>
+				</view>
+			</view>
 		</view>
-	</tui-list-cell>
-	<tui-list-cell hover="{{false}}">
-		<view class="tui-line-cell">
-			<view class="tui-title">起送价￥：</view>
-			<input placeholder-class="phcolor" class="tui-input" bindinput="inputMinimum" value="{{minimum}}" name="minimum" placeholder="起送价只支持整数" maxlength="3" type="number" />
+		<view slot="content">
+			<!--内容 start-->
+			<view class="list-view">
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">朝朝盈-2019.06.03-收益发放</view>
+							<view class="source">理财</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money add">
+						+0.07
+					</view>
+				</view>
+
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">扫收钱码付款-给小短腿</view>
+							<view class="source">生活日用</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-201906.07
+					</view>
+				</view>
+
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-888.00
+					</view>
+				</view>
+
+
+				<view class="list-item item-last" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">工资收入</view>
+							<view class="source">工资</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money add">
+						+66668666.00
+					</view>
+				</view>
+
+
+			</view>
+			<!--内容 end-->
 		</view>
-	</tui-list-cell>
-	<tui-list-cell hover="{{false}}">
-		<view class="tui-line-cell tui-space-between">
-			<view class="tui-title">店铺开关：</view>
-			<switch checked="{{openStatus == 1}}" color="#eb0909" bindchange="switchChange" />
+	</sticky>
+
+	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+		<view slot="header">
+			<view class="sticky-item ">
+				<view class="date">4月</view>
+				<view class="amount">
+					<view>支出 ￥61300.88</view>
+					<view>收入 ￥2430.50</view>
+				</view>
+			</view>
 		</view>
-	</tui-list-cell>
-	<tui-list-cell hover="{{false}}" last="{{true}}">
-		<view class="tui-line-cell">
-			<view class="tui-title">店铺公告：</view>
+		<view slot="content">
+			<!--内容-->
+			<view class="list-view">
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">朝朝盈-2019.06.03-收益发放</view>
+							<view class="source">理财</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money add">
+						+0.07
+					</view>
+				</view>
+
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">扫收钱码付款-给小短腿</view>
+							<view class="source">生活日用</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-201906.07
+					</view>
+				</view>
+
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">今天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-888.00
+					</view>
+				</view>
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">昨天 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-99.00
+					</view>
+				</view>
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">04-03 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-60.00
+					</view>
+				</view>
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">04-02 19:30</view>
+						</view>
+					</view>
+					<view class="money">
+						-888.00
+					</view>
+				</view>
+				<view class="list-item" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">美团点评</view>
+							<view class="source">餐饮美食</view>
+							<view class="time">04-02 09:01</view>
+						</view>
+					</view>
+					<view class="money">
+						-40.00
+					</view>
+				</view>
+
+
+				<view class="list-item item-last" hover-class="hover" hover-stay-time="150" bindtap="detail">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">工资收入</view>
+							<view class="source">工资</view>
+							<view class="time">04-01 09:01</view>
+						</view>
+					</view>
+					<view class="money add">
+						+66668666.00
+					</view>
+				</view>
+			</view>
+			<!--内容-->
 		</view>
-	</tui-list-cell>
-	<view class="tui-textarea">
-		<textarea bindinput="inputNotice" value="{{notice}}" placeholder="这里可以介绍店铺的活动与特色等..." maxlength="30" />
-		</view>
-	<view class="tui-btn-box">
-		<tui-button type="danger" height="{{80}}" bindtap="formSubmit">确认保存</tui-button>
-	</view>
+	</sticky>
 </view>

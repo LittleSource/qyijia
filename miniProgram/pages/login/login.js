@@ -88,7 +88,6 @@ Page({
                     graceJS.msgSuccess("登录成功!", () => {
                         _self.backPage()
                     })
-                    console.log(app.globalData.userInfo)
                 }
             )
         } else {

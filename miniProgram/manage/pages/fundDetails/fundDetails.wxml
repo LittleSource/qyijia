@@ -1,0 +1,97 @@
+<view class="container">
+	<view class="tips">
+		<view>账户余额:￥{{balance}}</view>
+	</view>
+	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+		<view slot="header">
+			<view class="sticky-item ">
+				<view class="date">本月</view>
+				<view class="amount">
+					<view>支出 ￥{{thisMonth.expenditure}}</view>
+					<view>收入 ￥{{thisMonth.income}}</view>
+				</view>
+			</view>
+		</view>
+		<view slot="content">
+			<!--内容 start-->
+			<view class="list-view">
+				<view class="list-item {{index==thisMonth.list.length-1?'item-last':''}}" wx:for="{{thisMonth.list}}" wx:key="id">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">{{item.content}}</view>
+							<view class="source">{{item.classification}}</view>
+							<view class="time">{{item.add_time}}</view>
+						</view>
+					</view>
+					<view class="money {{item.type==1?'add':''}}">
+						{{item.type==1?'+':'-'}}{{item.price}}
+					</view>
+				</view>
+			</view>
+			<!--内容 end-->
+		</view>
+	</sticky>
+
+	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+		<view slot="header">
+			<view class="sticky-item ">
+				<view class="date">上月</view>
+				<view class="amount">
+					<view>支出 ￥{{lastMonth.expenditure}}</view>
+					<view>收入 ￥{{lastMonth.income}}</view>
+				</view>
+			</view>
+		</view>
+		<view slot="content">
+			<!--内容 start-->
+			<view class="list-view">
+				<view class="list-item {{index==lastMonth.list.length-1?'item-last':''}}" wx:for="{{lastMonth.list}}" wx:key="id">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">{{item.content}}</view>
+							<view class="source">{{item.classification}}</view>
+							<view class="time">{{item.add_time}}</view>
+						</view>
+					</view>
+					<view class="money {{item.type==1?'add':''}}">
+						{{item.type==1?'+':'-'}}{{item.price}}
+					</view>
+				</view>
+			</view>
+			<!--内容 end-->
+		</view>
+	</sticky>
+	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+		<view slot="header">
+			<view class="sticky-item ">
+				<view class="date">上上月</view>
+				<view class="amount">
+					<view>支出 ￥{{lastLastMonth.expenditure}}</view>
+					<view>收入 ￥{{lastLastMonth.income}}</view>
+				</view>
+			</view>
+		</view>
+		<view slot="content">
+			<!--内容 start-->
+			<view class="list-view">
+				<view class="list-item {{index==lastLastMonth.list.length-1?'item-last':''}}" wx:for="{{lastLastMonth.list}}" wx:key="id">
+					<view class="content-box">
+						<image src='/static/images/logo.png' class="logo"></image>
+						<view class="des-box">
+							<view class="tit">{{item.content}}</view>
+							<view class="source">{{item.classification}}</view>
+							<view class="time">{{item.add_time}}</view>
+						</view>
+					</view>
+					<view class="money {{item.type==1?'add':''}}">
+						{{item.type==1?'+':'-'}}{{item.price}}
+					</view>
+				</view>
+			</view>
+			<!--内容 end-->
+		</view>
+	</sticky>
+    <view class="footer">仅显示近三个月的记录</view>
+</view>

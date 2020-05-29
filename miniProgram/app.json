@@ -25,7 +25,8 @@
                 "pages/order/order",
                 "pages/product/product",
                 "pages/editProduct/editProduct",
-                "pages/shopInfo/shopInfo"
+                "pages/shopInfo/shopInfo",
+                "pages/fundDetails/fundDetails"
             ]
         }
     ],
