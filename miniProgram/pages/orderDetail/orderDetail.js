@@ -68,6 +68,11 @@ Page({
             orderData: data
         })
     },
+    copyOrderId() {
+        wx.setClipboardData({
+            data: _self.data.orderId
+        })
+    },
     deleteOrder2() {
         wx.showModal({
             title: '提示',

@@ -9,7 +9,7 @@ Page({
         lastLastMonth: {},
         scrollTop: 0
     },
-    onLoad: function (options) {
+    onLoad: function () {
         _self = this
         graceJS.showLoading('Loading...')
         graceJS.setAfter(() => {
@@ -19,7 +19,9 @@ Page({
             'manage/fund/getlist', {}, {}, {
                 token: app.globalData.userInfo.token
             }, (res) => {
-                console.log(res)
+                _self.setData({
+                    balance: res.balance
+                })
                 _self.initData(res)
             }
         )
@@ -70,12 +72,6 @@ Page({
         this.setData({
             lastLastMonth: this.data.lastLastMonth
         })
-        console.log(this.data.thisMonth)
-        console.log(this.data.lastMonth)
-        console.log(this.data.lastLastMonth)
-    },
-    onChange(e) {
-        console.log(e.detail, 'click right menu callback data')
     },
     //页面滚动执行方式
     onPageScroll(e) {
@@ -83,7 +79,5 @@ Page({
             scrollTop: e.scrollTop
         })
     },
-    detail(e) {
-        return
-    }
+    detail(e) {}
 });

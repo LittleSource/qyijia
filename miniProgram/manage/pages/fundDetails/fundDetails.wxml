@@ -2,7 +2,8 @@
 	<view class="tips">
 		<view>账户余额:￥{{balance}}</view>
 	</view>
-	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+
+	<sticky wx:if="{{thisMonth.list.length > 0}}" scrollTop="{{scrollTop}}" stickyHeight="104rpx">
 		<view slot="header">
 			<view class="sticky-item ">
 				<view class="date">本月</view>
@@ -13,7 +14,6 @@
 			</view>
 		</view>
 		<view slot="content">
-			<!--内容 start-->
 			<view class="list-view">
 				<view class="list-item {{index==thisMonth.list.length-1?'item-last':''}}" wx:for="{{thisMonth.list}}" wx:key="id">
 					<view class="content-box">
@@ -29,11 +29,10 @@
 					</view>
 				</view>
 			</view>
-			<!--内容 end-->
 		</view>
 	</sticky>
 
-	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+	<sticky wx:if="{{lastMonth.list.length > 0}}" scrollTop="{{scrollTop}}" stickyHeight="104rpx">
 		<view slot="header">
 			<view class="sticky-item ">
 				<view class="date">上月</view>
@@ -44,7 +43,6 @@
 			</view>
 		</view>
 		<view slot="content">
-			<!--内容 start-->
 			<view class="list-view">
 				<view class="list-item {{index==lastMonth.list.length-1?'item-last':''}}" wx:for="{{lastMonth.list}}" wx:key="id">
 					<view class="content-box">
@@ -60,10 +58,10 @@
 					</view>
 				</view>
 			</view>
-			<!--内容 end-->
 		</view>
 	</sticky>
-	<sticky scrollTop="{{scrollTop}}" stickyHeight="104rpx">
+
+	<sticky wx:if="{{lastLastMonth.list.length > 0}}" scrollTop="{{scrollTop}}" stickyHeight="104rpx">
 		<view slot="header">
 			<view class="sticky-item ">
 				<view class="date">上上月</view>
@@ -74,7 +72,6 @@
 			</view>
 		</view>
 		<view slot="content">
-			<!--内容 start-->
 			<view class="list-view">
 				<view class="list-item {{index==lastLastMonth.list.length-1?'item-last':''}}" wx:for="{{lastLastMonth.list}}" wx:key="id">
 					<view class="content-box">
@@ -90,8 +87,7 @@
 					</view>
 				</view>
 			</view>
-			<!--内容 end-->
 		</view>
 	</sticky>
-    <view class="footer">仅显示近三个月的记录</view>
+	<view class="footer">{{lastLastMonth.list.length==0 && lastMonth.list.length==0 && thisMonth.list.length==0 ?'暂无记录':'仅显示近三个月的记录'}}</view>
 </view>

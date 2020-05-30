@@ -85,7 +85,8 @@
 		<view class="tui-order-content">
 			<view class="tui-order-flex">
 				<view class="tui-item-title">订单号:</view>
-				<view class="tui-item-content">{{orderData.oid}}</view>
+				<view class="tui-item-content tui-mr-10">{{orderData.oid}}</view>
+				<tui-icon name="order" size="14" bindtap="copyOrderId"></tui-icon>
 			</view>
 			<view class="tui-order-flex">
 				<view class="tui-item-title">创建时间:</view>
@@ -93,7 +94,7 @@
 			</view>
 			<view class="tui-order-flex">
 				<view class="tui-item-title">付款时间:</view>
-				<view class="tui-item-content">{{pay_time?pay_time:'未付款'}}</view>
+				<view class="tui-item-content">{{orderData.pay_time?orderData.pay_time:'未付款'}}</view>
 			</view>
 			<view class="tui-order-flex">
 				<view class="tui-item-title">配送方式:</view>

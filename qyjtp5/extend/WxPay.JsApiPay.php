@@ -142,7 +142,7 @@ class JsApiPay
 	 * 拼接签名字符串
 	 * @param array $urlObj
 	 * 
-	 * @return 返回已经拼接好的字符串
+	 * @return string
 	 */
 	private function ToUrlParams($urlObj)
 	{

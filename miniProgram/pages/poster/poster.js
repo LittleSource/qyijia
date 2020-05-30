@@ -1,11 +1,13 @@
 // pages/poster/poster.js
+const graceJS = require('../../utils/grace.js');
 Page({
     /**
      * 页面的初始数据
      */
     data: {
         capsuleHeight: 50,
-        capsuleTop: 80
+        capsuleTop: 80,
+        posterUrl: graceJS.cdnUrl
     },
     /**
      * 生命周期函数--监听页面加载

@@ -28,6 +28,8 @@ class Order extends ManageBaseController
         if($Order){
             $Order->status = 3;
             if($Order->save()){
+                $fund = new \app\manage\model\Fund();//增加一条接单资金记录
+                $fund->add($this->userId,true,$Order->price_sum,$Order->id,'接单收入');
                 return ymJson(200,'ok',[]);
             }else{
                 return ymJson(201,'更新数据失败,请稍后再试',[]);

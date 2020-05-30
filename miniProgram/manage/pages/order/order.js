@@ -44,7 +44,6 @@ Page({
         })
     },
     acceptOrder(e) {
-        console.log(e.currentTarget.dataset.index)
         graceJS.showLoading('Loading...')
         graceJS.setAfter(() => {
             wx.hideLoading()

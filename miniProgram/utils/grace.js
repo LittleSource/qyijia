@@ -1,5 +1,5 @@
 module.exports = {
-	baseUrl: 'http://192.168.1.11/',
+	baseUrl: 'https://wxqyj.ymkj8.com/',
 	cdnUrl: 'http://ym-file.test.upcdn.net', //静态文件cdn加速域名
 	// --- 页面跳转相关 ---
 	navigate: function (url, type, success, fail, complete) {

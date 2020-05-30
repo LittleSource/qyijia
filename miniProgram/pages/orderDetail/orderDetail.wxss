@@ -1,6 +1,7 @@
-page{
+page {
     background-color: #fafafa;
 }
+
 .container {
     padding-bottom: 118rpx;
 }
@@ -303,9 +304,15 @@ page{
     padding-bottom: env(safe-area-inset-bottom);
     z-index: 999;
 }
-.weight{
+
+.weight {
     font-weight: 600;
 }
+
 .tui-btn-mr {
     margin-right: 30rpx;
+}
+
+.tui-mr-10 {
+    margin-right: 10rpx;
 }
