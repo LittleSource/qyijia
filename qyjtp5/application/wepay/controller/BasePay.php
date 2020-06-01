@@ -34,11 +34,11 @@ class BasePay extends BaseController
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    protected function uniCreateOrder($out_trade_no,$shopTitle,$price){
+    protected function uniCreateOrder($out_trade_no,$shopTitle,$price,$attach){
         $user = Db::table('user')->where('id',$this->userId)->find();
         $input = new WxPayUnifiedOrder();
         $input->SetBody(config('app_name').'-'.$shopTitle);
-        //$input->SetAttach("test");
+        $input->SetAttach($attach);//附加商家id 为了发短信
         $input->SetOut_trade_no($out_trade_no);
         $input->SetTotal_fee(1);//$price*100
         $input->SetTime_start(date("YmdHis"));
