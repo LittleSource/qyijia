@@ -1,3 +1,4 @@
+const graceJS = require('../../utils/grace.js')
 const Position = require('../../utils/position')
 const chooseLocation = requirePlugin('chooseLocation');
 var _self = null
@@ -7,7 +8,6 @@ Page({
     data: {
         positionInfo: {
             name: '定位中...',
-
         },
         isGochooseLocationPage: false, //是否去过选择地址页面
         current: 0,
@@ -51,80 +51,11 @@ Page({
             img: "5.png",
             name: "送药到家"
         }],
-        productList: [{
-                img: 1,
-                name: "珍珠酥皮鸡",
-                sale: 48,
-                factory: '珍45f',
-                payNum: 2342
-            },
-            {
-                img: 2,
-                name: "黄豆芽排骨豆腐汤",
-                sale: 29,
-                factory: '小丸子',
-                payNum: 999
-            },
-            {
-                img: 3,
-                name: "生爆盐煎肉",
-                sale: 29,
-                factory: '柔色尽情丝',
-                payNum: 666
-            },
-            {
-                img: 4,
-                name: "酸辣臊子蹄筋",
-                sale: 85,
-                factory: '易掉',
-                payNum: 236
-            },
-            {
-                img: 5,
-                name: "西湖醋鱼",
-                sale: 599,
-                factory: '闲零',
-                payNum: 2399
-            },
-            {
-                img: 6,
-                name: "香酥鸡",
-                sale: 35,
-                factory: '闲零2',
-                payNum: 2399
-            },
-            {
-                img: 1,
-                name: "清拌鸭丝儿",
-                sale: 24,
-                factory: '用户2',
-                payNum: 2342
-            },
-            {
-                img: 2,
-                name: "三鲜鱼翅",
-                sale: 29,
-                factory: '用户3',
-                payNum: 999
-            },
-            {
-                img: 3,
-                name: "熘鱼脯儿",
-                sale: 25,
-                factory: '用户2',
-                payNum: 666
-            },
-            {
-                img: 4,
-                name: "烧花鸭",
-                sale: 18,
-                factory: '用户5',
-                payNum: 236
-            }
-        ],
+        shopList: [],
         pageIndex: 1,
         loadding: false,
-        pullUpOn: true
+        pullUpOn: false,
+        pageSum: 1
     },
     onShow: function () {
         const location = chooseLocation.getLocation();
@@ -132,6 +63,8 @@ Page({
             this.data.positionInfo.name = location.name
             this.data.positionInfo.latitude = location.latitude
             this.data.positionInfo.longitude = location.longitude
+            this.data.positionInfo.city = location.city
+            this.data.positionInfo.district = location.district
             this.setData({
                 positionInfo: this.data.positionInfo,
                 isGochooseLocationPage: false
@@ -148,6 +81,7 @@ Page({
                     positionInfo: res
                 })
                 app.globalData.positionInfo = res
+                wx.startPullDownRefresh()
             },
             function fail(res, e) {
                 _self.setData({
@@ -157,30 +91,43 @@ Page({
         )
     },
     onPullDownRefresh: function () {
-        let loadData = JSON.parse(JSON.stringify(this.data.productList));
-        loadData = loadData.splice(0, 10)
+        if (this.data.loadding) {
+            return
+        }
         this.setData({
-            productList: loadData,
+            pullUpOn: false,
             pageIndex: 1,
-            pullUpOn: true,
-            loadding: false
+            pageSum: 1
         })
-        setTimeout(function () {
+        graceJS.setAfter(() => {
             wx.stopPullDownRefresh()
-        }, 2000)
+        })
+        graceJS.post(
+            'common/index/getShopList', {
+                page: _self.data.pageIndex,
+                city: _self.data.positionInfo.city
+            }, {}, {}, (res) => {
+                if (res.data.length == 0) {
+                    return
+                } else {
+                    var pageSum_ = Math.ceil(res.total / res.per_page)
+                    _self.setData({
+                        shopList: res.data,
+                        pullUpOn: pageSum_ != 1,
+                        pageIndex: res.last_page,
+                        pageSum: pageSum_
+                    })
+                }
+            }
+        )
     },
     onReachBottom: function () {
-        if (!this.data.pullUpOn) return;
+        if (!this.data.pullUpOn || this.data.loadding) return;
         this.setData({
             loadding: true
         }, () => {
             if (this.data.pageIndex == 4) {
-                this.setData({
-                    loadding: false,
-                    pullUpOn: false
-                })
-            } else {
-                let loadData = JSON.parse(JSON.stringify(this.data.productList));
+                let loadData = JSON.parse(JSON.stringify(this.data.productList))
                 loadData = loadData.splice(0, 10)
                 if (this.data.pageIndex == 1) {
                     loadData = loadData.reverse();
@@ -206,9 +153,14 @@ Page({
         })
         position.chooseLocation()
     },
-    detail: function () {
+    goPoster() {
         wx.navigateTo({
-            url: '/pages/shop/shop'
+            url: '/pages/poster/poster'
+        })
+    },
+    detail: function (e) {
+        wx.navigateTo({
+            url: '/pages/shop/shop?id=' + e.currentTarget.dataset.id
         })
     }
 })

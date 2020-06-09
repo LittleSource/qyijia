@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "订单管理",
+  "navigationBarTextStyle": "black",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tui-tabs": "/components/tui-tabs/tui-tabs",
+    "tui-button": "/components/extend/button/button",
+    "tui-loadmore": "/components/loadmore/loadmore",
+    "tui-nomore": "/components/nomore/nomore",
+    "tui-list-cell": "/components/list-cell/list-cell",
+    "tui-modal":"/components/modal/modal",
+    "tui-tips": "/components/extend/tips/tips"
+  }
+}

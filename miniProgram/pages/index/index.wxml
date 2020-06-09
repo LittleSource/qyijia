@@ -33,45 +33,48 @@
 		<view class="tui-group-name">
 			<text>附近推荐</text>
 		</view>
-		<view class="store-box">
-			<view class="item-box" wx:for="{{productList}}" wx:key="*this" bindtap="detail">
+		<view wx:if="{{shopList.length == 0}}" class="no-data">
+			<view>当前位置附近暂无商家哦~</view>
+			<button type="default" size="mini" plain bindtap="goPoster">申请入驻</button>
+		</view>
+		<view wx:else class="store-box">
+			<view class="item-box" wx:for="{{shopList}}" wx:key="id" bindtap="detail" data-id="{{item.id}}">
 				<view class="container top-box">
 					<view class="left">
-						<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2105224052,4112430336&fm=26&gp=0.jpg" mode="aspectFill"></image>
+						<image src="{{item.shop_img}}" mode="aspectFill"></image>
 					</view>
 					<view class="right">
-						<text class="tit">欢乐大家族（天津）</text>
+						<text class="tit">{{item.title}}</text>
 						<view class="row justify-content">
 							<view class="row-left">
 								<tui-icon name="about" size="13"></tui-icon>
-								<text class="t1">起送￥20</text>
+								<text class="t1">起送￥{{item.minimum}}</text>
 								<text class="t2">配送￥3</text>
 							</view>
 							<view class="row-right">
 								<tui-icon name="position" size="13"></tui-icon>
-								<text>距离18公里</text>
+								<text>{{item.city+item.district}}</text>
 							</view>
 						</view>
 						<view class="row">
 							<view class="row-left">
 								<tui-icon name="notice" size="13"></tui-icon>
-								<text>你想要的这力度有哦</text>
+								<text>{{item.notice}}</text>
 							</view>
 						</view>
 					</view>
 				</view>
-				<scroll-view scroll-x class="bottom-box">
+				<scroll-view scroll-x class="bottom-box" wx:if="{{item.productList.length>0}}">
 					<view class="bottom-box-container">
-						<view class="goods-box" wx:for="{{8}}">
+						<view class="goods-box" wx:for="{{item.productList}}" wx:key="id" wx:for-item="proItem" wx:for-index="proIndex" wx:if="{{proIndex<7}}">
 							<view class="img-box">
-								<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589865752633&di=352008afaca8161ed794e95a439bb9fa&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171115%2Fb0cc5d1fe86e4473864909be766e214f.jpeg" mode="scaleToFill"></image>
-								<view class="tag">666</view>
+								<image src="{{proItem.img}}" mode="scaleToFill"></image>
+								<view class="tag">热销</view>
 							</view>
-							<view class="goods-title">大盘鸡</view>
+							<view class="goods-title">{{proItem.title}}</view>
 							<view class="price-box">
 								<text class="txt1">￥</text>
-								<text class="txt2">38.8</text>
-								<text class="txt3">￥99</text>
+								<text class="txt2">{{proItem.price}}</text>
 							</view>
 						</view>
 					</view>
@@ -80,29 +83,8 @@
 		</view>
 	</view>
 
-	<!--模板
-	<template name="productItem">
-		
-		<view class="tui-pro-item" hover-class="hover" hover-start-time="150" bindtap="detail">
-			<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/{{item.img}}.jpg" class="tui-pro-img" mode="widthFix" />
-			<view class="tui-pro-content">
-				<view class="tui-pro-tit">{{item.name}}</view>
-				<view>
-					<view class="tui-pro-price">
-						<text class="tui-sale-price">￥{{item.sale}}</text>
-						<view class="tui-user">
-							<image src="https://yuange666.oss-cn-beijing.aliyuncs.com/test/timg.jpg" class="tui-user-avatar"></image>
-							<text class="tui-user-name">{{item.factory}}</text>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view>
-	</template>
-	-->
-
 	<!--加载loadding-->
 	<tui-loadmore visible="{{loadding}}" index="3" type="red"></tui-loadmore>
-	<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
+	<tui-nomore wx:if="{{shopList.length>0}}" visible="{{!pullUpOn}}"></tui-nomore>
 	<!--加载loadding-->
 </view>

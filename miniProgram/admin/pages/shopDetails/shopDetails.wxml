@@ -55,7 +55,7 @@
 	</tui-list-cell>
 </view>
 <view class="login-out">
-	<tui-button type="blue" height="{{80}}" width="220rpx" bindtap="loginOut">查看订单</tui-button>
+	<tui-button type="blue" height="{{80}}" width="220rpx" bindtap="showOrder">查看订单</tui-button>
 	<tui-button type="warning" height="{{80}}" width="220rpx" bindtap="showModal">余额修改</tui-button>
 	<tui-button type="danger" height="{{80}}" width="220rpx" bindtap="frozenOrThaw">{{shopInfo.status == 1?'冻结店铺':'解冻店铺'}}</tui-button>
 </view>

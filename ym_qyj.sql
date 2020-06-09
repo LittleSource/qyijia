@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 29/05/2020 23:52:07
+ Date: 09/06/2020 21:20:57
 */
 
 SET NAMES utf8mb4;
@@ -37,14 +37,15 @@ CREATE TABLE `address`  (
   `is_delete` tinyint(255) NULL DEFAULT 0 COMMENT '软删除',
   `update_time` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
 -- ----------------------------
-INSERT INTO `address` VALUES (6, 6, '源哥', '17320285191', 1, '中国银行监督管理委员会甘肃监管局', '甘肃省兰州市城关区瞿永刚民航', '8层185', 103.834999, 36.061108, 2, 0, 1, '2020-05-10 15:41:00');
-INSERT INTO `address` VALUES (7, 6, '小源呀', '15609319043', 1, '兰州新区火家湾保障房小区', '甘肃省兰州市皋兰县JK13号路与纬三十路交叉口西北方向140米', '49号楼2001', 103.721069, 36.560783, 1, 0, 0, '2020-05-10 15:53:29');
-INSERT INTO `address` VALUES (8, 6, '源哥', '17320258693', 1, '甘肃税务大厦', '甘肃省兰州市城关区金昌北路244号', '8层181', 103.839478, 36.060490, 2, 1, 0, '2020-05-10 20:42:32');
+INSERT INTO `address` VALUES (6, 10000, '源哥', '17320285191', 1, '中国银行监督管理委员会甘肃监管局', '甘肃省兰州市城关区瞿永刚民航', '8层185', 103.834999, 36.061108, 2, 0, 1, '2020-05-10 15:41:00');
+INSERT INTO `address` VALUES (7, 10000, '小源呀', '15609319043', 1, '兰州新区火家湾保障房小区', '甘肃省兰州市皋兰县JK13号路与纬三十路交叉口西北方向140米', '49号楼2001', 103.721069, 36.560783, 1, 0, 0, '2020-05-10 15:53:29');
+INSERT INTO `address` VALUES (8, 10000, '源哥', '17320258693', 1, '甘肃税务大厦', '甘肃省兰州市城关区金昌北路244号', '8层181', 103.839478, 36.060490, 2, 0, 0, '2020-05-10 20:42:32');
+INSERT INTO `address` VALUES (9, 10000, '源哥', '13669337881', 1, '吾悦华府', '天津市津南区咸水沽二道桥月牙河公园附近', '15号楼1702', 117.376030, 38.977283, 1, 1, 0, '2020-06-09 21:10:10');
 
 -- ----------------------------
 -- Table structure for fund
@@ -59,7 +60,7 @@ CREATE TABLE `fund`  (
   `classification` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类',
   `add_time` datetime(0) NOT NULL COMMENT '时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of fund
@@ -69,6 +70,9 @@ INSERT INTO `fund` VALUES (2, 6, 0, 2.00, '订单3', '提现', '2020-05-13 23:05
 INSERT INTO `fund` VALUES (3, 6, 1, 4.00, '订单4', '接单收入', '2020-04-13 23:05:48');
 INSERT INTO `fund` VALUES (4, 6, 1, 5.00, '订单4', '接单收入', '2020-04-15 23:05:48');
 INSERT INTO `fund` VALUES (5, 6, 1, 88.00, '订单0', '接单收入', '2020-03-15 23:05:48');
+INSERT INTO `fund` VALUES (6, 6, 1, 75.78, '2020053019060850575', '接单收入', '2020-05-30 19:20:21');
+INSERT INTO `fund` VALUES (7, 6, 0, 1.70, '提现', '平台系统更改', '2020-06-08 20:21:35');
+INSERT INTO `fund` VALUES (10, 6, 0, 50.00, '提现', '平台系统更改', '2020-06-08 20:30:53');
 
 -- ----------------------------
 -- Table structure for order
@@ -105,6 +109,8 @@ INSERT INTO `order` VALUES ('2020051215400373041', 6, 1, 8, '欢乐大家族', '
 INSERT INTO `order` VALUES ('2020051216280770532', 6, 1, 8, '欢乐大家族', '[{\"id\": 11, \"img\": \"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2319893647,136711391&fm=26&gp=0.jpg\", \"count\": 1, \"price\": \"18.88\", \"title\": \"肯德基*汉堡\", \"labels\": [\"汉堡\", \"鸡肉\", \"快餐\"], \"addtime\": \"2020-05-02 15:33:00\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 7, \"classify_id\": 8}, {\"id\": 12, \"img\": \"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4034137002,1291263122&fm=26&gp=0.jpg\", \"count\": 1, \"price\": \"9.99\", \"title\": \"凉皮\", \"labels\": [\"麻辣\", \"特色\"], \"addtime\": \"2020-05-02 15:33:51\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 8, \"classify_id\": 9}]', 28.87, 31.87, 3, '', 31.87, '2020-05-16 16:28:07', '2020-05-08 21:49:15', 0);
 INSERT INTO `order` VALUES ('2020051722302825419', 6, 1, 8, '欢乐大家族', '[{\"id\": 7, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588414408684&di=d34b075aa6eaaaad880ca13d4efcb511&imgtype=0&src=http%3A%2F%2Fimg.cwq.com%2F201706%2F1498276448815536.jpeg\", \"count\": 1, \"price\": \"38.88\", \"title\": \"麻辣小龙虾\", \"labels\": [\"小龙虾\", \"麻辣\"], \"addtime\": \"2020-05-02 15:25:51\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 0, \"classify_id\": 5}, {\"id\": 4, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588407580445&di=1ff5881d86d5a52a689b1095353a6114&imgtype=0&src=http%3A%2F%2Fm.cqhdzx.com%2Fup%2Fimg%2F20180207153510607042.jpg\", \"count\": 1, \"price\": \"19.88\", \"title\": \"凉拌猪耳朵\", \"labels\": [\"猪耳\", \"麻辣\"], \"addtime\": \"2020-05-02 13:32:57\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 1, \"classify_id\": 2}, {\"id\": 6, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588407974799&di=0f18fb08bee52b9d34d2a2bfceb1351b&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171122%2F0369da5302ab408bb1330178b9d3144f.jpeg\", \"count\": 1, \"price\": \"12.00\", \"title\": \"麻辣海带丝\", \"labels\": [\"麻辣\", \"海带\"], \"addtime\": \"2020-05-02 13:38:55\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 1, \"class_index\": 1, \"classify_id\": 2}, {\"id\": 8, \"img\": \"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2445315879,1160949812&fm=26&gp=0.jpg\", \"count\": 1, \"price\": \"18.88\", \"title\": \"青椒土豆丝盖饭\", \"labels\": [\"土豆丝\", \"辣椒\"], \"addtime\": \"2020-05-02 15:26:59\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 2, \"classify_id\": 6}]', 89.64, 92.64, 3, '', 92.64, '2020-05-17 22:30:28', '2020-05-06 21:49:10', 3);
 INSERT INTO `order` VALUES ('2020051723004798304', 6, 1, 8, '欢乐大家族', '[{\"id\": 4, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588407580445&di=1ff5881d86d5a52a689b1095353a6114&imgtype=0&src=http%3A%2F%2Fm.cqhdzx.com%2Fup%2Fimg%2F20180207153510607042.jpg\", \"count\": 1, \"price\": \"19.88\", \"title\": \"凉拌猪耳朵\", \"labels\": [\"猪耳\", \"麻辣\"], \"addtime\": \"2020-05-02 13:32:57\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 1, \"classify_id\": 2}, {\"id\": 6, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588407974799&di=0f18fb08bee52b9d34d2a2bfceb1351b&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171122%2F0369da5302ab408bb1330178b9d3144f.jpeg\", \"count\": 1, \"price\": \"12.00\", \"title\": \"麻辣海带丝\", \"labels\": [\"麻辣\", \"海带\"], \"addtime\": \"2020-05-02 13:38:55\", \"shop_id\": 1, \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 1, \"class_index\": 1, \"classify_id\": 2}]', 31.88, 34.88, 3, '', 34.88, '2020-05-17 23:00:47', '2020-05-19 21:49:07', 3);
+INSERT INTO `order` VALUES ('2020053019060850575', 6, 1, 8, '阿尔法餐厅2', '[{\"id\": 7, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588414408684&di=d34b075aa6eaaaad880ca13d4efcb511&imgtype=0&src=http%3A%2F%2Fimg.cwq.com%2F201706%2F1498276448815536.jpeg\", \"count\": 1, \"price\": \"38.88\", \"title\": \"麻辣小龙虾\", \"labels\": [\"小龙虾\", \"麻辣\"], \"shop_id\": 1, \"add_time\": \"2020-05-02 15:25:51\", \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 0, \"classify_id\": 5}, {\"id\": 20, \"img\": \"http://ym-file.test.upcdn.net/qyj/product/Cnxp4AoCQtgQcqi2.png!qyj.product\", \"count\": 1, \"price\": \"18.90\", \"title\": \"QQ\", \"labels\": [\"爱三单\"], \"shop_id\": 1, \"add_time\": \"2020-05-27 15:49:27\", \"introduce\": \"朵拉快递领啦矿大框\", \"pro_index\": 1, \"class_index\": 0, \"classify_id\": 5}, {\"id\": 24, \"img\": \"http://ym-file.test.upcdn.net/qyj/product/P0VM5kxepbGoEqy7.jpeg!qyj.product\", \"count\": 1, \"price\": \"18.00\", \"title\": \"炒面片\", \"labels\": [\"香辣\", \"美味\"], \"shop_id\": 1, \"add_time\": \"2020-05-27 16:15:15\", \"introduce\": \"自己搞的非常棒\", \"pro_index\": 2, \"class_index\": 0, \"classify_id\": 5}]', 75.78, 78.78, 3, '', 78.78, '2020-05-30 19:06:08', NULL, 3);
+INSERT INTO `order` VALUES ('2020060921102329325', 10000, 1, 9, '阿尔法餐厅2', '[{\"id\": 7, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588414408684&di=d34b075aa6eaaaad880ca13d4efcb511&imgtype=0&src=http%3A%2F%2Fimg.cwq.com%2F201706%2F1498276448815536.jpeg\", \"count\": 1, \"price\": \"38.88\", \"title\": \"麻辣小龙虾\", \"labels\": [\"小龙虾\", \"麻辣\"], \"shop_id\": 1, \"add_time\": \"2020-05-02 15:25:51\", \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 0, \"classify_id\": 5}, {\"id\": 20, \"img\": \"http://ym-file.test.upcdn.net/qyj/product/Cnxp4AoCQtgQcqi2.png!qyj.product\", \"count\": 1, \"price\": \"18.90\", \"title\": \"QQ\", \"labels\": [\"爱三单\"], \"shop_id\": 1, \"add_time\": \"2020-05-27 15:49:27\", \"introduce\": \"朵拉快递领啦矿大框\", \"pro_index\": 1, \"class_index\": 0, \"classify_id\": 5}, {\"id\": 24, \"img\": \"http://ym-file.test.upcdn.net/qyj/product/P0VM5kxepbGoEqy7.jpeg!qyj.product\", \"count\": 1, \"price\": \"18.00\", \"title\": \"炒面片\", \"labels\": [\"香辣\", \"美味\"], \"shop_id\": 1, \"add_time\": \"2020-05-27 16:15:15\", \"introduce\": \"自己搞的非常棒\", \"pro_index\": 2, \"class_index\": 0, \"classify_id\": 5}, {\"id\": 4, \"img\": \"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588407580445&di=1ff5881d86d5a52a689b1095353a6114&imgtype=0&src=http%3A%2F%2Fm.cqhdzx.com%2Fup%2Fimg%2F20180207153510607042.jpg\", \"count\": 1, \"price\": \"19.88\", \"title\": \"凉拌猪耳朵\", \"labels\": [\"猪耳\", \"麻辣\"], \"shop_id\": 1, \"add_time\": \"2020-05-02 13:32:57\", \"introduce\": \"1、西红柿去皮切成块。\\r\\n\\r\\n2、花菜洗干净掰成小朵，在沸水中焯8成熟，捞出备用。\\r\\n\\r\\n3、锅放热油，下葱姜末爆香。\\r\\n\\r\\n4、放入西红柿快炒至浓稠。倒入番茄酱。\\r\\n\\r\\n5、下菜花翻炒。等菜花熟透了就加糖、盐调味即可。\", \"pro_index\": 0, \"class_index\": 1, \"classify_id\": 2}]', 95.66, 98.66, 3, '', NULL, '2020-06-09 21:10:23', NULL, 1);
 
 -- ----------------------------
 -- Table structure for product
@@ -191,12 +197,13 @@ CREATE TABLE `shop`  (
   `open_status` tinyint(2) NOT NULL DEFAULT 1 COMMENT '营业状态 1为营业 0为休息 ',
   `add_time` datetime(0) NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of shop
 -- ----------------------------
-INSERT INTO `shop` VALUES (1, 6, '阿尔法餐厅2', '美食与我同行，我们一起创建美食新风尚买卖送得快', 'http://ym-file.test.upcdn.net/qyj/shop/oE4qJyqaA3x2Bnxe.jpeg!qyj.shop.avatar', 9, NULL, '兰州市', '城关区', '中国银行监督管理委员会甘肃监管局', 103.834999, 36.061108, 1, 0, '2020-05-01 19:42:08');
+INSERT INTO `shop` VALUES (1, 10000, '阿尔法餐厅2', '美食与我同行，我们一起创建美食新风尚买卖送得快', 'http://ym-file.test.upcdn.net/qyj/shop/oE4qJyqaA3x2Bnxe.jpeg!qyj.shop.avatar', 9, NULL, '天津市', '津南区', '天津津南吾悦广场', 117.375755, 38.977566, 1, 1, '2020-05-01 19:42:08');
+INSERT INTO `shop` VALUES (2, 10001, '爱源梦，爱生活', '小店新开张，欢迎光临!', 'https://wx.qlogo.cn/mmopen/vi_32/Ng8hB2SGJTmshhu7tdz7CUhatic3swFO7XNKLyg1NdAO75rRWD75JiayOaEL8SXibfZseXVgSW40RcA7gtSibVGuBQ/132', 0, NULL, '天津市', '津南区', '天津津南吾悦广场', 117.375755, 38.977566, 1, 1, '2020-06-09 13:31:02');
 
 -- ----------------------------
 -- Table structure for user
@@ -215,11 +222,12 @@ CREATE TABLE `user`  (
   `addtime` datetime(0) NULL DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `user_openid`(`openid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10000 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (6, 'omL5t5atV8kyM8ewvQdKJXHjE5cM', 'https://wx.qlogo.cn/mmopen/vi_32/ThDSia5wXgD8GT84qn43U40D0AwWl1mCgddEGfFHDQA7PyWxBjeZhgVPfk37b7IHHXrBnXatCp6icWgYXSeXibNxw/132', '15609319042', '源°🍃', 2, 0.00, 1, '', '2020-05-29 22:41:09');
+INSERT INTO `user` VALUES (10000, 'omL5t5atV8kyM8ewvQdKJXHjE5cM', 'https://wx.qlogo.cn/mmopen/vi_32/ThDSia5wXgD8GT84qn43U40D0AwWl1mCgddEGfFHDQA7PyWxBjeZhgVPfk37b7IHHXrBnXatCp6icWgYXSeXibNxw/132', '15609319042', '源°🍃', 3, 27.08, 1, '', '2020-05-29 22:41:09');
+INSERT INTO `user` VALUES (10001, 'omL5t5TAwfq9vL9woVZKEn4yexJo', 'https://wx.qlogo.cn/mmopen/vi_32/Ng8hB2SGJTmshhu7tdz7CUhatic3swFO7XNKLyg1NdAO75rRWD75JiayOaEL8SXibfZseXVgSW40RcA7gtSibVGuBQ/132', '17320285191', '爱源梦，爱生活', 2, 0.00, 1, '', '2020-06-09 13:30:13');
 
 SET FOREIGN_KEY_CHECKS = 1;

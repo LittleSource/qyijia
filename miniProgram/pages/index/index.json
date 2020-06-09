@@ -3,8 +3,9 @@
     "enablePullDownRefresh": true,
     "backgroundTextStyle":"dark",
     "usingComponents": {
-        "tui-tag": "../../components/tag/tag",
-        "tui-loadmore": "../../components/loadmore/loadmore",
-        "tui-nomore": "../../components/nomore/nomore"
+        "tui-button": "/components/extend/button/button",
+        "tui-tag": "/components/tag/tag",
+        "tui-loadmore": "/components/loadmore/loadmore",
+        "tui-nomore": "/components/nomore/nomore"
     }
 }

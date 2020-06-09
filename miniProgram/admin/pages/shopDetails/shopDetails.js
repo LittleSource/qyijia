@@ -75,6 +75,11 @@ Page({
             content: e.detail.value
         })
     },
+    showOrder() {
+        wx.navigateTo({
+            url: '/admin/pages/order/order?shopid=' + _self.data.shopInfo.id,
+        })
+    },
     updateBalance() {
         if (isNaN(this.data.price) || this.data.price == 0) {
             graceJS.msg('请输入金额！')

@@ -27,6 +27,7 @@ class Shop extends Controller
         }
         $shop = \app\shop\model\Shop::get($id);
         $classify = ProductClassify::where('shop_id',$id)->order('ord','asc')->select();
+        $product = [];
         foreach ($classify as $class){
             $p = Product::where(['shop_id'=>$id,'classify_id'=>$class['id']])->select();
             $product['classify'.$class['id']] = $p;

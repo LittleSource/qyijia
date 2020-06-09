@@ -22,7 +22,9 @@ class Postition {
             let postitionInfo = {
               name: res.result.formatted_addresses.recommend,
               latitude: res.result.location.lat,
-              longitude: res.result.location.lng
+              longitude: res.result.location.lng,
+              city: res.result.address_component.city,
+              district: res.result.address_component.district
             }
             success_(postitionInfo)
           },

@@ -35,7 +35,8 @@
                 "pages/index/index",
                 "pages/shop/shop",
                 "pages/shopDetails/shopDetails",
-                "pages/addShop/addShop"
+                "pages/addShop/addShop",
+                "pages/order/order"
             ]
         }
     ],

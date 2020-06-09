@@ -43,10 +43,12 @@ Page({
                     '/common/address/getdefault', {}, {}, {
                         token: app.globalData.userInfo.token
                     }, (res2) => {
-                        _self.setData({
-                            address: res2.defaultAddress
-                        })
-                        _self.getDeliveryDistance()
+                        if(res2.defaultAddress){
+                            _self.setData({
+                                address: res2.defaultAddress
+                            })
+                            _self.getDeliveryDistance()
+                        }
                     }
                 )
             }

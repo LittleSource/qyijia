@@ -11,13 +11,14 @@ namespace app\admin\controller;
 
 use app\admin\model\Fund;
 use app\admin\model\User;
+use think\exception\DbException;
 
 class Shop extends BaseController
 {
     /**
      * 获取商家列表  分页查询
      * @return array
-     * @throws \think\exception\DbException
+     * @throws DbException
      */
     public function getList(){
         $page = $this->request->post('page');
@@ -121,7 +122,7 @@ class Shop extends BaseController
                 'notice'=>'小店新开张，欢迎光临!',
                 'shop_img'=>$user->avatar,
                 'minimum'=>0,
-                'city'=>'深圳',
+                'city'=>'深圳市',
                 'district'=>'罗湖区',
                 'address'=>'人民北路东门町购物广场',
                 'longitude'=>22.544024,

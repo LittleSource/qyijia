@@ -36,7 +36,7 @@ Page({
         this.setData({
             capsuleHeight: capsuleButton.height,
             capsuleTop: capsuleButton.top,
-            id: options.id ? parseInt(options.id) : 1
+            shopId: options.id ? parseInt(options.id) : 1
         })
         graceJS.showLoading('Loading...')
         graceJS.setAfter(() => {
