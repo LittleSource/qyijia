@@ -1,35 +1,3 @@
-.tui-search-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.tui-search-box :last-child {
-    margin-right: 10rpx;
-}
-
-.tui-input {
-    font-size: 34rpx;
-    width: 100%;
-}
-
-.tui-search {
-    width: 70%;
-    height: 60rpx;
-    display: flex;
-    flex-direction: row;
-    margin: 0 20rpx;
-    padding: 0 10rpx;
-    background-color: #f5f5f5;
-    border-radius: 12rpx;
-    overflow: hidden;
-    outline: none;
-}
-
-.user-box {
-    padding: 20rpx 10rpx;
-}
-
 .tui-msg-box {
     display: flex;
     align-items: center;
@@ -65,13 +33,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 26rpx;
+    font-size: 28rpx;
     line-height: 1;
     color: #9397a4;
 }
 
 .tui-msg-right {
-    max-width: 220rpx;
     height: 88rpx;
     margin-left: auto;
     text-align: right;
@@ -95,8 +62,7 @@
 }
 
 .tui-badge {
-    text-align: center;
-    width: 80rpx
+    width: auto
 }
 
 .tui-msg::after {

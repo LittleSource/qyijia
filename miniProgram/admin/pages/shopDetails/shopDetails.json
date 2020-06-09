@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商家详情",
+  "usingComponents": {
+    "tui-button": "/components/extend/button/button",
+    "tui-modal": "/components/modal/modal",
+    "tui-rbutton": "/components/button/button"
+  }
+}

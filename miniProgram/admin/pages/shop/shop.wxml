@@ -1,0 +1,20 @@
+<view>
+	<tui-tips wx:if="{{dataList.length == 0}}" imgUrl="/static/images/other/nodata.png">还没有商家呢~</tui-tips>
+	<tui-cell tui-cell-class="tui-msg" wx:for="{{dataList}}" wx:key="id" bindtap="goDetails" data-id="{{item.id}}">
+		<view class="tui-msg-box">
+			<image src="{{item.shop_img}}" class="tui-msg-pic" mode="widthFix"></image>
+			<view class="tui-msg-item">
+				<view class="tui-msg-name">{{item.title}}</view>
+				<view class="tui-msg-content">{{item.city + item.district}}</view>
+			</view>
+		</view>
+		<view class="tui-msg-right">
+			<tui-badge type="{{item.status==1?'green':'danger'}}" tui-badge-class="tui-badge">{{item.status==1?'正常':'冻结'}}</tui-badge>
+			<view class="tui-msg-time">{{item.add_time}}</view>
+		</view>
+	</tui-cell>
+	<!--加载loadding-->
+	<tui-loadmore visible="{{loadding}}" index="{{3}}" type="red"></tui-loadmore>
+	<tui-nomore visible="{{!pullUpOn}}" bgcolor="#fff"></tui-nomore>
+	<!--加载loadding-->
+</view>

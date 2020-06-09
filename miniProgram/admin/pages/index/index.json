@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "平台管理",
+  "usingComponents": {
+    "tui-icon": "/components/icon/icon",
+    "tui-grid": "/components/grid/grid",
+    "tui-grid-item": "/components/grid-item/grid-item"
+  }
+}

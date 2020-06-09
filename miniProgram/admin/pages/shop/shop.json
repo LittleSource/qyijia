@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "商家管理",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tui-badge": "/components/badge/badge",
+    "tui-cell": "/components/list-cell/list-cell",
+    "tui-loadmore": "/components/loadmore/loadmore",
+    "tui-nomore": "/components/nomore/nomore",
+    "tui-tips": "/components/extend/tips/tips"
+  }
+}

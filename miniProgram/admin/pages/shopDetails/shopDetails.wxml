@@ -1,0 +1,73 @@
+<view class="tui-userinfo-box">
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>{{shopInfo.title}}</view>
+			<image src="{{shopInfo.shop_img}}" class="tui-avatar"></image>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell tui-pr30">
+			<view>起送价</view>
+			<view class="tui-content">￥{{shopInfo.minimum}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell tui-pr30">
+			<view>店所在地</view>
+			<view class="tui-content">{{shopInfo.city+shopInfo.district}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>详细地址</view>
+			<view class="tui-content">{{shopInfo.address}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>用户昵称</view>
+			<view class="tui-content">{{userInfo.nickname}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>联系电话</view>
+			<view class="tui-content">{{userInfo.phone}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>店铺余额</view>
+			<view class="tui-content">{{userInfo.balance}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>店铺状态</view>
+			<view class="tui-content">{{shopInfo.open_status == 1?'营业中':'休息中'}}</view>
+		</view>
+	</tui-list-cell>
+	<tui-list-cell padding="0">
+		<view class="tui-list-cell">
+			<view>开通时间</view>
+			<view class="tui-content">{{shopInfo.add_time}}</view>
+		</view>
+	</tui-list-cell>
+</view>
+<view class="login-out">
+	<tui-button type="blue" height="{{80}}" width="220rpx" bindtap="loginOut">查看订单</tui-button>
+	<tui-button type="warning" height="{{80}}" width="220rpx" bindtap="showModal">余额修改</tui-button>
+	<tui-button type="danger" height="{{80}}" width="220rpx" bindtap="frozenOrThaw">{{shopInfo.status == 1?'冻结店铺':'解冻店铺'}}</tui-button>
+</view>
+<tui-modal show="{{modalShow}}" bind:cancel="hideModal" custom="{{true}}" fadein="{{true}}">
+	<view class="tui-modal-custom">
+		<view class="tui-prompt-title">修改余额</view>
+        <radio-group bindchange="radioChange">
+            <radio value="0" checked>扣除</radio>
+            <radio value="1" style="margin-left:30rpx">增加</radio>
+        </radio-group>
+        <input placeholder="变动金额" class="tui-input" type="digit" confirm-type="next" bindinput="priceInput"/>
+		<input placeholder="变动原因" class="tui-input" type="text" bindinput="contentInput"/>
+        <tui-button type="warning" height="{{80}}" bindtap="updateBalance">确认修改</tui-button>
+	</view>
+</tui-modal>

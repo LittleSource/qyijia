@@ -28,6 +28,15 @@
                 "pages/shopInfo/shopInfo",
                 "pages/fundDetails/fundDetails"
             ]
+        },
+        {
+            "root": "admin",
+            "pages": [
+                "pages/index/index",
+                "pages/shop/shop",
+                "pages/shopDetails/shopDetails",
+                "pages/addShop/addShop"
+            ]
         }
     ],
     "window": {

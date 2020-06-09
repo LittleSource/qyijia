@@ -14,7 +14,7 @@ class Index extends ManageBaseController
 {
     public function getData(){
         //今日收入  只有这个是根据资金明细表获取
-        $OrderList = \app\manage\model\Fund::where([['add_time','>',date('Y-m-d').' 00:00:00']])->column('price');
+        $OrderList = \app\manage\model\Fund::where([['add_time','>',date('Y-m-d').' 00:00:00'],['type','=',1]])->column('price');
         $todayPriceSum = 0;
         foreach ($OrderList as $priceStr){
             $todayPriceSum += floatval($priceStr);

@@ -69,6 +69,10 @@
 					<view class="tui-cell-name">客服中心</view>
 				</button>
 			</tui-list-cell>
+			<tui-list-cell wx:if="{{userInfo.type == 3}}" arrow="{{true}}" tui-cell-class="tui-list" bindtap="goAdmin">
+				<tui-icon name="histogram" size="23" color="#555555"></tui-icon>
+				<view class="tui-cell-name">平台管理</view>
+			</tui-list-cell>
 			<tui-list-cell arrow="{{true}}" tui-cell-class="tui-list" bindtap="myShop">
 				<tui-icon name="shop-fill" size="23" color="#ff7900"></tui-icon>
 				<view class="tui-cell-name">我的店铺</view>

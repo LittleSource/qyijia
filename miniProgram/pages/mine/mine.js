@@ -7,6 +7,7 @@ Page({
         this.setData({
             userInfo: app.globalData.userInfo
         })
+        // console.log(this.data.userInfo)
     },
     login() {
         //判断是否为登录状态
@@ -45,6 +46,11 @@ Page({
                 url: '/manage/pages/index/index',
             })
         }
+    },
+    goAdmin(){
+        wx.navigateTo({
+          url: '/admin/pages/index/index',
+        })
     },
     href(e) {
         let index = Number(e.currentTarget.dataset.index)

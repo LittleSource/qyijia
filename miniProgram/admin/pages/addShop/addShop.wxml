@@ -1,0 +1,23 @@
+<view class="tui-search-box">
+	<view class="tui-search">
+		<tui-icon name="search" size="20"></tui-icon>
+		<input class="tui-input" placeholder="请输入亿家号进行查询" type="number" bindinput="idInput"></input>
+	</view>
+	<tui-button type="green" bindtap="search" height="{{60}}" width="180rpx">查询</tui-button>
+</view>
+<view class="user-box" wx:if="{{userInfo}}">
+	<tui-cell bind:click="detail" tui-cell-class="tui-msg">
+		<view class="tui-msg-box">
+			<image src="{{userInfo.avatar}}" class="tui-msg-pic" mode="widthFix"></image>
+			<view class="tui-msg-item">
+				<view class="tui-msg-name">{{userInfo.nickname}}</view>
+				<view class="tui-msg-content">{{userInfo.addtime}}</view>
+			</view>
+		</view>
+		<view class="tui-msg-right">
+			<view class="tui-msg-time">{{userInfo.phone}}</view>
+			<tui-badge wx:if="{{userInfo.type != 2}}" bindtap="addShop" type="warning" tui-badge-class="tui-badge">开通</tui-badge>
+            <text wx:else>已开通</text>
+		</view>
+	</tui-cell>
+</view>
