@@ -29,8 +29,9 @@
 						<tui-button type="black" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="detail" data-index="{{index}}">查看详情</tui-button>
 					</view>
 					<view class="tui-btn-ml">
-						<tui-button wx:if="{{orderItem.status!=1}}" type="danger" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="goShop" data-index="{{index}}">再次购买</tui-button>
-						<tui-button wx:else type="warning" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="secondPay" data-orderid="{{orderItem.id}}">立即付款</tui-button>
+						<tui-button wx:if="{{orderItem.status==0}}" type="danger" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="goShop" data-index="{{index}}">再次购买</tui-button>
+						<tui-button wx:if="{{orderItem.status==1}}" type="warning" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="secondPay" data-orderid="{{orderItem.id}}">立即付款</tui-button>
+						<tui-button wx:if="{{orderItem.status==3}}" type="blue" plain="{{true}}" width="148rpx" height="56rpx" size="{{26}}" shape="circle" bindtap="confirmReceipt" data-orderid="{{orderItem.id}}">确认收货</tui-button>
 					</view>
 				</view>
 			</view>

@@ -47,4 +47,14 @@ class Order extends BaseController
             return ymJson(201,'该订单不存在',[]);
         }
     }
+    //用户主动确认收货
+    public function confirmReceipt(){
+        $orderId = $this->request->post('id');
+        $order = \app\shop\model\Order::where(['id'=>$orderId,'user_id'=>$this->userId,'status'=>3])->find();
+        if($order && $order->save(['status'=>0])){
+            return ymJson(200,'ok',[]);
+        }else{
+            return ymJson(201,'数据处理失败',[]);
+        }
+    }
 }

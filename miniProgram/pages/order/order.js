@@ -164,6 +164,25 @@ Page({
             }
         )
     },
+    confirmReceipt(e) {
+        graceJS.showLoading('Loading...')
+        graceJS.setAfter(() => {
+            wx.hideLoading()
+        })
+        graceJS.post(
+            '/shop/order/confirmReceipt', {
+                id: e.currentTarget.dataset.orderid
+            }, {}, {
+                token: app.globalData.userInfo.token
+            }, (res) => {
+                wx.startPullDownRefresh({
+                    complete:()=>{
+                        graceJS.msgSuccess('收货成功！')
+                    }
+                })
+            }
+        )
+    },
     onReachBottom() {
         if (this.data.loadding || !this.data.pullUpOn) {
             return
