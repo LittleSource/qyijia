@@ -6,6 +6,7 @@
   "backgroundColorBottom": "#fff",
   "usingComponents": {
     "tui-tag": "/components/tag/tag",
-    "tui-actionsheet": "/components/actionsheet/actionsheet"
+    "tui-cell": "/components/list-cell/list-cell",
+    "tui-badge": "/components/badge/badge"
   }
 }

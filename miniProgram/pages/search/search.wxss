@@ -4,11 +4,11 @@ page {
 }
 
 .container {
-    padding: 0 30rpx 30rpx 30rpx;
     box-sizing: border-box;
 }
 
 .tui-searchbox {
+    margin: 0 30rpx;
     padding: 30rpx 0;
     box-sizing: border-box;
     display: flex;
@@ -46,6 +46,10 @@ page {
     flex-shrink: 0;
 }
 
+.tui-search-history {
+    margin: 0 30rpx;
+}
+
 .tui-history-header {
     display: flex;
     align-items: center;
@@ -71,4 +75,89 @@ page {
     margin-bottom: 20rpx;
     margin-right: 20rpx;
     font-size: 26rpx !important;
+}
+
+.tui-msg-box {
+    display: flex;
+    align-items: center;
+}
+
+.tui-msg-pic {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    display: block;
+    margin-right: 24rpx;
+}
+
+.tui-pro-pic {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.tui-msg-item {
+    max-width: 460rpx;
+    min-height: 80rpx;
+    margin-left: 8rpx;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tui-msg-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 34rpx;
+    line-height: 1;
+    color: #262b3a;
+}
+
+.tui-msg-content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 26rpx;
+    line-height: 1;
+    color: #9397a4;
+}
+
+.tui-msg-right {
+    width: 320rpx;
+    height: 88rpx;
+    margin-left: auto;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.tui-msg-right.tui-right-dot {
+    height: 76rpx;
+    padding-bottom: 10rpx;
+}
+
+.tui-msg-time {
+    width: 100%;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    color: #9397a4;
+}
+
+.tui-badge {
+    text-align: center;
+    width: 80rpx
+}
+
+.tui-msg::after {
+    left: 154rpx !important
+}
+
+.no-data-text {
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    color: #666666;
 }

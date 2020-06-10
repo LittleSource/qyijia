@@ -23,4 +23,21 @@ class Index extends Controller
         }
         return ymJson(200,'ok',$shopList);
     }
+
+    public function search(){
+        $key = $this->request->post('key');
+        $city = $this->request->post('city');
+        $shopList = Shop::where([['title','like','%'.$key.'%'],['city','=',$city]])->select();
+        $nearShopList = Shop::where('city',$city)->select();
+        $productList = [];
+        if(count($nearShopList) > 0){
+            for($i = 0;$i<count($nearShopList);$i++){
+                $productList_ = Product::where([['shop_id','=',$nearShopList[$i]['id']],['title','like','%'.$key.'%']])->select();
+                for($j = 0;$j<count($productList_);$j++){
+                    array_push($productList,$productList_[$j]);
+                }
+            }
+        }
+        return ymJson(200,'ok',['shopList'=>$shopList,'productList'=>$productList]);
+    }
 }

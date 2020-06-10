@@ -7,8 +7,40 @@
 		</view>
 		<view class="tui-cancle" bindtap="back">取消</view>
 	</view>
-
-	<view class="tui-search-history" wx:if="{{history.length>0}}">
+	<view class="search-result" wx:if="{{shopList.length>0 || productList.length>0}}">
+		<view class="list" wx:for="{{shopList}}" wx:key="id">
+			<tui-cell tui-cell-class="tui-msg" bindtap="goDetail" data-type="{{0}}" data-index="{{index}}">
+				<view class="tui-msg-box">
+					<image src="{{item.shop_img}}" class="tui-msg-pic" mode="widthFix"></image>
+					<view class="tui-msg-item">
+						<view class="tui-msg-name">{{item.title}}</view>
+						<view class="tui-msg-content">{{item.notice}}</view>
+					</view>
+				</view>
+				<view class="tui-msg-right">
+					<view class="tui-msg-time">{{item.district}}</view>
+					<tui-badge bindtap="addShop" type="warning" tui-badge-class="tui-badge">进入</tui-badge>
+				</view>
+			</tui-cell>
+		</view>
+		<view class="list" wx:for="{{productList}}" wx:key="id">
+			<tui-cell tui-cell-class="tui-msg" bindtap="goDetail" data-type="{{1}}" data-index="{{index}}">
+				<view class="tui-msg-box">
+					<image src="{{item.img}}" class="tui-pro-pic" mode="widthFix"></image>
+					<view class="tui-msg-item">
+						<view class="tui-msg-name">{{item.title}}</view>
+						<view class="tui-msg-content">{{item.labels}}</view>
+					</view>
+				</view>
+				<view class="tui-msg-right">
+					<view class="tui-msg-time">￥{{item.price}}</view>
+					<tui-badge bindtap="addShop" type="green" tui-badge-class="tui-badge">下单</tui-badge>
+				</view>
+			</tui-cell>
+		</view>
+	</view>
+	<view wx:if="{{isStart && shopList.length==0 && productList.length==0}}" class="no-data-text">暂无搜索结果</view>
+	<view class="tui-search-history" wx:if="{{history.length>0 && !isStart}}">
 		<view class="tui-history-header">
 			<view class="tui-search-title">搜索历史</view>
 			<tui-icon name="delete" size='14' color='#333' bindtap="clearHistory" class="tui-icon-delete"></tui-icon>
