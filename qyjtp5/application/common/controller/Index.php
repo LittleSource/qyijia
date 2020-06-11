@@ -14,6 +14,14 @@ use think\Controller;
 
 class Index extends Controller
 {
+    public function getBanner(){
+        $data = [
+            ['img'=>'https://cdn.ymkj8.com/qyj/banner/1.jpg','url'=>'/pages/shop/shop?id=1'],
+            ['img'=>'https://cdn.ymkj8.com/qyj/banner/2.jpg','url'=>'/pages/shop/shop?id=2']
+        ];
+        return ymJson(200,'ok',$data);
+    }
+
     public function getShopList(){
         $city = $this->request->post('city');
         $page = $this->request->post('page/d');

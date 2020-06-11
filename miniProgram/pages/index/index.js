@@ -28,13 +28,7 @@ Page({
             text: "我的",
             size: 24
         }],
-        banner: [
-            "1.jpg",
-            "2.jpg",
-            "3.jpg",
-            "4.jpg",
-            "5.jpg"
-        ],
+        banner: [],
         category: [{
             img: "1.png",
             name: "超市百货"
@@ -89,6 +83,13 @@ Page({
                 })
             }
         )
+        graceJS.post( //获取banner
+            'common/index/getbanner', {}, {}, {}, (res) => {
+                _self.setData({
+                    banner: res
+                })
+            }
+        )
     },
     onPullDownRefresh: function () {
         if (this.data.loadding) {
@@ -140,6 +141,14 @@ Page({
                     })
                 }, 2000)
             }
+        })
+    },
+    cate() {
+        graceJS.msg('此功能即将上线~')
+    },
+    bannerClick(e) {
+        wx.navigateTo({
+            url: _self.data.banner[e.currentTarget.dataset.index].url,
         })
     },
     goSearch() {

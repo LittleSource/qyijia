@@ -15,8 +15,8 @@
 			<!--banner-->
 			<view class="tui-banner-box">
 				<swiper indicator-dots="true" autoplay="true" interval="5000" duration="150" class="tui-banner-swiper" circular="{{true}}">
-					<swiper-item wx:for="{{banner}}" wx:key="index" catchtap="detail">
-						<image src="/static/images/banner/{{item}}" class="tui-slide-image" mode="scaleToFill" />
+					<swiper-item wx:for="{{banner}}" wx:key="index" catchtap="bannerClick" data-index="{{index}}">
+						<image src="{{item.img}}" class="tui-slide-image" mode="scaleToFill" />
 					</swiper-item>
 				</swiper>
 			</view>
@@ -24,7 +24,7 @@
 	</view>
 
 	<view class="tui-product-category">
-		<view class="tui-category-item" wx:for="{{category}}" wx:key="index" data-key="{{item.name}}" bindtap="more">
+		<view class="tui-category-item" wx:for="{{category}}" wx:key="index" data-key="{{item.name}}" bindtap="cate">
 			<image src="/static/images/cate/{{item.img}}" class="tui-category-img" mode="scaleToFill"></image>
 			<view class="tui-category-name">{{item.name}}</view>
 		</view>
