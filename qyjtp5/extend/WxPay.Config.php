@@ -5,7 +5,8 @@ require_once "WxPay.Config.Interface.php";
 class WxPayConfig extends WxPayConfigInterface
 {
 	//=======【基本信息设置】=====================================
-	/**
+
+    /**
 	 * TODO: 修改这里配置为您自己申请的商户信息
 	 * 微信公众号信息配置
 	 * 

@@ -23,7 +23,7 @@
 		</view>
 	</view>
 
-	<view class="tui-product-category">
+	<view class="tui-product-category" wx:if="{{!dev}}">
 		<view class="tui-category-item" wx:for="{{category}}" wx:key="index" data-key="{{item.name}}" bindtap="cate">
 			<image src="/static/images/cate/{{item.img}}" class="tui-category-img" mode="scaleToFill"></image>
 			<view class="tui-category-name">{{item.name}}</view>
@@ -34,8 +34,8 @@
 			<text>附近推荐</text>
 		</view>
 		<view wx:if="{{shopList.length == 0}}" class="no-data">
-			<view>当前位置附近暂无商家哦~</view>
-			<button type="default" size="mini" plain bindtap="goPoster">申请入驻</button>
+			<view>当前位置附近暂无{{dev?'服务':'商家'}}哦~</view>
+			<button type="default" size="mini" plain bindtap="goPoster">{{dev?'暂无数据':'申请入驻'}}</button>
 		</view>
 		<view wx:else class="store-box">
 			<view class="item-box" wx:for="{{shopList}}" wx:key="id" bindtap="detail" data-id="{{item.id}}">

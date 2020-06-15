@@ -19,7 +19,7 @@ class Index extends Controller
             ['img'=>'https://cdn.ymkj8.com/qyj/banner/1.jpg','url'=>'/pages/shop/shop?id=1'],
             ['img'=>'https://cdn.ymkj8.com/qyj/banner/2.jpg','url'=>'/pages/shop/shop?id=2']
         ];
-        return ymJson(200,'ok',$data);
+        return ymJson(200,'ok',['banner'=>$data,'dev'=>1]);
     }
 
     public function getShopList(){

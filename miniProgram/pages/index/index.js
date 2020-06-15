@@ -45,6 +45,7 @@ Page({
             img: "5.png",
             name: "送药到家"
         }],
+        dev:1,
         shopList: [],
         pageIndex: 1,
         loadding: false,
@@ -61,6 +62,7 @@ Page({
             this.data.positionInfo.district = location.district
             this.setData({
                 positionInfo: this.data.positionInfo,
+                shopList: [],
                 isGochooseLocationPage: false
             })
             app.globalData.positionInfo = this.data.positionInfo
@@ -85,8 +87,15 @@ Page({
         )
         graceJS.post( //获取banner
             'common/index/getbanner', {}, {}, {}, (res) => {
+                getApp().globalData.dev = res.dev
+                let noDataBtnText_ = '暂无数据'
+                if (!res.dev) {
+                    noDataBtnText_ = '申请入驻'
+                }
                 _self.setData({
-                    banner: res
+                    dev:res.dev,
+                    banner: res.banner,
+                    noDataBtnText: noDataBtnText_
                 })
             }
         )

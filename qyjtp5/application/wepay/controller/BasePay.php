@@ -15,6 +15,7 @@ use WxPayApi;
 use WxPayConfig;
 use WxPayException;
 use WxPayJsApiPay;
+use WxPayRefund;
 use WxPayUnifiedOrder;
 require_once '../extend/WxPay.Api.php';
 require_once '../extend/WxPay.Config.php';
@@ -53,6 +54,32 @@ class BasePay extends BaseController
         }catch (WxPayException $e){
             throw new WxPayException($e->getMessage());
         }
+    }
+
+    /**
+     * 退款  未做完
+     * @param $out_trade_no
+     * @param $total_fee
+     * @param $refund_fee
+     * @return bool
+     * @throws WxPayException
+     */
+    public static function WxRefund($out_trade_no,$total_fee,$refund_fee){
+        if($out_trade_no){
+            $input = new WxPayRefund();
+            $input->SetOut_trade_no($out_trade_no);
+            $input->SetTotal_fee($total_fee*100);
+            $input->SetRefund_fee($refund_fee*100);
+            $input->SetOut_refund_no('T'.date("YmdHis").mt_rand(1000,9999));
+            $input->SetOp_user_id(\WxPayConfig::MCHID);
+            $param = WxPayApi::refund($input);
+            if($param['return_code'] == 'SUCCESS'){
+                return true;
+            }else{
+                throw new WxPayException($param['return_msg']);
+            }
+        }
+        return true;
     }
 
 
