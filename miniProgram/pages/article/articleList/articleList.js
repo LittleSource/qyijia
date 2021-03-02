@@ -42,7 +42,6 @@ Page({
           lastPage: res.last_page
         })
         wx.stopPullDownRefresh();
-        console.log(res)
       }
     )
   },

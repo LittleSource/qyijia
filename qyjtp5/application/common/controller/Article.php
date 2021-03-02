@@ -20,7 +20,7 @@ class Article extends Controller
             $articleList = (new \app\common\model\Article)
                 ->field('id,title,create_time')
                 ->order('create_time','desc')
-                ->paginate(6, false, ['page' => $page]);
+                ->paginate(10, false, ['page' => $page]);
             return ymJson(200,'ok',$articleList);
         } catch (DbException $e) {
             return ymJson(201,'查询失败',[]);
