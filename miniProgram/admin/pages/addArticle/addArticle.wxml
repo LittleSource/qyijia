@@ -1,0 +1,23 @@
+<view class="container">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <tui-list-cell hover="{{false}}">
+            <view class="tui-line-cell">
+                <view class="tui-title">标题：</view>
+                <input placeholder-class="tui-phcolor" class="tui-input" bindinput="inputTitle" placeholder="请输入标题" maxlength="50"
+                    type="text" />
+            </view>
+        </tui-list-cell>
+        <tui-list-cell hover="{{false}}">
+            <view class="tui-line-cell">
+                <view class="tui-title">内容：</view>
+            </view>
+        </tui-list-cell>
+        <view class="tui-textarea">
+            <textarea bindinput="inputText" value="{{text}}" placeholder="这里输入内容..." maxlength="2500"></textarea>
+        </view>
+        <view class="tui-btn-box">
+            <button class="tui-button-primary" hover-class="tui-button-hover" bindtap="submit"
+                type="primary">确认发布</button>
+        </view>
+    </form>
+</view>

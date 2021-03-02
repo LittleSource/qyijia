@@ -1,0 +1,28 @@
+<view class="tui-container">
+	<!--新闻列表-->
+	<view class="tui-news-view">
+		<block wx:for="{{newsList}}" wx:key="index">
+			<tui-list-cell index="{{index}}" bindtap="detail" bindlongtap="delete" data-index="{{index}}" unlined="{{newsList.length-1==index}}">
+				<view class="tui-news-flex tui-flex-start">
+					<view class="tui-news-tbox tui-flex-column tui-flex-between">
+						<view class="tui-news-title">{{item.title}}</view>
+						<view class="tui-sub-box tui-pt20">
+							<view class="tui-sub-source">{{item.create_time}}</view>
+							<view class="tui-sub-cmt">
+								<view class="tui-scale">
+									<tui-tag padding="10rpx 24rpx" plain="{{true}}" shape="circleRight">资讯</tui-tag>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</tui-list-cell>
+		</block>
+	</view>
+    <tui-fab bgColor="#64B532" btnList="" bindclick="addOnClick"></tui-fab>
+	<tui-tips id="tui-message-ctx"></tui-tips>
+	<!--加载loadding-->
+	<tui-loadmore visible="{{loadding}}" index="3" type="primary"></tui-loadmore>
+	<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
+	<!--加载loadding-->
+</view>

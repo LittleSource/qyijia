@@ -18,5 +18,11 @@
 			</view>
 			<text class="tui-grid-label" >添加店铺</text>
 		</tui-grid-item>
+		<tui-grid-item bindtap="href" data-index="{{3}}">
+			<view class="tui-grid-icon">
+				<tui-icon name="feedback" size="30" color="#666666"></tui-icon>
+			</view>
+			<text class="tui-grid-label" >文章管理</text>
+		</tui-grid-item>
 	</tui-grid>
 </view>

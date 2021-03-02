@@ -5,7 +5,8 @@ Page({
         urls: [
             '/admin/pages/shop/shop',
             '/admin/pages/order/order',
-            '/admin/pages/addShop/addShop'
+            '/admin/pages/addShop/addShop',
+            '/admin/pages/article/article'
         ]
     },
     onLoad() {

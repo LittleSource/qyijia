@@ -31,8 +31,9 @@ Page({
         banner: [],
         category: [{
             img: "1.png",
-            name: "超市百货"
-        }, {
+            name: "创业模式",
+            url:"/pages/article/articleList/articleList"
+        },{
             img: "2.png",
             name: "优质蔬菜"
         }, {
@@ -152,8 +153,12 @@ Page({
             }
         })
     },
-    cate() {
-        graceJS.msg('此功能即将上线~')
+    cate(e) {
+        if(this.data.category[e.currentTarget.dataset.index].url == ""){
+            graceJS.msg('此功能即将上线~')
+        }else{
+            graceJS.navigate(this.data.category[e.currentTarget.dataset.index].url)
+        }
     },
     bannerClick(e) {
         wx.navigateTo({

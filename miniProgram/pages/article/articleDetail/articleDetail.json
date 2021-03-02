@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "详情",
+  "backgroundColorTop": "#fff",
+  "backgroundColorBottom": "#fff",
+  "onReachBottomDistance": 0,
+  "usingComponents": {
+    "tui-tips":"/components/tips/tips",
+    "tui-loadmore":"/components/loadmore/loadmore",
+    "tui-nomore":"/components/nomore/nomore",
+    "tui-tag":"/components/tag/tag",
+    "tui-icon":"/components/icon/icon",
+    "tui-list-cell":"/components/list-cell/list-cell",
+    "tui-badge":"/components/badge/badge"
+  }
+}

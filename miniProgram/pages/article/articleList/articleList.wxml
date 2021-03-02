@@ -1,0 +1,34 @@
+<view class="tui-container">
+	<swiper indicator-dots autoplay circular interval="5000" duration="150" indicator-color="rgba(255, 255, 255, 0.9)"
+		indicator-active-color="#5677fc" class="tui-banner-swiper">
+		<swiper-item wx:for="{{banner}}" wx:key="index" catchtap="bannerDetail">
+			<view class="tui-banner-title">{{item.title}}</view>
+			<image src="{{item.img}}" class="tui-slide-image" mode="widthFix" />
+		</swiper-item>
+	</swiper>
+	<!--新闻列表-->
+	<view class="tui-news-view">
+		<block wx:for="{{newsList}}" wx:key="index">
+			<tui-list-cell index="{{index}}" bindtap="detail" data-id="{{item.id}}" unlined="{{newsList.length-1==index}}">
+				<view class="tui-news-flex tui-flex-start">
+					<view class="tui-news-tbox tui-flex-column tui-flex-between">
+						<view class="tui-news-title">{{item.title}}</view>
+						<view class="tui-sub-box tui-pt20">
+							<view class="tui-sub-source">{{item.create_time}}</view>
+							<view class="tui-sub-cmt">
+								<view class="tui-scale">
+									<tui-tag padding="10rpx 24rpx" plain="{{true}}" shape="circleRight">资讯</tui-tag>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</tui-list-cell>
+		</block>
+	</view>
+	<tui-tips id="tui-message-ctx"></tui-tips>
+	<!--加载loadding-->
+	<tui-loadmore visible="{{loadding}}" index="3" type="primary"></tui-loadmore>
+	<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
+	<!--加载loadding-->
+</view>

@@ -1,0 +1,22 @@
+<view class="container">
+		<view class="tui-news-title">{{news.title}}</view>
+		<view class="tui-sub-info">
+			<view class="tui-sub-left">
+				<text class="tui-author">麒亿家</text>
+			</view>
+			<view class="tui-sub-right">{{news.create_time}}</view>
+		</view>
+		<view class="tui-news-content">
+			<view class="tui-article">{{news.text}}</view>
+			<!-- <image src="/static/images/news/banner_1.jpg" class="tui-article-pic" mode="widthFix"></image> -->
+		</view>
+		<view class="tui-news-source">消息来源：麒亿家</view>
+		<view class="tui-operate-box">
+			<button open-type="share" class="tui-share-btn" >
+				<tui-tag padding="26rpx 60rpx" type="gray" shape="circle" plain="{{true}}">
+					<tui-icon name="partake" size="20" color="#333"></tui-icon>
+					<text class="tui-black">分享</text>
+				</tui-tag>
+			</button>
+		</view>
+	</view>

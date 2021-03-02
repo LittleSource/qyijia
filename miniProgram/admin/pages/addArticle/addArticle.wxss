@@ -1,0 +1,59 @@
+.container {
+    padding: 20rpx 0 50rpx 0;
+}
+
+.tui-line-cell {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.tui-title {
+    line-height: 32rpx;
+    min-width: 120rpx;
+    flex-shrink: 0;
+}
+
+.tui-input {
+    font-size: 32rpx;
+    color: #333;
+    padding-left: 20rpx;
+    flex: 1;
+    overflow: visible;
+}
+
+.radio-group {
+    margin-left: auto;
+    transform: scale(0.8);
+    transform-origin: 100% center;
+    flex-shrink: 0;
+}
+
+.tui-radio {
+    display: inline-block;
+    padding-left: 28rpx;
+    font-size: 36rpx;
+    vertical-align: middle;
+}
+
+
+.tui-btn-box {
+    padding: 40rpx 50rpx;
+    box-sizing: border-box;
+}
+
+.tui-button-gray {
+    margin-top: 30rpx;
+}
+
+.tui-textarea {
+    padding: 5rpx 30rpx;
+    font-size: 32rpx;
+}
+
+textarea {
+    width: 100% !important;
+    height: 800rpx !important;
+    border: 1rpx dashed #ccc;
+}

@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "资讯列表",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle":"dark",
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "tui-loadmore":"../../../components/loadmore/loadmore",
+    "tui-nomore":"../../../components/nomore/nomore",
+    "tui-tag":"../../../components/tag/tag",
+    "tui-icon":"../../../components/icon/icon",
+    "tui-list-cell":"../../../components/list-cell/list-cell"
+  }
+}

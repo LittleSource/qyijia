@@ -13,7 +13,7 @@ page {
 .tui-header {
   height: 400rpx;
   width: 100%;
-  background: url(https://yuange666.oss-cn-beijing.aliyuncs.com/test/shopbg.jpg) no-repeat;
+  background: url(https://cdn.ymkj8.com/qyj/static/shopbg.jpg) no-repeat;
   background-size: cover;
   position: fixed;
   left: 0;
