@@ -1,5 +1,6 @@
 const graceJS = require('../../../utils/grace.js')
 let tui
+var app = getApp()
 var _self = null
 Page({
   data: {
@@ -24,9 +25,26 @@ Page({
     tui = this.selectComponent("#tui-message-ctx")
   },
   detail(e) {
-    wx.navigateTo({
-      url: '/pages/article/articleDetail/articleDetail?id=' + e.currentTarget.dataset.id
-    })
+    if (app.globalData.userInfo){
+      if(app.globalData.userInfo.type != 1){
+        wx.navigateTo({
+          url: '/pages/article/articleDetail/articleDetail?id=' + e.currentTarget.dataset.id
+        })
+      }else{
+        wx.showModal({
+          title:'提示',
+          content:'您还没有权限查看，请点击确定联系客服开通权限。',
+          showCancel: false,
+          success:()=>{
+            wx.navigateTo({
+              url: '/pages/poster/poster'
+            })
+          }
+        })
+      }
+    }else{
+      graceJS.msg("请先登录！")
+    }
   },
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function () {
