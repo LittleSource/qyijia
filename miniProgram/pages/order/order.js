@@ -43,7 +43,9 @@ Page({
                 currentTab: Number(options.index)
             })
         }
-        wx.startPullDownRefresh()
+        setTimeout(()=>{
+            wx.startPullDownRefresh()
+        },800)
     },
     onPullDownRefresh() {
         if (this.data.isRefresh) {

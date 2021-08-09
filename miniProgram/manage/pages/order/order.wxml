@@ -92,6 +92,24 @@
 						<view>{{orderData.remark}}</view>
 					</view>
 				</tui-list-cell>
+				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+					<view class="model-cell">
+						<view>客户姓名</view>
+						<view>{{orderData.name}}</view>
+					</view>
+				</tui-list-cell>
+				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+					<view class="model-cell">
+						<view>联系电话</view>
+						<view>{{orderData.phone}}</view>
+					</view>
+				</tui-list-cell>
+				<tui-list-cell hover="{{false}}" lineLeft="{{false}}">
+					<view class="model-cell">
+						<view>地址</view>
+						<view>{{orderData.address_detail}}</view>
+					</view>
+				</tui-list-cell>
 			</view>
 		</scroll-view>
 	</tui-modal>

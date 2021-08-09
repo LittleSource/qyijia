@@ -20,6 +20,17 @@ class Order extends ManageBaseController
         return ymJson(200,'ok',$orderList);
     }
 
+    public function getOrder(){
+        $orderId = $this->request->post('id');
+        $field = ['o.id'=>'oid','shopping_cart','shop_id','shop_title','price_sum','real_sum','delivery_price','real_pay','remark','pay_time','create_time','status','name','phone','address','address_detail','house_num'];
+        $order = \app\manage\model\Order::alias('o')->join('address a','a.id = o.address_id')->field($field)->where(['o.id'=>$orderId,'o.shop_id'=>$this->shopId])->find();
+        if($order){
+            return ymJson(200,'ok',$order);
+        }else{
+            return ymJson(201,'该订单不存在2',[]);
+        }
+    }
+
     //商家确认接单
     public function acceptOrder(){
         $orderId = $this->request->post('id');

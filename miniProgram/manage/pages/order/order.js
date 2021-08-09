@@ -32,11 +32,23 @@ Page({
         wx.startPullDownRefresh()
     },
     detail(e) {
-        var orderData = this.data.dataList[e.currentTarget.dataset.index]
-        this.setData({
-            isShowModal: true,
-            orderData: orderData
-        })
+        graceJS.post(
+            'manage/order/getOrder', {
+                id:_self.data.dataList[e.currentTarget.dataset.index].id
+            }, {}, {
+                token: app.globalData.userInfo.token
+            },
+            (res) => {
+                console.log(res)
+                res.shopping_cart = JSON.parse(res.shopping_cart)
+                _self.setData({
+                    isShowModal: true,
+                    orderData: res
+                })
+            }
+        )
+        
+        
     },
     hideModal() {
         this.setData({
@@ -110,7 +122,7 @@ Page({
             loadding: true
         })
         graceJS.post(
-            'shop/order/getlist', {
+            'manage/order/getlist', {
                 status_index: _self.data.currentTab,
                 page: _self.data.pageIndex
             }, {}, {

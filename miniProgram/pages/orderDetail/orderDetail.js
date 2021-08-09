@@ -22,7 +22,9 @@ Page({
             this.setData({
                 orderId: options.id
             })
-            wx.startPullDownRefresh()
+            setTimeout(()=>{
+                wx.startPullDownRefresh()
+            },800)
         } else {
             wx.navigateBack({
                 success: () => {
